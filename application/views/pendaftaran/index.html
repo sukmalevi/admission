@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.0
+Version: 1.5.2
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>Form Pendaftaran | Admission Online Paramadina</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<meta name="MobileOptimized" content="320">
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->        
+	<link href="{$host}assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="{$host}assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="{$host}assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<script src="{$host}assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<script src="{$host}assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>   
+	<!-- END GLOBAL MANDATORY STYLES -->
+	<!-- BEGIN THEME STYLES --> 
+	<link href="{$host}assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+	<link href="{$host}assets/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="{$host}assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="{$host}assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+	<link href="{$host}assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="{$host}assets/css/custom.css" rel="stylesheet" type="text/css"/>
+	<!-- END THEME STYLES -->
+	<link rel="shortcut icon" href="favicon.ico" />
+   <link rel="stylesheet" type="text/css" href="{$host}assets/plugins/select2/select2_metro.css" />
+   <link rel="stylesheet" type="text/css" href="{$host}assets/css/pages/promo.css" />
+   <link rel="stylesheet" type="text/css" href="{$host}assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css" />
+   <link rel="stylesheet" type="text/css" href="{$host}assets/plugins/bootstrap-timepicker/compiled/timepicker.css" />
+   <link rel="stylesheet" type="text/css" href="{$host}assets/plugins/bootstrap-datepicker/css/datepicker.css" />
+
+
+	
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed page-boxed page-full-width">
+	<!-- BEGIN HEADER -->   
+	{include file = "pendaftaran/header.html"}
+	<!-- END HEADER -->
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER --> 
+		<div class="page-container" >
+		<!-- BEGIN EMPTY PAGE SIDEBAR -->
+		
+		<!-- END EMPTY PAGE SIDEBAR -->
+		<!-- BEGIN PAGE -->
+			<div class="page-content" style="min-height:1111px !important;margin-left:0px">  
+				<!-- BEGIN PAGE HEADER-->
+				  
+			  <div class="container" style="padding-top: 20px;">
+				<div class="row">
+				   <div class="col-md-12">
+					  <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+					  <h2 class="page-title">
+						 {$title} <small>Admission online</small>
+						 {if $page eq 'faq'}
+						 <a style="float:right" class="btn blue" href="registrasiForm">Form Registrasi</a>
+						 {else}
+						 <a style="float:right" class="btn green" href="faq">FAQ</a>
+						 {/if}
+					  </h2>
+					</div>
+				</div>
+				<hr>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN PAGE CONTENT-->
+				<div class="row margin-bottom-20">
+					<div class="col-md-12">
+					{if $page eq 'faq'}
+						<h3>Selamat datang di Universitas Paramadina.</h3>
+					{else}
+						<h3>Silahkan isi data di bawah ini dengan lengkap.</h3>
+					{/if}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						{include file="{$modul}{$page}.html"}
+					</div>
+				</div>
+				<!-- END PAGE CONTENT-->
+			 </div>
+			</div>
+			
+		</div>
+	<!-- END CONTAINER -->
+		
+		<div class="promo-page" style="min-height:0px">
+			<div class="block-footer">
+					<div class="container">
+						<div class="row">
+
+							<div class="col-md-3">
+								<h3>Stay Tuned</h3>
+								<ul class="list-unstyled social-icons"><!-- 
+									<li><a class="amazon" data-original-title="amazon" href="#"></a></li>
+									<li><a class="behance" data-original-title="behance" href="#"></a></li>
+									<li><a class="blogger" data-original-title="blogger" href="#"></a></li>
+									<li><a class="deviantart" data-original-title="deviantart" href="#"></a></li>
+									<li><a class="dribbble" data-original-title="dribbble" href="#"></a></li>
+									<li><a class="dropbox" data-original-title="dropbox" href="#"></a></li>-->
+									<li><a class="facebook" data-original-title="facebook" href="#"></a></li><!--
+									<li><a class="forrst" data-original-title="forrst" href="#"></a></li>
+									<li><a class="github" data-original-title="github" href="#"></a></li> -->
+									<li><a class="googleplus" data-original-title="Goole Plus" href="#"></a></li><!-- 
+									<li><a class="jolicloud" data-original-title="jolicloud" href="#"></a></li>
+									<li><a class="last-fm" data-original-title="last-fm" href="#"></a></li> -->
+									<li><a class="linkedin" data-original-title="linkedin" href="#"></a></li>
+									<li><a class="picasa" data-original-title="picasa" href="#"></a></li>
+									<li><a class="pintrest" data-original-title="pintrest" href="#"></a></li><!-- 
+									<li><a class="rss" data-original-title="rss" href="#"></a></li>
+									<li><a class="skype" data-original-title="skype" href="#"></a></li>
+									<li><a class="spotify" data-original-title="spotify" href="#"></a></li>
+									<li><a class="stumbleupon" data-original-title="stumbleupon" href="#"></a></li> -->
+									<li><a class="tumblr" data-original-title="tumblr" href="#"></a></li>
+									<li><a class="twitter" data-original-title="twitter" href="#"></a></li>
+									<li><a class="vimeo" data-original-title="vimeo" href="#"></a></li><!-- 
+									<li><a class="wordpress" data-original-title="wordpress" href="#"></a></li>
+									<li><a class="xing" data-original-title="xing" href="#"></a></li> -->
+									<li><a class="yahoo" data-original-title="yahoo" href="#"></a></li>
+									<li><a class="youtube" data-original-title="youtube" href="#"></a></li><!-- 
+									<li><a class="vk" data-original-title="vk" href="#"></a></li> -->
+									<li><a class="instagram" data-original-title="instagram" href="#"></a></li>
+								</ul>
+							</div>
+							<div class="col-md-4">
+							<!--
+								<h3>Subscribe</h3>
+								<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam.</p>
+								<form action="#" class="form-inline">
+									<div class="input-group">
+										<input type="text" placeholder="Email Address" class="form-control">
+										<span class="input-group-btn">
+										<button type="button" class="btn blue">GO!</button>
+										</span>      
+									</div>
+								</form>-->
+							</div>
+							<div class="col-md-4"><!-- 
+								<h3>Photo Stream</h3>
+								<ul class="list-unstyled blog-images">
+									<li><a href="#"><img alt="" src="assets/img/blog/1.jpg"></a></li>
+									<li><a href="#"><img alt="" src="assets/img/blog/2.jpg"></a></li>
+									<li><a href="#"><img alt="" src="assets/img/blog/3.jpg"></a></li>
+									<li><a href="#"><img alt="" src="assets/img/blog/4.jpg"></a></li>
+									<li><a href="#"><img alt="" src="assets/img/blog/5.jpg"></a></li>
+									<li><a href="#"><img alt="" src="assets/img/blog/6.jpg"></a></li>
+									<li><a href="#"><img alt="" src="assets/img/blog/8.jpg"></a></li>
+									<li><a href="#"><img alt="" src="assets/img/blog/10.jpg"></a></li>
+									<li><a href="#"><img alt="" src="assets/img/blog/11.jpg"></a></li>
+									<li><a href="#"><img alt="" src="assets/img/blog/1.jpg"></a></li>
+									<li><a href="#"><img alt="" src="assets/img/blog/2.jpg"></a></li>
+									<li><a href="#"><img alt="" src="assets/img/blog/7.jpg"></a></li>
+								</ul> -->
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+	<!-- BEGIN FOOTER -->
+	<div class="footer" style="background-color: #323232;color: #6F6F6F;">
+	 <div class="container">
+		<div class="footer-inner">
+			2014 &copy; Universitas Paramadina.
+		</div>
+		<div class="footer-tools">
+			<span class="go-top">
+			<i class="icon-angle-up"></i>
+			</span>
+		</div>
+	 </div>
+	</div>
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+	<!-- BEGIN CORE PLUGINS -->   
+	<!--[if lt IE 9]>
+	<script src="{$host}assets/plugins/excanvas.min.js"></script>
+	<script src="{$host}assets/plugins/respond.min.js"></script>  
+	<![endif]-->   
+	<script src="{$host}assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="{$host}assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
+	<script src="{$host}assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+	<script src="{$host}assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
+	<script src="{$host}assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+	<script src="{$host}assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+	<!-- END CORE PLUGINS -->
+   
+   
+    <script type="text/javascript" src="{$host}assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script> 
+    <script src="{$host}assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript" ></script>
+							  
+    <script src="{$host}assets/scripts/form-components.js"></script>   
+    <script src="{$host}assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+	<link rel="stylesheet" type="text/css" href="{$host}assets/plugins/jquery-tags-input/jquery.tagsinput.css" />
+	
+   <script type="text/javascript" src="{$host}assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+   <script type="text/javascript" src="{$host}assets/plugins/jquery-validation/dist/additional-methods.min.js"></script>
+   <script type="text/javascript" src="{$host}assets/plugins/select2/select2.min.js"></script>
+   
+   
+	<script src="{$host}assets/scripts/app.js"></script>      	
+    <script src="{$host}assets/scripts/form-validation.js"></script> 
+   <script type="text/javascript" src="{$host}assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+   <script type="text/javascript" src="{$host}assets/plugins/fuelux/js/spinner.min.js"></script><script type="text/javascript" src="{$host}assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+   <script type="text/javascript" src="{$host}assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script> 
+   <script src="{$host}assets/plugins/bootstrap-daterangepicker/moment.min.js" type="text/javascript"></script>
+   <script src="{$host}assets/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>    
+   <script src="{$host}assets/scripts/form-components.js"></script>    
+   <script type="text/javascript" src="{$host}assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script> 
+   <script type="text/javascript" src="{$host}assets/plugins/jquery.input-ip-address-control-1.0.min.js"></script><script type="text/javascript" src="{$host}assets/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+   <script type="text/javascript" src="{$host}assets/plugins/jquery-multi-select/js/jquery.quicksearch.js"></script>
+	<script>
+		jQuery(document).ready(function() {    
+		   App.init();
+		   FormValidation.init();
+           FormComponents.init();
+		});
+	</script>
+	
+	<!-- END JAVASCRIPTS -->
+</body>
+	</div>
+<!-- END BODY -->
+</html>

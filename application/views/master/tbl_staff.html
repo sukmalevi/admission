@@ -1,0 +1,215 @@
+
+<script>		  
+$(function () {
+	$('#data-table').dataTable({
+		"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>"
+       });
+    });
+</script>	
+
+	<div class="primary-head">
+		<h3 class="page-header">Master Data Pegawai</h3>
+	</div>
+		<div id="editForm">
+		</div>
+		<div id="master">
+			<div id="form" style="display:none">
+					<div class="content-widgets light-gray">
+						<div class="widget-head green">
+							<h3>Form Pegawai Paramadina
+								<a href="#" id="minus" style="float:right" onClick="doForm(1)"><i class="icon-minus"></i></a>
+							</h3>
+						</div>
+						<div class="widget-container">
+							<form class="form-horizontal" name="marketer" action="{$host}master/addPegawai/save" id="marketer" method="post">
+								<div class="control-group">
+									<label class="control-label" >Nama</label>
+									<div class="controls">
+										<input type="text" placeholder="Nama Pegawai" class="span4" name="nama" id="nama" class="required">
+										<input type="text" placeholder="Inisial" class="span1" name="inisial" id="inisial" class="required">									
+									</div>										
+								</div>
+								<div class="control-group">
+									<label class="control-label" >Departemen</label>
+									<div class="controls">
+										<select data-placeholder="Departemen" class="span4" tabindex="2" name="depart" id="depart">	
+											{foreach name=loop from=$depart item=row}
+											<option value="{$row->acadept_uid}" >{$row->description}</option>
+											{/foreach}
+										</select>
+									</div>
+								</div>
+								<div class="control-group">	
+									<label class="control-label" >Jabatan</label>
+									<div class="controls">
+										<select data-placeholder="Jabatan" class="span4" tabindex="2" name="jabatan" id="jabatan">	
+											{foreach name=loop from=$jabatan item=row}
+											<option value="{$row->acajbt_uid}" >{$row->description}</option>
+											{/foreach}
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" >Alamat</label>
+									<div class="controls">
+										<input type="text" placeholder="Alamat" class="span7" name="alamat" id="alamat" class="required">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" >NIP</label>
+									<div class="controls">
+										<input type="text" placeholder="Nomor Induk Pegawai" class="span3" name="nip" id="nip" class="required">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" >Email</label>
+									<div class="controls">
+										<input type="email" placeholder="Alamat Email" class="span4" name="email" id="email" class="required">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" >No Telp</label>
+									<div class="controls">
+										<input type="text" placeholder="No Telp" class="span4" name="telp" id="telp" class="required">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" >No HP</label>
+									<div class="controls">
+										<input type="text" placeholder="No HP" class="span4" name="hp" id="hp" class="required">
+									</div>
+								</div>
+									<button type="submit" class="btn btn-success" name="save" id="save" value="save" onClick="saveForm()">Save</button>
+									<button type="reset" class="btn">Reset</button>
+									<button class="btn btn-inverse" name="cancel" id="cancel" value="cancel" onClick="saveForm()">Cancel</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div id="tabel">
+					<div class="content-widgets light-gray">
+						<div class="widget-head bondi-blue">
+							<h3>Daftar Pegawai Paramadina
+								<a href="#" id="tambah" style="float:right" onClick="doForm(2)"><i class="icon-plus "></i></a>
+							</h3>
+						</div>
+						<div class="widget-container" >	
+							<table class="responsive table table-striped table-bordered" id="data-table" >
+							<thead>
+							<tr>
+								<th style="display:none">
+									 ID
+								</th>
+								<th>
+									 Nama Pegawai
+								</th>
+								<th>
+									 Inisial
+								</th>
+								<th>
+									 NIP
+								</th>
+								<th>
+									 Departemen
+								</th>
+								<th>
+									 Jabatan
+								</th>
+								<td class="action" ></td>
+							</tr>
+							</thead>
+							<tbody>
+							{foreach name=loop from=$pegawai item=row}
+							<tr id="tr">
+								<td style="display:none" id="nip" value="{$row->id}">
+									{$row->id}
+								</td>
+								<td>
+									<a href="#" class="nama"> {$row->nama}</a>
+								</td>								
+								<td>
+									 {$row->inisial}
+								</td>								
+								<td >
+									 {$row->personal_NIP}
+								</td>								
+								<td >
+									 {$row->depart}
+								</td>
+								<td>
+									 {$row->jabatan}
+								</td>
+								<td class="center">
+									 <div class="btn-group">
+										<button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu">
+											<li>
+											<a href="#" class="edit" id="edit" value="{$row->id}">Edit</a>
+											</li>
+											<li>
+											<a href="#" class="hapus" id="hapus" value="{$row->id}">Hapus</a>
+											</li>
+											<li>
+											<a href="#" class="pass" id="pass" value="{$row->id}" name="{$row->nama}">Ubah Password</a>
+											</li>
+										</ul>
+									</div>
+								</td>
+							</tr>	
+							{/foreach}
+							</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+		</div>
+<script type="text/javascript">
+	function doForm(a){
+	if (a == 1){
+		document.getElementById('form').style.display = 'none';
+		document.getElementById('tabel').style.display = 'block';
+		}
+	else{
+		document.getElementById('form').style.display = 'block';
+		document.getElementById('tabel').style.display = 'none';
+		}
+	}
+</script>
+<script>
+{literal}
+		$(".edit").each(function (i, v){
+			$(this).click(function(){	
+				var nipid = $("#data-table #nip").attr("value");
+				var id = $(this).attr("value");
+				
+				//alert(i + "id :" + cob);
+				$.post("{/literal}{$host}{literal}master/editMaster/form", {'id':id},function(resp){
+					$('#master').hide();
+					$('#editForm').html(resp);					
+					});
+				});
+			});
+	{/literal}{literal}
+		$(".hapus").each(function (i, v){
+			$(this).click(function(){	
+				var id = $(this).attr("value");
+				if (confirm("Are you sure?")) {
+					$.post("{/literal}{$host}{literal}master/delPegawai/delete", {'id':id});
+				}
+				return false;
+				});
+			});
+	{/literal}{literal}
+		$(".pass").each(function (i, v){
+			$(this).click(function(){	
+				var id = $(this).attr("value");
+				var nama = $(this).attr("name");
+				$.post("{/literal}{$host}{literal}master/ubahUser", {'id':id, 'nama':nama},function(resp){
+					$('#master').hide();
+					$('#editForm').html(resp);
+				});								
+			});
+		});
+	{/literal}
+</script>

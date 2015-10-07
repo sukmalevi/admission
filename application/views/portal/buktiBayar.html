@@ -1,0 +1,106 @@
+   
+					<!-- BEGIN FORM-->
+							<div class="row">								
+								<div class="col-md-12" style="padding-bottom: 15px; padding-top: 5px; padding-right: 0px;">
+									<ul class="timeline" style="left:0">
+										<li class="timeline-blueDark">
+										<div class="timeline-body" style="margin-left:0">
+											<h4>Terima Kasih,  pembayaran pendaftaran Anda telah kami terima. 
+												<a href="{$host}portal/formulir" class="nav-link" style="float:right;margin-top: 0;">
+												Melengkapi Formulir <i class="m-icon-swapright m-icon-white"></i>                              
+												</a>  
+											</h4>
+											
+										</div>
+										
+													
+										</li>
+									</ul>
+								</div>
+							</div>
+                              <form action="#" enctype="multipart/form-data" class="form-horizontal form-bordered form-row-stripped" id="form_sample_1" >	
+								<div class="portlet box grey">
+								   <div class="portlet-body form" style="border-top: 1px double #4682B4;">
+										 <div class="form-body" style="font-size:bold">
+											<h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">DATA DIRI</h3>
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Nama Lengkap
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												<label><h4>{$nama}</h4></label>
+												<input value="{$cmb->kode_smb}" hidden>
+											   </div>
+											</div>
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Program Studi
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												  <label><h4>{$transPaid->progdi}</h4></label>
+											   </div>
+											</div>	
+										 </div>
+										 <div class="form-body">
+											<h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">Transaksi Pembayaran</h3>	
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Jumlah Pembayaran
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												  <label><h4>Rp. 200.000</h4></label>
+											   </div>
+											</div>
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Tanggal Pembayaran
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+													<div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="yyyy-mm-dd">
+														<label><h4>{$transPaid->hari_trans}, {$transPaid->tanggal_trans}</h4></label>
+												   </div>
+											   </div>
+											</div>
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Metode Pembayaran
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												  <label><h4>{$transPaid->typeTrans}</h4></label>
+											   </div>
+											</div>	
+											<div class="form-group" >
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">No Kartu ATM
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												 <label><h4>{if $transPaid->noAtmCardPendaftaran eq '0'}-{else}{$transPaid->noAtmCardPendaftaran}{/if} </h4></label>												  
+												</div>
+											</div>										
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Rekening Tujuan
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												  <label><h4>{$transPaid->typeAccount}</h4></label>
+											   </div>
+											</div>	
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">No. Rek. Pengirim
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+													<label><h4>{$transPaid->noRekPengirimPendaftaran} </label></h4>
+											   </div>
+											</div>		
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Nama Rek. Pengirim
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+													<label><h4>{$transPaid->namaRekPengirimPendaftaran}</label></h4>
+											   </div>
+											</div>	
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Bukti Pembayaran
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												  <label><h4>{$transPaid->buktiBayarPendaftaran}</h4></label>
+											   </div>
+											</div>
+										</div>
+									</div>
+								</div>
+							   </form>
+							  

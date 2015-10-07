@@ -1,0 +1,183 @@
+<div class="page-sidebar navbar-collapse collapse">
+         <!-- BEGIN SIDEBAR MENU -->        
+         <ul class="page-sidebar-menu">
+            <li>
+               <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+               <div class="sidebar-toggler hidden-phone"></div>
+               <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+            </li>
+			<hr>
+            <li>
+               <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+               <!-- <form class="sidebar-search" action="extra_search.html" method="POST">
+                  <div class="form-container">
+                     <div class="input-box">
+                        <a href="javascript:;" class="remove"></a>
+                        <input type="text" placeholder="Search..."/>
+                        <input type="button" class="submit" value=" "/>
+                     </div>
+                  </div>
+               </form> -->
+               <!-- END RESPONSIVE QUICK SEARCH FORM -->
+            </li>
+            <li class="start {if $modul eq ''}active{/if}">
+               <a href="{$host}dashboard">
+               <i class="icon-home"></i> 
+               <span class="title">Dashboard</span>
+               <span class="selected"></span>
+               </a>
+            </li><!-- 
+            <li class="{if $site eq 'User'}active{/if}">
+               <a href="javascript:;">
+               <i class="icon-cogs"></i> 
+               <span class="title">System</span>
+               <span class="arrow "></span>
+               </a>
+               <ul class="sub-menu">
+               </ul>
+            </li> -->
+			
+			{if $levelID eq '99' or $levelID eq '44' or $levelID eq '66' or $levelID eq '77' }
+            <li class="{if $modul eq 'master/'}active{/if}">
+               <a href="javascript:;">
+               <i class="icon-bookmark-empty"></i> 
+               <span class="title">Master</span>
+               <span class="selected"></span>
+               <span class="arrow "></span>
+               </a>
+               <ul class="sub-menu">				  
+				  {if $levelID neq '77' }
+                  <li class="{if $site eq 'User'}active{/if}">
+                     <a href="{$host}master/masterUser">User</a>
+                  </li>
+                  <li class="{if $site eq 'Wilayah'}active{/if}">
+                     <a href="{$host}master/masterWilayah">Wilayah</a>
+                  </li>
+                  <li class="{if $site eq 'UPM'}active{/if}">
+                     <a href="{$host}master/masterUPM">Perguruan Tinggi</a>
+                  </li>
+                  <li class="{if $site eq 'Prodi'}active{/if}">
+                     <a href="{$host}master/masterProdi">Program Studi</a>
+                  </li>
+                  <li class="{if $site eq 'Gedung'}active{/if}">
+                     <a href="{$host}master/masterGedung">Gedung</a>
+                  </li>
+                  <li class="{if $site eq 'Ruang'}active{/if}">
+                     <a href="{$host}master/masterRuang">Ruang</a>
+                  </li>
+                  <li class="{if $site eq 'Jabatan'}active{/if}">
+                     <a href="{$host}master/masterjabatan">Jabatan</a>
+                  </li>
+                  <li class="{if $site eq 'Panitia'}active{/if}">
+                     <a href="{$host}master/masterPanitia">Dosen dan Karyawan</a>
+                  </li>
+                  <li class="{if $site eq 'Jalur'}active{/if}">
+                     <a href="{$host}master/masterJalur">Jalur Seleksi</a>
+                  </li>
+				  {/if}
+                  <li class="{if $site eq 'Pembayaran'}active{/if}">
+                     <a href="{$host}master/masterUM">Uang Masuk</a>
+                  </li>	
+				  {if $levelID neq '77' }
+                  <li class="{if $site eq 'Periode'}active{/if}">
+                     <a href="{$host}master/periode">Periode</a>
+                  </li>
+                  <li class="{if $site eq 'MasterPeriode'}active{/if}">
+                     <a href="{$host}master/masterPeriode">Tahap Periode</a>
+                  </li>
+				  {/if}
+               </ul>
+            </li>
+			{/if}
+			{if $levelID eq '99' or $levelID eq '44' or $levelID eq '66'}
+            <li class="{if $modul eq 'admisi/'}active{/if}">
+               <a href="javascript:;">
+               <i class="icon-table"></i> 
+               <span class="title">Admisi</span>
+               <span class="selected"></span>
+               <span class="arrow "></span>
+               </a>
+               <ul class="sub-menu">
+                  <li class="{if $site eq 'Jadwal'}active{/if}">
+                     <a href="{$host}admisi/admisiBukaSeleksi">Buka Seleksi</a>
+                  </li>
+                  <li class="{if $site eq 'Event'}active{/if}">
+                     <a href="{$host}admisi/admisiJadwalSeleksi">Jadwal Seleksi</a>
+                  </li>
+               </ul>
+            </li>			
+			{/if}
+            <li class="{if $modul eq 'smb/'}active{/if}">
+               <a href="javascript:;">
+               <i class="icon-sitemap"></i> 
+               <span class="title">CMB</span>
+               <span class="selected"></span>
+               <span class="arrow "></span>
+               </a>
+               <ul class="sub-menu">
+                  <li class="{if $site eq 'Peserta'}active{/if}">
+                     <a href="{$host}smb/smbCalon">Calon Mahasiswa</a>
+                  </li>
+				  {if $levelID eq '99' or $levelID eq '77'}
+                  <li class="{if $site eq 'Pembayaran'}active{/if}">
+                     <a href="{$host}smb/smbPay">Pembayaran Biaya Seleksi</a>
+                  </li>
+				  {/if}
+                  <li class="{if $site eq 'Event'}active{/if}">
+                     <a href="{$host}smb/smbEvent">Jadwal Seleksi</a>
+                  </li>
+				  {if $levelID eq '99' or $levelID eq '44'}
+                  <li class="{if $site eq 'Seleksi'}active{/if}">
+                     <a href="{$host}smb/smbSeleksi">Hasil Seleksi</a>
+                  </li>
+				  {/if}
+				  {if $levelID eq '99' or $levelID eq '77'}
+                  <li class="{if $site eq 'DaftarUlang'}active{/if}">
+                     <a href="{$host}smb/smbDaftarUlang">Pembayaran Daftar Ulang</a>
+                  </li>
+				  {/if}
+				  {if $levelID eq '99' or $levelID eq '44' or $levelID eq '66'}
+                  <li class="{if $site eq 'Nim'}active{/if}">
+                     <a href="{$host}smb/smbNim">Generate NIM</a>
+                  </li>
+				  {/if}
+				 </ul>
+            </li>
+			<li class="{if $modul eq 'cmb/'}active{/if}">
+               <a href="javascript:;">
+               <i class="icon-sitemap"></i> 
+               <span class="title">Manajemen CMB</span>
+               <span class="selected"></span>
+               <span class="arrow "></span>
+               </a>
+               <ul class="sub-menu">
+                  <li class="{if $site eq 'Peserta'}active{/if}">
+                     <a href="{$host}cmb/">Data CMB</a>
+                  </li>
+                  <li class="{if $site eq 'Mahasiswa'}active{/if}">
+                     <a href="{$host}cmb/mahasiswa/s1">Mahasiswa S1</a>
+                  </li>
+                  <li class="{if $site eq 'MahasiswaPasca'}active{/if}">
+                     <a href="{$host}cmb/mahasiswa/s2">Mahasiswa S2</a>
+                  </li>
+				</ul>
+            </li>
+			<li class="{if $modul eq 'mahasiswa/'}active{/if}">
+               <a href="javascript:;">
+               <i class="icon-sitemap"></i> 
+               <span class="title">Mahasiswa</span>
+               <span class="selected"></span>
+               <span class="arrow "></span>
+               </a>
+               <ul class="sub-menu">
+                  <li class="{if $pages eq 'mhs'}active{/if}">
+                     <a href="{$host}cmb/mahasiswa/s1/mhs">Mahasiswa S1</a>
+                  </li>
+                  <li class="{if $pages eq 'mhs2'}active{/if}">
+                     <a href="{$host}cmb/mahasiswa/s2/mhs2">Mahasiswa S2</a>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+         <!-- END SIDEBAR MENU -->
+      </div>

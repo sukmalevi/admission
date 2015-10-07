@@ -1,0 +1,343 @@
+<script type="text/javascript" src="{$host}assets/js/jquery.formatCurrency-1.4.0.js"></script>
+<div class="col-md-12">
+    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+    <div class="portlet box purple">
+        <div class="portlet-title">
+            <div class="caption"><i class="icon-user"></i>Pembayaran Daftar Ulang Lunas</div>
+            <div class="actions">
+                <a class="btn blue" href="#add" data-toggle="modal"><i class="icon-pencil"></i> Add</a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Prodi</th>
+                        <!-- <th>Peringkat</th> -->
+                        <th>Uang Masuk</th>
+                        <th>SKS</th>
+                        <th>SPP</th>
+                        <th>TOTAL/Rank</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach name=loop from=$sql item=row}
+                    <tr>
+                        <td><b>{$row->nama}</b>
+                        </td>
+                        <td>{$row->prodi}</td>
+                       <!--  <td style="text-align:center">
+                            {if $row->peringkat eq '1'}Pertama {else if $row->peringkat eq '2'}Kedua {else if $row->peringkat eq '3'}Ketiga {else}-{/if}
+                        </td> -->
+                        <td>Rp {if $row->uangMasuk eq '0'} - {else}
+							{$row->uangMasuk|number_format:0:",":"."}<br>
+							{/if}</td>
+                        <td>Rp {if $row->sks eq '0'} - {else}{$row->sks|number_format:0:",":"."}{/if}</td>
+                        <td>Rp {$row->spp|number_format:0:",":"."}</td>
+                        <td>
+							<b>Rp {$row->total|number_format:0:",":"."}</b><br>
+                        </td>
+                        <td><a class="editer" href="#formEdit" data-toggle="modal" name="edit" value="{$row->kode}">Edit</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- END EXAMPLE TABLE PORTLET-->
+
+    <div class="portlet box red">
+        <div class="portlet-title">
+            <div class="caption"><i class="icon-user"></i>Pembayaran Daftar Ulang Angsuran</div>
+            <div class="actions">
+                <!-- <a class="btn blue" href="#addKredit" data-toggle="modal"><i class="icon-pencil"></i> Add</a> -->
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Prodi</th>
+                        <!-- <th>Peringkat</th> -->
+                        <th>Uang Masuk</th>
+                        <th>SKS</th>
+                        <th>SPP</th>
+                        <th>TOTAL</th>
+                        <th>Cicilan</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach name=loop from=$sql2 item=row}
+                    <tr>
+                        <td><b>{$row->nama}</b>
+                        </td>
+                        <td>{$row->prodi}</td>
+                        <!-- <td>
+                            {if $row->peringkat eq '1'}Pertama {else if $row->peringkat eq '2'}Kedua {else if $row->peringkat eq '3'}Ketiga {else}-{/if}
+                        </td> -->
+                        <td>Rp {if $row->uangMasuk eq '0'} - {else}
+							{$row->uangMasuk|number_format:0:",":"."}<br>
+							{/if}</td>
+                        <td>Rp {if $row->sks eq '0'} - {else}{$row->sks|number_format:0:",":"."}{/if}</td>
+                        <td>Rp {$row->spp|number_format:0:",":"."}</td>
+                        <td>							
+							<b>Rp {$row->total|number_format:0:",":"."}</b><br>
+                        </td>
+                        <td>							
+							Rp {$row->angsuran1|number_format:0:",":"."} :- {$row->due_date1|date_format:"%e %b %Y"}<br> 
+							Rp {$row->angsuran2|number_format:0:",":"."} :- {$row->due_date2|date_format:"%e %b %Y"}<br> 
+							Rp {$row->angsuran3|number_format:0:",":"."} :- {$row->due_date3|date_format:"%e %b %Y"}<br> 
+							Rp {$row->angsuran4|number_format:0:",":"."} :- {$row->due_date4|date_format:"%e %b %Y"}<br> 
+							Rp {$row->angsuran5|number_format:0:",":"."} :- {$row->due_date5|date_format:"%e %b %Y"}<br>
+                        </td>
+                        <td><a class="editer" href="#formEdit" data-toggle="modal" name="edit" value="{$row->code}">Edit</a>
+                        </td>
+
+                    </tr>
+                    {/foreach}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="add" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog modal-wide">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Tambah Pembayaran Daftar Ulang</h4>
+            </div>
+            <div class="modal-body">
+                {include file="master/formAddPembayaran.html"}
+            </div>
+        </div>
+    </div>
+        <!-- /.modal-content -->
+</div>
+</div>
+</div>
+<div class="modal fade" id="addKredit" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog modal-wide">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Tambah Pembayaran Daftar Ulang</h4>
+            </div>
+            <div class="modal-body">
+                <form action="{$host}master/mDaftarUlang/add" class="form-horizontal" method="post">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Kode</label>
+                            <div class="input-group col-md-6">
+                                <input type="text" class="form-control" placeholder="Kode[Automatic]" id="kode" name="kode" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Nama Pembayaran</label>
+                            <div class="input-group col-md-8">
+                                <input type="text" class="form-control" placeholder="Nama Pembayaran" id="nama" name="nama">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Program Studi</label>
+                            <div class="col-md-8">
+                                <select class="form-control" id="prodi" name="prodi">
+                                    <option>-- Pilih Kategori Prodi</option>
+									{foreach from=$prodi item=row}
+                                    <option value="{$row->kode}">{$row->nama}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-6">Metod Pembayaran</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" id="pembayaran" name="pembayaran">
+                                            <option value="1">Lunas</option>
+                                            <option value="0">Angsuran</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Peringkat</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" id="peringkat" name="peringkat">
+                                            <option value="1">Pertama</option>
+                                            <option value="2">Kedua</option>
+                                            <option value="3">Ketiga</option>
+                                            <option value="0">Tidak Ada</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Tempo Angsuran</label>
+                            <div class="input-group col-md-5">
+                                <input type="number" class="form-control" placeholder="Tempo Ansuran " id="angsur" name="angsur" pattern="[0-9]">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Angsuran 1</label>
+                            <div class="input-group col-md-8">
+                                <input type="text" class="biaya form-control" placeholder="Jumlah Angsuran Pertama(Rp.)" id="angsuran1" name="angsuran1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Angsuran 2</label>
+                            <div class="input-group col-md-8">
+                                <input type="text" class="biaya form-control" placeholder="Jumlah Angsuran Kedua(Rp.)" id="angsuran2" name="angsuran2">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Angsuran 3</label>
+                            <div class="input-group col-md-8">
+                                <input type="text" class="biaya form-control" placeholder="Jumlah Angsuran Ketiga(Rp.)" id="angsuran3" name="angsuran3">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Total Angsuran</label>
+                            <div class="input-group col-md-8">
+                                <input type="text" class="biaya form-control" placeholder="Total Angsuran(Rp.)" id="total" name="total">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Uang Masuk</label>
+                            <div class="input-group col-md-8">
+                                <input type="text" class="biaya form-control" placeholder="Uang Masuk - Angsuran Pertama(Rp.)" id="um" name="um">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">BPP</label>
+                            <div class="input-group col-md-8">
+                                <input type="text" class="biaya form-control" placeholder="Biaya BPP (Rp.)" id="bpp" name="bpp">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">SKS</label>
+                            <div class="input-group col-md-8">
+                                <input type="text" class="biaya form-control" placeholder="Biaya SKS (Rp.)" id="sks" name="sks">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">SPP</label>
+                            <div class="input-group col-md-8">
+                                <input type="text" class="biaya form-control" placeholder="Biaya SPP (Rp.)" id="spp" name="spp">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Status</label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="status" name="status" class="status">
+                                    <option value="1">AKTIF</option>
+                                    <option value="0">TIDAK AKTIF</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn blue" id="save" value="save" name="opt">Tambah <i class="icon-plus"></i>
+                                </a>
+                        </div>
+                </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+</div>
+<div class="modal fade" id="formEdit" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog modal-wide">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Edit Periode Seleksi</h4>
+            </div>
+            <div class="modal-body">
+                <div id="form">
+                    </id>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<div id="verifikasi" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div id="verifikasiRuang">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    $('.biaya').blur(function() {
+        $('.biaya').formatCurrency();
+    });
+}); 
+{literal}
+$(".editer").each(function(i, v) {
+    $(this).click(function() {
+        opt = $(this).attr("name");
+        val = $(this).attr("value");
+        $.post("{/literal}{$host}{literal}master/mDaftarUlang/edit", {
+            'opt': opt,
+            'val': val
+        }, function(resp) {
+            $('#form').html(resp);
+        });
+    });
+}); 
+{/literal}
+{literal}
+$(".deleter").each(function (i, v){
+	$(this).click( function() {	
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}master/mDaftarUlang/delete ", {'opt':opt, 'val':val},function(resp){
+			$('#verifikasiRuang').html(resp);
+		});
+	});
+});
+{/literal}
+{literal}
+$(".nonaktif ").each(function (i, v){
+	$(this).click( function() {	
+			id = "nonaktif ";
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}master/mDaftarUlang/delete", {'opt':opt, 'val':val, 'id':id},function(resp){
+			location.reload();
+		});
+	});
+});
+{/literal}
+{literal}
+$(".aktif ").each(function (i, v){
+	$(this).click( function() {	
+			id = "aktif ";
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post(" {/literal}{$host}{literal}master/mDaftarUlang/delete ", {'opt':opt, 'val':val, 'id':id},function(resp){
+			location.reload();
+		});
+	});
+});
+{/literal}
+</script>

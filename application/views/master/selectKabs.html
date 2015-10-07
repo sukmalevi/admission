@@ -1,0 +1,10 @@
+												  <div class="form-group">
+													 <label class="control-label col-md-3">Kabupaten</label>
+													 <div class="col-md-9">														
+														<select class="form-control" id="kab"  name="kab"> 
+															{foreach name=loop from=$kab item=row} 
+															<option value="{$row->kode}">{$row->nama}</option>
+															{/foreach} 
+														</select>
+													 </div>
+												  </div>

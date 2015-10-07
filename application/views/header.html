@@ -1,0 +1,82 @@
+<div class="header navbar navbar-inverse navbar-fixed-top">
+      <!-- BEGIN TOP NAVIGATION BAR -->
+      <div class="header-inner">
+         <!-- BEGIN LOGO -->  
+         <a class="navbar-brand" href="{$host}home">
+         <img src="{$host}assets/img/logo-putih.png" alt="logo" class="img-responsive" style="margin-top: -15px;" width="122" height="45"/>
+         </a>
+         <!-- END LOGO -->
+         <!-- BEGIN RESPONSIVE MENU TOGGLER --> 
+         <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+         <img src="{$host}assets/img/menu-toggler.png" alt="" />
+         </a> 
+         <!-- END RESPONSIVE MENU TOGGLER -->
+         <!-- BEGIN TOP NAVIGATION MENU -->
+         <ul class="nav navbar-nav pull-right">
+            <!-- BEGIN NOTIFICATION DROPDOWN -->
+		{if $site eq ''}
+			<li class="dropdown" id="header_notification_bar">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                  data-close-others="true">
+               <i class="icon-warning-sign"></i>
+               <span class="badge">{$notifNum}</span>
+               </a>
+               <ul class="dropdown-menu extended notification">
+                  <li>
+                     <p>You have {$notifNum} new notifications</p>
+                  </li>
+                  <li>
+                     <ul class="dropdown-menu-list scroller" style="height: 250px;">
+					 {foreach name=loop from=$notif item=row}
+                        <li>  
+                           <a href="{$host}dashboard/clickNotif/{$row->id_activity}/{$row->kodeActivity}">
+                           <span class="label label-sm label-icon 
+						   {if $row->id_activity eq '13.1'}label-danger{else if $row->id_activity eq '13.2'}label-info
+						   {else if $row->id_activity eq '13.3'}label-success{else if  $row->id_activity eq '13.4'}label-warning{else}label-default{/if}
+						   ">
+						   <i class="{if $row->id_activity eq '13.1'}icon-plus{else if $row->id_activity eq '13.2'}icon-check
+						   {else if $row->id_activity eq '13.3'}icon-money{else if  $row->id_activity eq '13.4'}icon-check{else}icon-file{/if}"></i></span>
+                           {$row->namaAct}
+                           <span class="time">{$row->jam}:{$row->menit} {$row->tgl} {$row->bulan}</span>
+                           </a>
+                        </li>
+					 {/foreach}
+                     </ul>
+                  </li>
+                  <li class="external">   
+                     <a href="#">See all notifications <i class="m-icon-swapright"></i></a>
+                  </li>
+               </ul>
+            </li>
+		{/if}
+            <!-- END TODO DROPDOWN -->
+            <!-- BEGIN USER LOGIN DROPDOWN -->
+            <li class="dropdown user">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+               <img alt="" src="{$host}assets/img/avatar1_small.jpg"/> 
+               <span class="username"> {$nama}</span>
+               <i class="icon-angle-down"></i>
+               </a>
+               <ul class="dropdown-menu">
+                  <li><a href="extra_profile.html"><i class="icon-user"></i> My Profile</a>
+                  </li>
+                  <li><a href="page_calendar.html"><i class="icon-calendar"></i> My Calendar</a>
+                  </li>
+                  </li><!-- 
+                  <li><a href="#"><i class="icon-tasks"></i> My Tasks <span class="badge badge-success">7</span></a>
+                  </li> -->
+                  <li class="divider"></li>
+                  <li><a href="javascript:;" id="trigger_fullscreen"><i class="icon-move"></i> Full Screen</a>
+                  </li><!-- 
+                  <li><a href="extra_lock.html"><i class="icon-lock"></i> Lock Screen</a>
+                  </li> -->
+                  <li><a href="{$host}/home/logout"><i class="icon-key"></i> Log Out</a>
+                  </li>
+               </ul>
+            </li>
+            <!-- END USER LOGIN DROPDOWN -->
+         </ul>
+         <!-- END TOP NAVIGATION MENU -->
+      </div>
+      <!-- END TOP NAVIGATION BAR -->
+   </div>

@@ -1,0 +1,262 @@
+					<!-- BEGIN FORM-->
+<div class="top-news">
+	<a href="#" class="btn parmad" id="profil">
+	<span>{$nama}</span>
+	<em>Pilihan Studi	: S{$cmb->jenjangType} {if $cmb->jenjangType eq '1'}(Sarjana){else}(Pasca Sarjana){/if}</em>
+	<em>Program Studi	: {$cmb->progdi}</em>
+	<em>
+	<i class="icon-envelope-alt"></i>
+	{$cmb->kode_smb}
+	</em>
+	<em>
+	<i class="glyphicon glyphicon-phone"></i>
+	{$cmb->rumahCell}
+	</em> 
+	<em style=" position: relative;color:yellow;">
+		<i class="icon-{if $cmb->genderType eq '03.P'}male{else}female{/if} top-news-icon" ></i> 								
+	</em>
+	<em style="text-align: right; margin-top: -115px;"  id="imgP">
+	{if $cmb->foto neq ''}
+		<img src="{$host}assets/upload/foto/{$cmb->foto}" alt="" height="115px" width="115px">
+	{else}
+		<img src="{$host}assets/img/ava.png" alt="" height="115px" width="115px">
+	{/if}
+	</em>
+	</a>
+ </div>
+ <div class="row">
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="al">
+	   <div class="dashboard-stat {if $cmb->statusAlamat eq '1'}blue{else}dark{/if}">
+		  <div class="visual">
+			 <i class="icon-road"></i>
+		  </div>
+		  <div class="details">
+			 <div class="number">
+				Alamat
+			 </div>
+			 <div class="desc">                           
+				Rumah & Surat
+			 </div>
+		  </div>									  
+		  {if $cmb->statusAlamat eq '1'}
+		  <a href="#" class="alamat more" id="detailAlamat">Lihat Detail <i class="m-icon-swapright m-icon-white"></i></a>  
+		  {else}
+		  <a href="#" class="alamat more" id="formAlamat">Lengkapi <i class="m-icon-swapright m-icon-white"></i></a> 
+		  {/if} 
+	   </div>
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="fa">
+	   <div class="dashboard-stat {if $cmb->statusKeluarga eq '1'}green{else}dark{/if}">
+		  <div class="visual">
+			 <i class="icon-group"></i>
+		  </div>
+		  <div class="details">
+			 <div class="number">Orang Tua</div>
+			 <div class="desc">Wali & Keluarga</div>
+		  </div>								  
+		  {if $cmb->statusKeluarga eq '1'}
+		  <a href="#" class="keluarga more" id="detailKeluarga" >Lihat Detail <i class="m-icon-swapright m-icon-white"></i></a>  
+		  {else}
+		  <a href="#" class="keluarga more" id="formKeluarga" >Lengkapi <i class="m-icon-swapright m-icon-white"></i></a> 
+		  {/if}                 
+	   </div>
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="ed">
+	   <div class="dashboard-stat {if $cmb->statusPend eq '1'}purple{else}dark{/if}">
+		  <div class="visual">
+			 <i class="icon-book"></i>
+		  </div>
+		  <div class="details">
+			 <div class="number">Riwayat</div>
+			 <div class="desc">Pendidikan Formal</div>
+		  </div>								  
+		  {if $cmb->statusPend eq '1'}
+		  <a href="#" class="pendidikan more" id="formPendidikan">Lihat Detail <i class="m-icon-swapright m-icon-white"></i></a>  
+		  {else}
+		  <a href="#" class="pendidikan more" id="formPendidikan">Lengkapi <i class="m-icon-swapright m-icon-white"></i></a> 
+		  {/if}                   
+	   </div>
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="pr">
+	   <div class="dashboard-stat {if $cmb->stsPribadiConfirm eq '1'}yellow{else}dark{/if}">
+		  <div class="visual">
+			 <i class="icon-trophy"></i>
+		  </div>
+		  <div class="details">
+			 <div class="number">Prestasi & </div>
+			 <div class="desc">Riwayat Organisasi</div>
+		  </div>								  
+		  {if $cmb->stsPribadiConfirm eq '1'}
+		  <a href="#" class="prestasi more" id="formPrestasi">Lihat Detail <i class="m-icon-swapright m-icon-white"></i></a>  
+		  {else}
+		  <a href="#" class="prestasi more" id="formPrestasi">Lengkapi <i class="m-icon-swapright m-icon-white"></i></a> 
+		  {/if}                  
+	   </div>
+	</div>
+ </div>
+ <div class="col-md-12" id="konten">
+	<!-- konten tiap halaman form untuk formulir -->
+ </div>
+<script>
+$('#profil').click(function(){
+	document.getElementById("profil").style.height="130px" ;
+	document.getElementById("imgP").style.display="block" ;
+	document.getElementById("imgP").style.textAlign="right" ;
+	document.getElementById("imgP").style.marginTop="-115px" ;
+	
+	
+});
+{literal}
+jQuery(document).ready( function (){
+	
+	document.getElementById("al").style.opacity = "0.6";		
+	document.getElementById("fa").style.opacity = "0.6" ;
+	document.getElementById("ed").style.opacity = "0.6";		
+	document.getElementById("pr").style.opacity = "0.6" ;	
+	
+	status = "{/literal}{$cmb->statusAlamat}{literal}";
+	statusKel = "{/literal}{$cmb->statusKeluarga}{literal}";
+	statusSau = "{/literal}{$cmb->statusSaudara}{literal}";
+	statusPend = "{/literal}{$cmb->statusPend}{literal}";
+	statusPrib = "{/literal}{$cmb->stsPribadiConfirm}{literal}";
+	saudara_rows = "{/literal}{$saudara_rows}{literal}";
+	jalur = "{/literal}{$cmb->jalur}{literal}";
+	
+	if (status == 1){
+		var uri = 'keluarga';	
+		if (statusKel == 0){
+			id = "formKeluarga";
+			toastr.success('Lanjutkan dengan melengkapi DATA ORANG TUA/WALI, Silahkan pilih salah satu untuk diisi.');
+		}else if (statusKel == 1){
+			uri = "keluarga";
+			if (statusSau == 0){
+				if (jalur == 'KP'){
+					id="saudara";
+					$.post("{/literal}{$host}{literal}portal/formulir/keluarga/saudaraConf", {'id':id},function(resp){
+							window.location.href = "{/literal}{$host}{literal}portal/formulir";
+					});
+				}else{			
+					if (saudara_rows > 0){
+						if (confirm('Apakah Anda Sudah Yakin dengan data Saudara Kandung Anda yang Berkuliah di Paramadina?')) {						
+							id="saudara";
+								$.post("{/literal}{$host}{literal}portal/formulir/keluarga/saudaraConf", {'id':id},function(resp){
+									window.location.href = "{/literal}{$host}{literal}portal/formulir";
+								});	
+						}else{							
+							id = "detailKeluarga";
+						}
+					}else{
+						if (confirm('Apakah Anda Memiliki Saudara Kandung yang Pernah atau Sedang Berkuliah di Paramadina?\nJika iya, pilih Ok.')) {
+							id = "detailKeluarga";
+						}else{
+							//uri = 'pendidikan';
+							//id = "formPendidikan";
+							id="saudara";
+								$.post("{/literal}{$host}{literal}portal/formulir/keluarga/saudaraConf", {'id':id},function(resp){
+									window.location.href = "{/literal}{$host}{literal}portal/formulir";
+								});				
+						}
+					}
+				}
+			}else if (statusSau == 1){
+				uri = 'pendidikan';			
+				if (statusPend == 0){
+					id = "formPendidikan";	
+					toastr.success('Selanjutnya, Silahkan Perbaharui riwayat Pendidikan Anda');
+				}else if (statusPend == 1){
+					uri = 'prestasi';					
+					if (statusPrib == 0){
+						id="formPrestasi";
+						toastr.success('Terakhir, silahkan lengkapi daftar PRESTASI & ORGANISASI Anda. Kemudian Submit formulir pendaftaran.');
+					}else if (statusPrib == 1){
+						id="formPrestasi";
+					}
+				}
+			}
+		}		
+	}else{		
+		var uri = 'alamat';
+		id ="formAlamat";	
+		toastr.success('Silahkan Lengkapi Formulir Pendaftaran dengan Mengisi DATA ALAMAT, ORANG TUA/WALI, PENDIDIKAN, PRESTASI & ORGANISASI ');
+	
+	}
+			
+		$.post("{/literal}{$host}{literal}portal/formulir/"+uri+"", {'id':id},function(resp){
+			$('#konten').html(resp);
+		});
+});
+{/literal}
+{literal}
+$(".alamat").click( function() {	
+		id = $(this).attr("id");
+					
+		$.post("{/literal}{$host}{literal}portal/formulir/alamat", {'id':id},function(resp){
+			$('#konten').html(resp);
+		});
+		document.getElementById("profil").style.height="42px" ;
+		document.getElementById("imgP").style.display="none" ;		
+		
+		document.getElementById("al").style.opacity = "1";		
+		document.getElementById("fa").style.opacity = "0.6" ;
+		document.getElementById("ed").style.opacity = "0.6";		
+		document.getElementById("pr").style.opacity = "0.6" ;		 
+		return false;
+		
+	});
+	
+{/literal}
+{literal}
+$(".keluarga").click( function() {	
+		id = $(this).attr("id");
+			
+		$.post("{/literal}{$host}{literal}portal/formulir/keluarga", {'id':id},function(resp){
+			$('#konten').html(resp);
+		});
+		document.getElementById("profil").style.height="42px" ;
+		document.getElementById("imgP").style.display="none" ;		
+		
+		document.getElementById("al").style.opacity = "0.6";		
+		document.getElementById("fa").style.opacity = "1" ;
+		document.getElementById("ed").style.opacity = "0.6";		
+		document.getElementById("pr").style.opacity = "0.6" ;	
+		return false;
+	});
+
+{/literal}
+{literal}
+$(".pendidikan").click( function() {	
+		id = $(this).attr("id");
+			
+		$.post("{/literal}{$host}{literal}portal/formulir/pendidikan", {'id':id},function(resp){
+			$('#konten').html(resp);
+		});
+		document.getElementById("profil").style.height="42px" ;
+		document.getElementById("imgP").style.display="none" ;
+		
+		document.getElementById("al").style.opacity = "0.6";		
+		document.getElementById("fa").style.opacity = "0.6" ;
+		document.getElementById("ed").style.opacity = "1";		
+		document.getElementById("pr").style.opacity = "0.6" ;	
+		return false;
+	});
+
+{/literal}
+{literal}
+$(".prestasi").click( function() {	
+		id = $(this).attr("id");
+			
+		$.post("{/literal}{$host}{literal}portal/formulir/prestasi", {'id':id},function(resp){
+			$('#konten').html(resp);
+		});
+		document.getElementById("profil").style.height="42px" ;
+		document.getElementById("imgP").style.display="none" ;
+		
+		document.getElementById("al").style.opacity = "0.6";		
+		document.getElementById("fa").style.opacity = "0.6" ;
+		document.getElementById("ed").style.opacity = "0.6";		
+		document.getElementById("pr").style.opacity = "1" ;	
+		return false;
+	});
+
+{/literal}
+</script>

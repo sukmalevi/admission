@@ -1,0 +1,203 @@
+							<form action="{$host}portal/saveAlamat/save" class="form-horizontal" id="form_sample_2" method="post">	
+								<div class="portlet box grey">
+								   <div class="portlet-body form" style="border-top: 1px double #4682B4;">
+										 <div class="form-body" style="font-size:bold">
+											<h3 class="form-section" style="margin-bottom: 15px; margin-left: 50px;margin-top: 12px;">DATA DIRI</h3>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Nama Lengkap
+													   </label>
+													   <div class="col-md-9" >
+															<input name="kode" value="{$kode}" hidden>
+															<input type="text" class="form-control" name="nama" value="{$nama}" id="nama" disabled>											   
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">No KTP / SIM
+													   </label>
+													   <div class="col-md-9" >
+															<input type="text" class="form-control" name="no_id" value="{$alamat->nomorKtp}" disabled>	
+													   </div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Tempat Lahir
+													   </label>
+													   <div class="col-md-9">
+															<input type="text" class="form-control" name="tempatLahir" value="{$alamat->tempatLahir}" disabled>	
+															<span class="help-block">Sesuai dengan ijazah terakhir</span>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Tanggal Lahir
+													   </label>
+													   <div class="col-md-9">
+															<input type="text" class="form-control" name="tanggalLahir" value="{$alamat->tanggalLahir}" disabled>
+													   </div>
+													</div>
+												</div>
+											</div>	
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Agama
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="agama" id="agama" disabled>
+																<option value="{$alamat->agamaType}">{$alamat->agama}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+											</div>
+										 </div>
+										 <div class="form-body">
+											<h3 class="form-section" style="margin-bottom: 15px; margin-left: 50px;margin-top: 12px;">Alamat Rumah & Surat
+											</h3>	
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Alamat Rumah
+													   </label>
+													   <div class="col-md-9">
+															<textarea class="form-control placeholder-no-fix" id="occupation" name="occupation" rows="4" disabled>{$alamat->rumahAlamat}</textarea>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Propinsi
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="propinsi" id="propinsi" disabled>
+															 <option value="{$alamat->rumahProp}">{$alamat->propRumah}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Kabupaten/Kota
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="kabkota" id="kabkota" disabled>
+																<option value="{$alamat->rumahKabKota}">{$alamat->kabkotaRumah}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Kode Pos
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="kodepos" id="kodepos" disabled>
+																<option value="{$alamat->rumahKodePos}">{$alamat->kodeposRumah}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+											</div>	
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Telepon Rumah
+													   </label>
+													   <div class="col-md-9">
+															<input type="text" class="form-control" id="telRumah" value="{$alamat->rumahTel}" disabled>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Fax Rumah
+													   </label>
+													   <div class="col-md-9">
+															<input type="text" class="form-control" name="fax" value="{$alamat->rumahFax}" disabled id="fax">
+													   </div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-body">
+											<h3 class="form-section" style="margin-bottom: 15px; margin-left: 50px;margin-top: 12px;">Alamat Surat
+											</h3>	
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Alamat Surat
+													   </label>
+													   <div class="col-md-9">
+															<textarea class="form-control placeholder-no-fix" name="occupationsur" rows="4" id = "occupationsur" disabled>{$alamat->suratAlamat}</textarea>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Propinsi
+														<span style="color:red;display:none" id="warning">(Pilih Manual)</span>
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="propinsi2" id="propinsi2" disabled>
+																<option value="{$alamat->suratProp}">{$alamat->propSurat}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Kab./Kota
+														<span style="color:red;display:none" id="warning1">(Pilih Manual)</span>
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="kabkota2" id="kabkota2" disabled>
+																<option value="{$alamat->suratKabKota}">{$alamat->kabkotaSurat}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Kode Pos
+														<span style="color:red;display:none" id="warning2">(Pilih Manual)</span>
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="kodepos2" id="kodepos2" disabled>
+																<option value="{$alamat->suratKodePos}">{$alamat->kodeposSurat}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+											</div>	
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Telepon Rumah
+													   </label>
+													   <div class="col-md-9">
+															<input type="text" class="form-control" name="telRumah2" id="telRumah2" value="{$alamat->rumahTel}" disabled>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Fax Rumah
+													   </label>
+													   <div class="col-md-9">
+															<input type="text" class="form-control" name="fax2" id="fax2" value="{$alamat->rumahFax}" disabled>
+													   </div>
+													</div>
+												</div>
+											</div>	
+										</div>
+									</div>
+								</div>
+							   </form>

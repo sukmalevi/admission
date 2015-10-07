@@ -1,0 +1,53 @@
+<script>	  
+$(function () {
+        $('#datetimepickers').datetimepicker({
+            pickTime: false
+        });
+		$('#datetimepickerss').datetimepicker({
+            pickTime: false
+        });
+    });
+</script>								
+							<div class="content-widgets light-gray">
+								<div class="widget-head riscon-orange">
+									<h3>Edit Cuti Bersama
+										<a href="{$host}master/masterCuti" id="minus" style="float:right"><i class="icon-minus"></i></a>
+									</h3>
+								</div>
+								<div class="widget-container">
+									<form class="form-horizontal" name="marketer" action="{$host}master/editCuti/update" id="marketer" method="post">
+										<div class="control-group">
+											<label class="control-label" >Cuti Bersama</label>
+											<div class="controls">
+												<input type="text" name="id" id ="id" value="{$cuti_ber->id}" style="display:none">
+												<input type="text" placeholder="Ket. Cuti Bersama" class="span4" name="cuti_ber" id="cuti_ber" class="required" value="{$cuti_ber->ket_cuti_bersama}">
+											</div>
+										</div>
+										<div class="control-group">
+												<label class="control-label">Periode Cuti</label>
+												<div class="controls">
+													<div id="datetimepickers" class="input-append date ">
+														<input data-format="yyyy-MM-dd" placeholder="Tanggal Mulai" type="text" name="tgl_cuti" id="tgl_cuti" value="{$cuti_ber->tgl_cuti}"><span class="add-on "><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+													</div> s.d.
+													<div id="datetimepickerss" class="input-append date ">
+														<input data-format="yyyy-MM-dd" placeholder="Tanggal Selesai" type="text" name="tgl_selesai_cuti" id="tgl_selesai_cuti" value="{$cuti_ber->tgl_akhir_cuti}"><span class="add-on "><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+													</div>
+												</div>
+										</div>
+											<div class="control-group">
+												<label class="control-label" >Status Cuti</label>
+												<div class="controls">
+													<select data-placeholder="Departemen" class="span" tabindex="2" name="status_cuti" id="status_cuti">	
+														<option value="{$cuti_ber->status}">{if $cuti_ber->status eq '0'}Tidak Aktif{else if $cuti_ber->status eq '1'}Aktif{else}Selesai{/if}</option>
+														<option value="0">Tidak Aktif</option>	
+														<option value="1">Aktif</option>
+														<option value="2">Selesai</option>
+													</select>
+												</div>
+											</div>
+											<button type="submit" class="btn btn-success" name="save" id="save" value="save">Save</button>
+											<a href="{$host}master/masterCuti" class="btn btn-warning" name="cancel" id="cancel" value="cancel">Cancel</a>
+											<button type="reset" class="btn">Reset</button>
+									</form>
+								</div>
+							</div>

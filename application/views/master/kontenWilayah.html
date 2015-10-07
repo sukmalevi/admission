@@ -1,0 +1,29 @@
+		<div class="form-group">
+            <label >Pilih Propinsi</label>
+            <select  class="form-control" name="wil" id="wil">
+				{foreach name=lope from=$sql item=row}
+				<option value="{$row->kode}">{$row->nama}</option>
+				{/foreach}
+            </select>
+        </div>
+		<div id="tblWilayah">				
+		</div>	
+<script>
+{literal}
+	$(document).ready(function(){
+		$.post("{/literal}{$host}{literal}master/masterWilayah/table",{
+					'wil':$('#wil').val()					
+				},function(resp){
+                $('#tblWilayah').html(resp);
+            });
+	});
+	$("#wil").change(function(){
+		$.post("{/literal}{$host}{literal}master/masterWilayah/table",{
+					'wil':$('#wil').val()					
+				},function(resp){
+                $('#tblWilayah').html(resp);
+            });
+	});
+
+</script>
+{/literal}

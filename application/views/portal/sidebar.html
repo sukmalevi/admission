@@ -1,0 +1,76 @@
+<div class="page-sidebar navbar-collapse collapse">
+         <!-- BEGIN SIDEBAR MENU -->        
+         <ul class="page-sidebar-menu">
+            <li>
+               <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+               <div class="sidebar-toggler hidden-phone"></div>
+               <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+            </li>
+            <li>
+               <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+			   <hr>
+               <!-- END RESPONSIVE QUICK SEARCH FORM -->
+            </li>
+            <li class="start {if $site eq 'tiles'}active {/if}">
+               <a href="{$host}portal">
+               <i class="icon-home"></i> 
+               <span class="title">Dashboard</span>
+               <span class="selected"></span>
+               </a>
+            </li>
+            <li class="start {if $site eq 'pendaftaran'}active {/if}">
+               <a href="{$host}portal/pendaftaran">
+               <i class="icon-home"></i>
+			   <span class="badge badge-default">1</span>
+               <span class="title">Pendaftaran</span>
+               <span class="selected"></span>
+               </a>
+            </li>
+            <li class="start {if $site eq 'pembayaran' or $site eq 'pembayaranPaid' or $site eq 'buktiBayar' }active {/if}">
+               <a href="{$host}portal/pembayaran">
+               <i class="icon-money"></i> 
+			   <span class="badge badge-info">2</span>
+               <span class="title">Pembayaran</span>
+               <span class="selected"></span>
+               </a>
+            </li>
+            <li class="start {if $site eq 'formulir'}active {/if}" id="{if $cmb->stsApplyPaidConfirm neq '1'}foR{/if}">
+               <a href="{if $cmb->stsApplyPaidConfirm eq '1'}{$host}portal/formulir{else}#{/if}">
+               <i class="icon-pencil"></i> 
+			   <span class="badge badge-primary">3</span>
+               <span class="title">Lengkapi Formulir</span>
+               <span class="selected"></span>
+               </a>
+            </li>
+            {if $cmb->jalur neq 'KP'}
+            <li class="start {if $site eq 'jadwal'}active {/if}" id="{if $cmb->stsPribadiConfirm neq '1'}juR{/if}">
+               <a href="{if $cmb->stsEventConfirm eq '1'}{$host}portal/jadwal{else}#{/if}">
+               <i class="icon-list-ol"></i> 
+			   <span class="badge badge-success">4</span>
+               <span class="title">Jadwal Ujian</span>
+               <span class="selected"></span>
+               </a>
+            </li>
+            {/if}
+            <li class="start {if $site eq 'hasilSeleksi'}active {/if}" id="{if $cmb->stsResultConfirm neq '1'}huR{/if}">
+               <a href="{if $cmb->stsResultConfirm eq '1'}{$host}portal/seleksi{else}#{/if}">
+               <i class="icon-paste"></i> 
+			   <span class="badge badge-important">{if $cmb->jalur eq 'KP'}4{else}5{/if}</span>
+               <span class="title">Hasil Ujian</span>
+               <span class="selected"></span>
+               </a>
+            </li>
+            <li class="start {if $site eq 'daftarUlang' or $site eq 'daftarUlangPaid' or $site eq 'daftarUlangConfirmed'}active {/if}" id="{if $cmb->stsResultPass neq '1'}duR{/if}">
+               <a href="{if $cmb->stsResultPass eq '1'}{$host}portal/daftarUlang{else}#{/if}">
+               <i class="icon-check"></i> 
+			   <span class="badge badge-warning">{if $cmb->jalur eq 'KP'}5{else}6{/if}</span>
+               <span class="title">Daftar Ulang</span>
+               <span class="selected"></span>
+               </a>
+            </li>
+         </ul>
+         <!-- END SIDEBAR MENU -->
+      </div>
+
+
+

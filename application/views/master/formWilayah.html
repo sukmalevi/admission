@@ -1,0 +1,34 @@
+							<div class="modal-body">
+                                <form action="{$host}master/masterWilayah/edit/do" class="form-horizontal" method="post">
+									<div class="form-body">
+                                          <div class="form-group">
+                                             <label class="control-label col-md-3">Propinsi</label>
+                                             <div class="col-md-9">
+                                                <select class="form-control" id="prop"  name="prop">
+												 <option value="{$prop->kode}">{$prop->nama}</option>
+												{foreach name=loop from=$sql item=row}
+                                                   <option value="{$row->kode}">{$row->nama}</option>
+												{/foreach}
+                                                </select>
+                                             </div>
+                                          </div>
+										  <div class="form-group">
+                                             <label  class="control-label col-md-3">Kode</label>
+                                             <div class="input-group col-md-9">
+                                                <input type="text" class="form-control" placeholder="Kode Wilayah" id="kode" name="kode" value="{$data->kode}">
+                                             </div>
+                                          </div>
+                                          <div class="form-group">
+                                             <label  class="control-label col-md-3">Kabupaten</label>
+                                             <div class="input-group col-md-9">
+                                                <input type="text" class="form-control" placeholder="Nama Kabupaten" id="kab" name="kab" value="{$data->nama}">
+                                             </div>
+                                          </div>
+									</div>
+								  <div class="modal-footer">
+									 <button type="button" class="btn default" data-dismiss="modal">Close</button>
+									 <button type="submit" class="btn blue" id="save" value="edit" name="opt"> Update <i class="icon-plus"></i></a>
+								  </div>
+								</form>
+                              </div>
+                           </div>

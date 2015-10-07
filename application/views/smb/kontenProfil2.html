@@ -1,0 +1,409 @@
+			<div class="row profile">
+            <div class="col-md-12">
+               <!--BEGIN TABS-->
+               <div class="tabbable tabbable-custom tabbable-full-width">
+                  <ul class="nav nav-tabs">
+                     <li class="active"><a href="#tab_1_1" data-toggle="tab">Profil</a></li>
+                     <li><a href="#tab_1_3" data-toggle="tab">Keluarga</a></li>
+                     <li><a href="#tab_1_4" data-toggle="tab">Prestasi & Organisasi</a></li>
+                     <li><a href="#tab_1_6" data-toggle="tab">Akun</a></li>
+                  </ul>
+                  <div class="tab-content">
+                     <div class="tab-pane active" id="tab_1_1">
+                        <div class="row">
+                           <div class="col-md-3">
+                              <ul class="list-unstyled profile-nav">
+                                 <li>
+								 {if $cmb->foto eq ''}
+								 <img src="{$host}assets/img/ava.png" class="img-responsive" alt="" />
+								 {else}
+								 <img src="{$host}assets/upload/foto/{$cmb->foto}" class="img-responsive" alt="" /> 
+								 {/if}
+                                    <a href="#" class="profile-edit">edit</a>
+                                 </li>
+                              </ul>
+                           </div>
+                           <div class="col-md-9">
+                              <div class="row">
+                                 <div class="col-md-10 profile-info">
+                                    <h1>{$cmb->nama_cm}</h1>
+                           <p>{$prof->kode_smb}</i></p>
+									<p><i class="icon-user"></i> {$prof->gender}</i></p>
+                                    <p><i class="icon-road"></i> {$prof->rumahAlamat}, {$prof->propNama}, {$prof->kabKotaNama}, {$prof->kodePos}</p>
+									<p><i class="icon-calendar"></i> {$prof->tempatLahir}, {$prof->tLahir} {$prof->bLahir} {$prof->yLahir}</p>
+                                    <p><i class="icon-briefcase"></i> {$eduData->sekolah} - {$eduData->propNama}, {$eduData->kabNama} {$eduData->kodeposN}</p>
+                                    <p><i class="icon-star"></i> S{$prof->jenjangType} {$prof->progdi}</p>                                    
+                                 </div>
+                              </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+                              <!--end row-->
+                              <div class="tabbable tabbable-custom tabbable-custom-profile">
+                                 <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab_1_22" data-toggle="tab">Latest Customers</a></li> 
+                                    <!-- <li ><a href="#tab_1_22" data-toggle="tab">Status Pendaftaran</a></li> -->
+                                 </ul>
+                                 <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1_22">
+                                       <div class="tab-pane active" id="tab_1_1_1">
+                                          <div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible1="1">
+                                             <ul class="feeds">
+                                                <li>
+                                                   <div class="col1">
+                                                      <div class="cont">
+                                                         <div class="cont-col1">
+														 {if $cmb->validation_status eq '1'}
+                                                            <div class="label label-info">                        
+                                                               <i class="icon-ok-sign"></i>
+                                                            </div>
+                                                         </div>
+                                                         <div class="cont-col2">
+                                                            <div class="desc">
+                                                               Pendaftaran 
+                                                            </div>
+                                                         </div>
+														 {/if}
+                                                      </div>
+                                                   </div>
+                                                   <div class="col2">
+                                                      <div class="date">
+													  {if $cmb->validation_status eq '1'}
+                                                         Finished
+													  {else}
+														 Waiting
+													  {/if}
+                                                      </div>
+                                                   </div>
+                                                </li>
+                                                <li>
+                                                      <div class="col1">
+													  {if $cmb->stsApplyPaidConfirm eq '1'}
+                                                         <div class="cont">
+                                                            <div class="cont-col1">
+                                                               <div class="label label-info">                        
+                                                                  <i class="icon-ok-sign"></i>
+                                                               </div>
+                                                            </div>
+                                                            <div class="cont-col2">
+                                                               <div class="desc">
+                                                                  Pembayaran Pendaftaran
+                                                               </div>
+                                                            </div>
+                                                         </div>
+													   {else}
+														 <div class="cont">
+                                                            <div class="cont-col1">
+                                                               <div class="label label-default">                        
+                                                                  <i class="icon-minus-sign"></i>
+                                                               </div>
+                                                            </div>
+                                                            <div class="cont-col2">
+                                                               <div class="desc">
+                                                                  Pembayaran Pendaftaran
+                                                               </div>
+                                                            </div>
+                                                         </div>
+													   {/if}
+                                                      </div>
+                                                      <div class="col2">
+                                                         <div class="date">
+                                                          {if $cmb->stsApplyPaidConfirm eq '1'}
+															 Finished
+														  {else}
+															 Waiting
+														  {/if}
+                                                         </div>
+                                                      </div>
+                                                </li>
+                                                <li>
+                                                   <div class="col1">
+													{if $cmb->stsPribadiConfirm eq '1'}
+                                                      <div class="cont">
+                                                         <div class="cont-col1">
+                                                            <div class="label label-info">                      
+                                                               <i class="icon-ok-sign"></i>
+                                                            </div>
+                                                         </div>
+                                                         <div class="cont-col2">
+                                                            <div class="desc">
+                                                               Lengkapi Formulir Pendaftaran                     
+                                                            </div>
+                                                         </div>
+                                                      </div>
+													{else}
+													  <div class="cont">
+                                                         <div class="cont-col1">
+                                                            <div class="label label-default">                      
+                                                               <i class="icon-minus-sign"></i>
+                                                            </div>
+                                                         </div>
+                                                         <div class="cont-col2">
+                                                            <div class="desc">
+                                                               Lengkapi Formulir Pendaftaran                     
+                                                            </div>
+                                                         </div>
+                                                      </div>
+													{/if}
+                                                   </div>
+                                                   <div class="col2">
+                                                      <div class="date">
+                                                      {if $cmb->stsPribadiConfirm eq '1'}
+                                                         Finished
+													  {else}
+														 Waiting
+													  {/if}
+                                                      </div>
+                                                   </div>
+                                                </li>
+                                                <li>
+                                                   <div class="col1">
+													{if $cmb->stsEventConfirm eq '1'}
+                                                      <div class="cont">
+                                                         <div class="cont-col1">
+                                                            <div class="label label-info">                        
+                                                               <i class="icon-ok-sign"></i>
+                                                            </div>
+                                                         </div>
+                                                         <div class="cont-col2">
+                                                            <div class="desc">
+                                                               Jadwal Ujian               
+                                                            </div>
+                                                         </div>
+                                                      </div>
+													{else}
+                                                      <div class="cont">
+                                                         <div class="cont-col1">
+                                                            <div class="label label-default">                        
+                                                               <i class="icon-minus-sign"></i>
+                                                            </div>
+                                                         </div>
+                                                         <div class="cont-col2">
+                                                            <div class="desc">
+                                                               Jadwal Ujian               
+                                                            </div>
+                                                         </div>
+                                                      </div>
+													{/if}
+                                                   </div>
+                                                   <div class="col2">
+                                                      <div class="date">
+                                                      {if $cmb->stsEventConfirm eq '1'}
+                                                         Finished
+													  {else}
+														 Waiting
+													  {/if}
+                                                      </div>
+                                                   </div>
+                                                </li>
+                                                <li>
+                                                   <div class="col1">
+													{if $cmb->stsResultConfirm eq '1'}
+                                                      <div class="cont">
+                                                         <div class="cont-col1">
+                                                            <div class="label label-info">                        
+                                                               <i class="icon-ok-sign"></i>
+                                                            </div>
+                                                         </div>
+                                                         <div class="cont-col2">
+                                                            <div class="desc">
+                                                               Hasil Ujian             
+                                                            </div>
+                                                         </div>
+                                                      </div>
+													{else}
+                                                      <div class="cont">
+                                                         <div class="cont-col1">
+                                                            <div class="label label-default">                        
+                                                               <i class="icon-minus-sign"></i>
+                                                            </div>
+                                                         </div>
+                                                         <div class="cont-col2">
+                                                            <div class="desc">
+                                                               Hasil Ujian             
+                                                            </div>
+                                                         </div>
+                                                      </div>
+													{/if}
+                                                   </div>
+                                                   <div class="col2">
+                                                      <div class="date">
+                                                      {if $cmb->stsResultConfirm eq '1'}
+                                                         Finished
+													  {else}
+														 Waiting
+													  {/if}
+                                                      </div>
+                                                   </div>
+                                                </li>
+                                                <li>
+                                                   <div class="col1">
+													{if $cmb->stsReapplyPaidConfirm eq '1'}
+                                                      <div class="cont">
+                                                         <div class="cont-col1">
+                                                            <div class="label label-info">                        
+                                                               <i class="icon-ok-sign"></i>
+                                                            </div>
+                                                         </div>
+                                                         <div class="cont-col2">
+                                                            <div class="desc">
+                                                               Pendaftaran Ulang               
+                                                            </div>
+                                                         </div>
+                                                      </div>
+													{else}
+                                                      <div class="cont">
+                                                         <div class="cont-col1">
+                                                            <div class="label label-default">                        
+                                                               <i class="icon-minus-sign"></i>
+                                                            </div>
+                                                         </div>
+                                                         <div class="cont-col2">
+                                                            <div class="desc">
+                                                               Pendaftaran Ulang               
+                                                            </div>
+                                                         </div>
+                                                      </div>
+													{/if}
+                                                   </div>
+                                                   <div class="col2">
+                                                      <div class="date">
+                                                      {if $cmb->stsReapplyPaidConfirm eq '1'}
+                                                         Finished
+													  {else}
+														 Waiting
+													  {/if}
+                                                      </div>
+                                                   </div>
+                                                </li>
+												<li>
+                                                   <div class="col1">
+													{if $cmb->nim neq ''}
+                                                      <div class="cont">
+                                                         <div class="cont-col1">
+                                                            <div class="label label-info">                        
+                                                               <i class="icon-ok-sign"></i>
+                                                            </div>
+                                                         </div>
+                                                         <div class="cont-col2">
+                                                            <div class="desc">
+                                                               Mendapatkan NIM            
+                                                            </div>
+                                                         </div>
+                                                      </div>
+													{else}
+                                                      <div class="cont">
+                                                         <div class="cont-col1">
+                                                            <div class="label label-default">                        
+                                                               <i class="icon-minus-sign"></i>
+                                                            </div>
+                                                         </div>
+                                                         <div class="cont-col2">
+                                                            <div class="desc">
+                                                               Mendapatkan NIM            
+                                                            </div>
+                                                         </div>
+                                                      </div>
+													{/if}
+                                                   </div>
+                                                   <div class="col2">
+                                                      <div class="date">
+                                                      {if $cmb->nim neq ''}
+                                                         Finished
+													  {else}
+														 Waiting
+													  {/if}
+                                                      </div>
+                                                   </div>
+                                                </li>
+                                             </ul>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--tab-pane-->
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--tab_1_2-->
+                     <div class="tab-pane" id="tab_1_3">
+                        <div class="row profile-account">
+                           <div class="col-md-12">
+							{include file="smb/profilKeluarga.html"}
+						   </div>                               
+                        </div>
+                     </div>
+                     <!--end tab-pane-->
+                     <div class="tab-pane" id="tab_1_4">
+                        <div class="row portfolio-block">
+                           <div class="col-md-12">
+                              <div class="add-portfolio">
+                                 <span>Riwayat Pendidikan</span>
+							  </div>
+                              {include file="smb/tblPendidikan.html"}
+                           </div>
+						</div>
+						<div class="row portfolio-block">
+						   <div class="col-md-12">
+                              <div class="add-portfolio">
+                                 <span>Riwayat Prestasi</span>
+							  </div>
+                              {include file="smb/tblPrestasi.html"}
+                           </div>
+						</div>
+						<div class="row portfolio-block">
+						   <div class="col-md-12">
+                              <div class="add-portfolio">
+                                 <span>Riwayat Organisasi</span>
+							  </div>
+                              {include file="smb/tblOrganisasi.html"}
+                           </div>
+                        </div>
+                        
+                     </div>
+                     <!--end tab-pane-->
+                     <div class="tab-pane" id="tab_1_6">
+                        <div class="row">
+                           <div class="col-md-3">
+                              <ul class="ver-inline-menu tabbable margin-bottom-10">
+                                 <li class="active">
+                                    <a data-toggle="tab" href="#tab_1">
+                                    <i class="icon-briefcase"></i> 
+                                    Login Account
+                                    </a> 
+                                    <span class="after"></span>                                    
+                                 </li>
+                              </ul>
+                           </div>
+                           <div class="col-md-9">
+                              <div class="tab-content">
+                                 <div id="tab_1" class="tab-pane active">
+                                    <div id="accordion1" class="panel-group">
+                                       <div class="panel panel-default">
+                                          <div class="panel-heading">
+                                             <h4 class="panel-title">
+                                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1">
+                                                Ganti Password
+                                                </a>
+                                             </h4>
+                                          </div>
+                                          <div id="accordion1_1" class="panel-collapse collapse  in">
+                                             <div class="panel-body">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--end tab-pane-->
+                  </div>
+               </div>
+               <!--END TABS-->
+            </div>
+         </div>

@@ -1,0 +1,144 @@
+{foreach name=loop from=$sql item=row}
+                        <div class="row portfolio-block">
+							<div class="col-md-1" style="padding: 10px 0;">
+							  <div class="portfolio-info">
+                                 <p></p>
+								 <p></P>
+                                 <a href="{$host}admisi/absen/{$row->id_event}/table" class="kelas btn bigicn-only" style="padding:0;"><span>{$row->kode_kelas}</span></a>
+                              </div>
+                           </div>
+                           <div class="col-md-3">
+                              <div class="portfolio-text">
+                                 <div class="portfolio-text-info" style=";padding-left: 10px;">
+                                    <h4>{$row->nama_event}</h4>
+                                    <p>{$row->id_event}</p>
+                                    <p>Jenjang : {if $row->jenjang eq '01.S1'}S1{else}S2{/if}, {$row->tahun}</p>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-2">
+                              <div class="portfolio-text">
+                                 <h4>Jadwal Ujian</h4>
+								 <p>{$row->hariEvent}, {$row->tanggal}</p>
+								 <p>{$row->jamMasuk} - {$row->jamKeluar}</p>
+								 <p>Prioritas : {$row->prioritas}</p>
+                              </div>
+							</div>
+							<div class="col-md-1">
+                              <div class="portfolio-text-info">
+                                <h4>Peserta<h4>
+								 <p></P>
+								 {if $row->kursiTes eq $row->totalPeserta}
+								 <span style="color:#AFAF19;font-size: 17px;text-align: center;"> PENUH</span>
+								 {/if}
+                                 <span style="color: #16A1F2;
+											display: block;
+											font-size: 28px;
+											font-weight: 200;
+											line-height: 28px;
+											margin-top: 0;
+											text-transform: uppercase;
+											text-align: center;"> {$row->totalPeserta} </span>
+                              </div>
+							</div>
+							<div class="col-md-3">
+                              <div class="portfolio-text-info">
+                                 <h4>Panitia Ujian</h4>
+                                 <p>Petugas 	: {$row->nama_petugas}</p>
+								 <p>Pewawancara : {$row->nama_pww}</p>
+								 <p>Pewawancara 2: {$row->nama_pww2}</p>
+                              </div>
+                           </div>
+						   <div class="col-md-1">
+                              <div class="portfolio-info">
+                                 <a href="#" class="{if $row->status eq '1'}aktif{else}nonaktif{/if}" value="{$row->id_event}" name="delete">
+									{if $row->status eq '1'}<span style="color:green">AKTIF</span>
+									{else}<span style="color:#AFAF19;font-size: 17px;">TIDAK AKTIF</span>{/if}
+								 </a>
+                                 <a href="#formEdit" class="editing" value="{$row->id_event}" name="edit" data-toggle="modal">
+									<span>EDIT</span>
+								 </a>
+                                 <a href="#verifikasi" class="deleting" value="{$row->id_event}" name="delete" data-toggle="modal">
+									<span style="color:red;font-size: 32px;">DELETE</span>
+								 </a>
+                              </div>
+							</div>
+                        </div>
+						{/foreach}
+                        <!--end row-->
+                     </div>
+					 <div class="modal fade" id="formEdit" tabindex="-1" role="basic" aria-hidden="true">
+                        <div class="modal-dialog  modal-wide">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                 <h4 class="modal-title">Edit Buka Pendaftaran Seleksi</h4>
+                              </div>
+                              <div class="modal-body">
+								<div id="form"></div>							  
+                              </div>
+                           </div>
+						  </div>
+                           <!-- /.modal-content -->
+                        </div>
+					</div>
+					<div id="verifikasi" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                 <h4 class="modal-title">Confirmation</h4>
+                              </div>
+							  <div id="verifikasiRuang">
+							  </div>
+                           </div>
+                        </div>
+                    </div>
+<script>
+{literal}
+	$(".editing").each(function (i, v){
+	$(this).click( function() {	
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}admisi/admisiJadwalSeleksi/edit", {'opt':opt, 'val':val},function(resp){
+			$('#form').html(resp);
+		});
+	});
+	});
+{/literal}
+{literal}
+$(".deleting").each(function (i, v){
+	$(this).click( function() {	
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}admisi/admisiJadwalSeleksi/delete", {'opt':opt, 'val':val},function(resp){
+			$('#verifikasiRuang').html(resp);
+		});
+	});
+});
+{/literal}
+{literal}
+$(".nonaktif").each(function (i, v){
+	$(this).click( function() {	
+			id = "nonaktif";
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}admisi/admisiJadwalSeleksi/delete", {'opt':opt, 'val':val, 'id':id},function(resp){
+			location.reload();
+		});
+	});
+});
+{/literal}
+{literal}
+$(".aktif").each(function (i, v){
+	$(this).click( function() {	
+			id = "aktif";
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}admisi/admisiJadwalSeleksi/delete", {'opt':opt, 'val':val, 'id':id},function(resp){
+			location.reload();
+		});
+	});
+});
+{/literal}
+</script>

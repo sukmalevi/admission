@@ -1,0 +1,74 @@
+<div class="row ">
+			<div class="col-md-6 col-sm-6">
+               <div class="portlet box grey">
+                  <div class="portlet-title">
+                     <div class="caption"><i class="icon-bell"></i>Recent Activities</div>
+                     <div class="actions">
+                        <div class="btn-group">
+                           <a class="btn btn-sm default" href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                           Filter By
+                           <i class="icon-angle-down"></i>
+                           </a>
+                           <div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+                              <label><input type="checkbox" /> Humas</label>
+                              <label><input type="checkbox" checked="" /> Akademik</label>
+                              <label><input type="checkbox" /> Keuangan</label>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="portlet-body">
+                     <div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
+                        <ul class="feeds">
+                        {foreach name=loop from=$aktifiti item=row}
+						   <li>
+                              <div class="col1">
+                                 <div class="cont">
+                                    <div class="cont-col1">
+                                       <div class="label label-sm {if $row->id_activity eq '13.1'}label-danger{else if $row->id_activity eq '13.2'}label-info{else}label-default{/if}">                        
+                                          <i class="{if $row->id_activity eq '13.1'}icon-user{else if $row->id_activity eq '13.2'}icon-envelope{else}icon-check{/if}"></i>
+                                       </div>
+                                    </div>
+                                    <div class="cont-col2">
+                                       <div class="desc">
+                                          {$row->namaAct} 										  
+                                          {if $row->id_activity eq '13.3' or $row->id_activity eq '13.9'}
+                                          <span class="label label-sm label-warning ">
+										  Take action
+                                          <i class="icon-share-alt"></i>
+										  {/if}
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col2" style="margin-left: -85px;width: 84px;">
+                                 <div class="date" style="padding-left: 0;padding-right: 0;width: 80px;">
+                                   {$row->jam}:{$row->menit} {$row->tgl} {$row->bulan}
+                                 </div>
+                              </div>
+                           </li>
+						{/foreach}
+                        </ul>
+                     </div>
+                     <div class="scroller-footer">
+                        <div class="pull-right">
+                           <a href="#">See All Records <i class="m-icon-swapright m-icon-gray"></i></a> &nbsp;
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>			
+            <div class="col-md-6 col-sm-6">
+               <!-- BEGIN PORTLET-->
+               <div class="portlet box blue calendar">
+                  <div class="portlet-title">
+                     <div class="caption"><i class="icon-calendar"></i>Calendar</div>
+                  </div>
+                  <div class="portlet-body light-grey">
+                     <div id="calendar"></div>
+                  </div>
+               </div>
+			 </div>
+               <!-- END PORTLET-->
+         </div>

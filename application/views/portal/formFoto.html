@@ -1,0 +1,21 @@
+<div class="modal-body">
+    <form action="{$host}portal/editProfil/edit/do" class="form-horizontal" method="post" enctype="multipart/form-data">
+        <div class="form-body">
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;">Upload Foto</label>
+                    <div class="col-md-9">
+                        <input name="kode" value="{$val}" hidden>
+                        <input type="file" name="poto" required>
+                        <p class="help-block">Format : jpg|png, Best Size : 400px*600px</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn blue" name="opt" value="foto">Update <i class="icon-plus"></i>
+            </button>
+        </div>
+    </form>
+</div>

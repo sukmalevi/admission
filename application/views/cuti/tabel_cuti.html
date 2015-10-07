@@ -1,0 +1,103 @@
+	<div class="primary-head">
+		<h3 class="page-header">Pengajuan Cuti</h3>
+	</div>
+<div id="status">
+</div>
+<div id="tabel">	
+	<div class="content-widgets light-gray" style="min-height:550px">		
+		<div class="widget-head brown">
+			<h3>DAFTAR CUTI KARYAWAN/DOSEN</h3>
+		</div>
+		<div style="position: inherit;text-align:center;height:50px">
+		</div>
+		<h4 class="widget-header" style="width:95%;margin-left:25px">Riwayat Cuti - {$nama}</h4>
+			<table class="table table-hover responsive" style="width:95%;margin-left:25px">
+				<thead>
+				<tr>
+					<th>Tanggal Cuti</th>
+					<th>Jenis Cuti</th>
+					<th>Jumlah Hari</th>
+					<th>Alasan</th>
+					<th>Approved</th>
+					<th>Actions</th>
+				</tr>
+				</thead>
+				<tbody>
+				{foreach name=loop from=$dCuti item=row}
+				<tr>
+					<td><a href="#" class="row" id="row" value="{$row->id_cuti}"><label>{$row->tgl_cuti} <b>s.d</b> {$row->tgl_selesai_cuti}</label></a></td>
+					<td>{$row->jenis_cuti}</td>
+					<td>{$row->jumlah_cuti} hari</td>
+					<td>{$row->alasan}</td>
+					<td>{if $row->isApproved eq '0'}Belum{else if $row->isApproved eq '1'}Ya{else}Tidak{/if}</td>
+					<td class="center">
+						<div class="btn-group">
+							<button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action <span class="caret"></span></button>
+								<ul class="dropdown-menu">
+									<li>
+									<a href="#" class="edit" id="edit" value="{$row->id_cuti}">Edit</a>
+									</li>
+									<li>
+									<a href="#" class="hapus" id="hapus" value="{$row->id_cuti}">Hapus</a>
+									</li>
+									<li>
+									<a href="#" class="pass" id="pass" value="{$row->id_cuti}" name="{$row->nama}">Ubah Password</a>
+									</li>
+								</ul>
+						</div>
+					</td>
+				</tr>
+				{/foreach}
+				<tr><td colspan="5"></td></tr>
+				<tr>
+					<td colspan="4"><b>Total Cuti Yang Diambil</b></td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td colspan="4"><b>Sisa Cuti Tahunan</b></td>
+					<td>4</td>
+				</tr>
+				</tbody>
+			</table>
+	</div>
+</div>
+<script>
+{literal}
+		$(".row").each(function (i, v){
+			$(this).click(function(){	
+				var id = $(this).attr("value");
+				
+				$.post("{/literal}{$host}{literal}cuti/statusPengajuan", {'id':id},function(resp){
+					$('#tabel').hide();
+					$('#status').html(resp);					
+					});
+				});
+			});
+{/literal}
+{literal}
+		$(".edit").each(function (i, v){
+			$(this).click(function(){	
+				var id = $(this).attr("value");				
+				//alert(i + "id :" + cob);
+				$.post("{/literal}{$host}{literal}cuti/editCuti", {'id':id},function(resp){
+					$('#tabel').hide();
+					$('#status').html(resp);					
+					});
+				});
+			});
+{/literal}
+{literal}
+		$(".hapus").each(function (i, v){
+			$(this).click(function(){	
+				var id = $(this).attr("value");
+				if (confirm("Are you sure?")) {
+					$.post("{/literal}{$host}{literal}cuti/delCuti/delete", {'id':id});
+					window.setTimeout(function() {
+						window.location.href = '{/literal}{$host}{literal}cuti/tabelCuti';
+					}, 500);
+				}
+				return false;
+				});
+			});
+{/literal}
+</script>

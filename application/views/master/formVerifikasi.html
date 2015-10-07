@@ -1,0 +1,19 @@
+					          <div class="modal-body">
+                                 <p>Apakah Anda yakin akan menghapus user tersebut?</p>
+                              </div>
+                              <div class="modal-footer">
+                                 <button type="button" data-dismiss="modal" class="btn default">Cancel</button>
+                                 <button type="button" data-dismiss="modal" class="btn green" id="confirm" value="{$value}" name="delete">Continue</button>
+                              </div>
+<script>
+	{literal}
+	$("#confirm").click(function(){		
+		opt = $(this).attr("name");
+		id = $(this).attr("id")
+		val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}master/masterUser/delete", {'opt':opt, 'id':id, 'val':val},function(resp){
+			location.reload();
+		});
+	});
+	{/literal}
+</script>

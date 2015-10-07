@@ -1,0 +1,50 @@
+								<form action="{$host}master/masterPanitia/edit/do" class="form-horizontal" method="post">
+									<div class="form-body">
+										  <div class="form-group">
+                                             <label  class="control-label col-md-3">Kode</label>
+                                             <div class="input-group col-md-6">
+												<input type="text"  name="kode" value="{$person->inisial}" hidden>
+                                                <input type="text" class="form-control" placeholder="Kode Karyawan/Dosen" id="kode" name="kode" value="{$person->inisial}" disabled>
+                                             </div>
+                                          </div>
+                                          <div class="form-group">
+                                             <label  class="control-label col-md-3">Nama</label>
+                                             <div class="input-group col-md-9">
+                                                <input type="text" class="form-control" placeholder="Nama" id="nama" name="nama" value="{$person->panitia}">
+                                             </div>
+                                          </div>
+										  <div class="form-group">
+                                             <label  class="control-label col-md-3">NIP</label>
+                                             <div class="input-group col-md-4">
+                                                <input type="text" class="form-control" placeholder="NIP" id="nip" name="nip" value="{if $person->nip neq ''}{$person->nip}{else}{$person->nidn}{/if}">
+                                             </div>
+                                          </div>
+										  <div class="form-group">
+											  <label  class="col-md-3 control-label">Status</label>
+											  <div class="col-md-9">
+												 <div class="radio-list">
+													<label class="radio-inline">
+													<input type="radio" name="optionsRadios" id="kar" value="0" checked> Karyawan
+													</label>
+													<label class="radio-inline">
+													<input type="radio" name="optionsRadios" id="dosen" value="1" checked> Dosen
+													</label>
+												 </div>
+											  </div>
+										   </div>
+										  <div class="form-group">
+											<label  class="control-label col-md-3">Pilih Jabatan</label>
+												<div class="col-md-9">
+													<select class="form-control" id="props"  name="jabatan" class="jabatan">
+														<option value="{$person->jabatan}">{$person->jab}</option>
+														{foreach name=loop from=$jabatan item=row} 
+															<option value="{$row->kode}">{$row->nama}</option>
+														{/foreach}
+													</select>
+												</div>
+										  </div>									</div>
+								  <div class="modal-footer">
+									 <button type="button" class="btn default" data-dismiss="modal">Close</button>
+									 <button type="submit" class="btn blue" id="save" value="edit" name="opt"> Update <i class="icon-plus"></i></a>
+								  </div>
+								</form>

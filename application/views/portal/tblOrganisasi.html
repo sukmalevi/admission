@@ -1,0 +1,57 @@
+												<div class="col-md-12">
+												   <!-- BEGIN EXAMPLE TABLE PORTLET-->
+												   <div class="portlet box purple">
+													  <div class="portlet-title">
+														 <div class="tools">
+															<a href="javascript:;" class="collapse"></a>
+															<a href="javascript:;" class="remove"></a>
+														 </div>
+													  </div>
+													  <div class="portlet-body">
+														 <div class="table-toolbar">
+														 </div>
+														 <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+															<thead>
+															   <tr>
+																  <th>Nama Kegiatan</th>
+																  <th>Tempat</th>
+																  <th>Jabatan</th>	
+																  <th>Tahun Mulai</th>
+																  <th>Tahun Selesai</th>			  
+																  <th>Hapus</th>
+															   </tr>
+															</thead>
+															<tbody>
+															{foreach name=loop from=$organisasi item=row}
+															   <tr >
+																  <td>{$row->namaKegiatan}</td>
+																  <td>{$row->tempat}</td>
+																  <td>{$row->jabatan}</td>
+																  <td>{$row->dariTahun}</td>
+																  <td>{$row->sampaiTahun}</td>
+																  <td><a class="delete" data-toggle="modal" href="#" value="{$row->kode}" name="delete">Delete</a></td>
+															   </tr>
+															{/foreach}
+															</tbody>
+														 </table>
+													  </div>
+												   </div>
+												   <!-- END EXAMPLE TABLE PORTLET-->
+												</div>
+<script>
+{literal}
+$(".delete").each(function (i, v){
+	$(this).click( function() {	
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+			id= "tambahOrg";
+		$.post("{/literal}{$host}{literal}portal/formulir/prestasi/delete", {'opt':opt, 'val':val, 'id':id},function(resp){
+			id= "tambahOrg";
+			$.post("{/literal}{$host}{literal}portal/formulir/prestasi",{'id':id},function(resp){
+					$('.tblKeluarga').html(resp);
+				});	
+		});
+	});
+});
+{/literal}
+</script>

@@ -1,0 +1,50 @@
+<script src="{$host}assets/js/jquery-ui.min.js"></script>
+				<div class="content-widgets light-gray">
+						<div class="widget-head magenta">
+							<h3>Form Edit USER 
+							<a href="{$host}master/masterPegawai" id="minus" style="float:right"><i class="icon-minus"></i></a>
+							</h3>
+						</div>
+						<div class="widget-container">
+							<form class="form-horizontal" name="marketer" action="{$host}master/confUser" id="marketer" method="post">
+								<div class="control-group">
+									<label class="control-label" >Username</label>
+									<div class="controls">
+										<input id="nama" name="nama" value="{$nama}" style="display:none">
+										<input id="pid" name="pid" value="{$pid}" style="display:none">
+										{if $meth eq 'edit'}<input id="id" name="id" value="{$user->user_id}" style="display:none">{/if}
+										<input type="text" placeholder="Username" class="span3" name="username" id="username" class="required" value="{if $meth eq 'add'}{else}{$user->username}{/if}">								
+									</div>										
+								</div>
+								<div class="control-group">
+									<label class="control-label" >Password</label>
+									<div class="controls">
+										<input type="password" placeholder="Password" class="span2" name="pass" id="pass" class="required" value="{if $meth eq 'add'}{else}{$pass}{/if}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" >Konfirmasi Password</label>
+									<div class="controls">
+										<input type="password" placeholder="Password" class="span2" name="pass2" id="pass2" class="required" value="{if $meth eq 'add'}{else}{$pass}{/if}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" >Level User</label>
+									<div class="controls">
+										<select data-placeholder="Departemen" class="span" tabindex="2" name="level_id" id="level_id">												
+											{if $meth eq 'add'}<option></option>{/if}
+											{if $meth eq 'edit'}<option value="{$user->level_id}">{$user->level_name}</option>{/if}
+											{foreach name=loop from=$level item=row}
+											<option value="{$row->id}" >{$row->level_name}</option>
+											{/foreach}
+										</select>
+									</div>
+								</div>
+								{if $meth eq 'add'}<button type="submit" class="btn btn-warning" name="button" id="button" value="save">Save</button>{/if}
+								{if $meth eq 'edit'}<button type="submit" class="btn btn-success" name="button" id="button" value="update">Update</button>{/if}
+								<button type="reset" class="btn">Reset</button>
+									
+							</form>
+						</div>
+					</div>
+				

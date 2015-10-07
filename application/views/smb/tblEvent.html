@@ -1,0 +1,259 @@
+<h4>Total Peserta Ujian : {$total->total} Orang</h4>
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption"><i class="icon-calendar"></i> JADWAL SELEKSI CALON MAHASISWA BARU</div>
+        <div class="tools">
+            <a href="javascript:;" class="collapse"></a>
+            <a href="javascript:;" class="reload"></a>
+            <a href="javascript:;" class="remove"></a>
+        </div>
+    </div>
+    <div class="portlet-body flip-scroll">
+        <table class="table table-bordered table-striped table-condensed flip-content">
+            <thead class="flip-content">
+                <tr>
+                    <th>NO. REG</th>
+                    <th>NAMA CMB</th>
+                    <th>PROGRAM STUDI</th>
+                    <th>JALUR</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                    <th>VIA PHONE</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach name=loop from=$sql item=row}
+                <tr>
+                    <td>
+                        <h4 class="panel-title">{$row->no_smb}</h4>
+                    </td>
+                    <td>
+                        <h4 class="panel-title">{$row->nama_cm}</h4>
+                    </td>
+                    <td>
+                        <h4 class="panel-title">{$row->progdi}</h4>
+                    </td>
+                    <td>
+                        <h4 class="panel-title">{$row->n_jalur}</h4>
+                    </td>
+                    <td>
+                        <table class="data">
+                            <tr class="headerr" title="Click Untuk melihat detail">
+                                <th>{if $row->event eq ''}
+                                    <span class="label label-sm label-danger label-mini">
+                                        Belum Memilih Jadwal
+                                    </span>
+                                    {else} {if $row->interviewPhone eq '1'}
+                                    <h4 class="panel-title">
+                                        {$row->hariPhone}, {$row->tanggalPhone} {$row->bulanPhone} {$row->tahunPhone}
+                                    </h4>
+                                    {else}
+                                    <h4 class="panel-title">
+                                        {$row->hari}, {$row->tanggal} {$row->bulan} {$row->tahun}
+                                    </h4>
+                                    {/if}
+                                </th>
+                                <td>
+
+
+                                </td>
+                                {/if}
+                            </tr>
+                            <tr class="detail" id="detail{$row->no_smb}" style="display:none" title="Click untuk Kembali">
+                                <td>
+                                    <!-- <td><a href="#" class="btn default btn-xs red-stripe" id="hide">View</a></td>	 -->
+                                    <!-- <form id="detail" name="detail" class="detail" style="display:none"> -->
+                                    <table>
+                                        <tr>
+                                            <td>Nama</td>
+                                            <td>{$row->nama_cm}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>No. Pendaftaran</td>
+                                            <td>{$row->no_smb}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Periode</td>
+                                            <td>{$row->n_periode}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Program Studi</td>
+                                            <td>{$row->progdi}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jalur</td>
+                                            <td>{$row->n_jalur}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tanggal UMB</td>
+                                            <td>{$row->hari}, {$row->tanggal} {$row->bulan} {$row->tahun}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jam UMB</td>
+                                            <td>{$row->jamMasuk} - {$row->jamKeluar}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ruang UMB</td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <td>{$row->ruang}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{$row->namaGedung}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{$row->alamat}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{$row->kabKota} {$row->prop} {$row->kodePos}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{$row->tel}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{$row->fax}</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- </form> -->
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        {if $row->interviewPhone eq '1'}
+                        <a name="phoned" class="phoned btn dark" href="#formViaPhone" data-toggle="modal" value="{$row->kode_smb}"><i class="icon-cloud"></i> Phone Int.</a>
+                        {else} {if $row->event neq ''}
+                        <a href="#" id="see{$row->no_smb}" class="see btn blue btn-sm" value="{$row->no_smb}"><i class="icon-eye-open"></i> {$row->ruang}</a>
+                        <br>
+                        <a href="#" id="hiden{$row->no_smb}" class="hiden btn red btn-sm" value="{$row->no_smb}" style="display:none"><i class="icon-eye-close"></i> Hide</a>
+                      
+						<br>
+						<a href="{$host}smb/jadwal/print/{$row->no_smb}" class="print btn green btn-sm" value="{$row->kode_smb}"><i class="icon-print"></i> Print Jadwal</a>
+						{/if} {/if}
+                    </td>
+                    <td>
+                        {if $row->interviewPhone eq '1'}
+                        <span class="label label-sm label-warning"><i class="icon-ok"></i>
+                        </span>
+                        {else}
+                        <a name="phone" class="phone btn dark" href="#formViaPhone" data-toggle="modal" value="{$row->kode_smb}"><i class="icon-signal"></i> Phone</a>
+                        {/if}
+                    </td>
+                </tr>
+                {/foreach}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="formViaPhone" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog  modal-wide">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Edit Buka Pendaftaran Seleksi</h4>
+            </div>
+            <div class="modal-body">
+                <div id="form"></div>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+
+
+<script>
+{literal}
+	$(".phone").each(function (i, v){
+	$(this).click( function() {	
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}smb/viaPhone/add", {'opt':opt, 'val':val},function(resp){
+			$('#form').html(resp);
+		});
+	});
+	});
+{/literal}
+{literal}
+	$(".phoned").each(function (i, v){
+	$(this).click( function() {	
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}smb/viaPhone/detail", {'opt':opt, 'val':val},function(resp){
+			$('#form').html(resp);
+		});
+	});
+	});
+{/literal}
+{literal}
+$(".see").each(function (i, v){
+	$(this).click( function() {
+		var val = $(this).attr("value");
+		document.getElementById('hiden'+val).style.display = "block";
+		document.getElementById('see'+val).style.display="none";
+		<!-- document.getElementById('detail'+val).style.display="block"; -->
+		$('#detail'+val).slideDown();
+		 
+		return false;
+	});
+});
+
+$(".hiden").each(function (i, v){
+	$(this).click( function() {		
+		var val = $(this).attr("value");
+		
+		document.getElementById('hiden'+val).style.display = "none";
+		document.getElementById('see'+val).style.display="block";
+		<!-- document.getElementById('detail'+val).style.display="none"; -->
+		$('#detail'+val).slideUp();
+		
+		return false;
+	});
+});
+
+/*
+$(".print").each(function (i, v){
+	$(this).click( function() {		
+		var val = $(this).attr("value");
+		var opt = $(this).attr("id");
+		
+		$.post("{/literal}{$host}{literal}smb/jadwal",{
+				'val':val,
+				'opt':opt
+					},function(resp){
+				}); 
+		
+		//return false;
+	});
+});	
+
+{/literal}
+
+$('table.data tr.detail').click( function() {
+    $(this).hide();
+    $(this).prevAll('tr').each( function() {
+        if ($(this).hasClass('headerr')) {
+            return false;
+        }
+        $(this).hide();
+    });
+    $(this).nextAll('tr').each( function() {
+        if ($(this).hasClass('headerr')) {
+            return false;
+        }
+        $(this).hide();
+    });
+});
+$('table tr.headerr').click( function() {
+    $(this).nextAll('tr').each( function() {
+        if ($(this).hasClass('headerr')) {
+            return false;
+        }
+        $(this).show();
+    });
+});
+*/
+</script>

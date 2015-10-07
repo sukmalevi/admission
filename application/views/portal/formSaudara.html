@@ -1,0 +1,221 @@
+<form action="#" class="formKeluarga form-horizontal" method="post">
+    <div class="form-body" style="background-color: #F7F7F7;"  class="col-md-12">
+        <h4 class="form-section col-md-12" style="height:70px">Isi data saudara kandung Anda yang pernah/sedang berkuliah di Paramadina.
+            <div class="col-md-12">
+				<span style="color:red;font-size: 15px">* Jika ada, anda akan mendapatkan potongan uang masuk sebesar 20%</span>
+				<button type="submit" class="tambah btn green pull-right">Tambah <i class="icon-plus"></i></button>
+			</div>
+			
+            <a class="btn" id="minSau" style="float:right;color: red; margin-top: -55px;"><i class=" icon-minus"></i></a>
+            <a class="btn" id="plusSau" style="float:right;color: black;display:none ;margin-top: -55px;"><i class=" icon-plus"></i></a> 
+			
+		
+        </h4>
+		<br>
+        <div id="detSau">
+            <div class="tblKeluarga tab-pane row" style="margin: 0 10px;">
+                <!-- Table untuk menampilkan keluarga -->
+                {foreach name=loop from=$saudara item=row}
+                <div class="row portfolio-block" style="height: 105px;background-color: #FFF;">
+                    <div class="col-md-1" style="padding: 10px 0;">
+                        <div class="portfolio-info">
+                            <p></p>
+                            <p>
+                            </P>
+                            <a href="#" class="btn bigicn-only" style="padding:0;">
+                                <span>{$row->singProdi}</span>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="portfolio-info">
+                            <div class="portfolio-text-info" style=";padding-left: 10px;">
+                                <h4>{$row->namaSaudara}</h4>
+                                <p>{$row->gender}, {$row->tanggalLahir}</p>
+                                <p>Anak Ke-{$row->nomor}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="portfolio-info">
+                            <h4>{$row->prodi}</h4>
+                            <p>NIM : {$row->nim}</p>
+                            <p>Ankatan : {$row->angkatan}, {if $row->lulus eq '1'}Alumni{else}Aktif{/if}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="portfolio-info">
+                            <h4>Perusahaan</h4>
+                            <p>{$row->kerja}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="portfolio-info">
+                            <p></p>
+                            <p>
+                            </P>
+                            <a href="#" class="deleting" name="delete" value="{$row->kodeSaudara}" data-toggle="modal">
+                                <span style="color:green;">DELETE</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {/foreach}
+            </div>
+            {if $cmb->statusSaudara eq '0'}
+            <div class="row col-md-12">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Nama
+                        </label>
+                        <div class="col-md-9">
+                            <input name="kode" value="{$kode}" hidden>
+                            <input type="text" class="form-control" name="namaSaudara" id="nama" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Anak Ke-
+                        </label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control" name="nomorKe" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-12">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Jenis Kelamin
+                        </label>
+                        <div class="col-md-9">
+                            <select class="form-control" name="sexSaudara" required>
+                                {foreach name=loop from=$sex item=row}
+                                <option value="{$row->kode}">{$row->nama}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Tanggal Lahir
+                        </label>
+                        <div class="col-md-9">
+                            <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="tglLahirSau" style="text-align:left">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-12">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Program Studi
+                        </label>
+                        <div class="col-md-9">
+                            <select class="form-control" name="pendSaudara" id="pendSaudara" required>
+                                {foreach name=loop from=$prodi item=row}
+                                <option value="{$row->kode}">{$row->nama}</option>
+                                {/foreach}
+                            </select>
+							<br>
+                            <input type="radio" name="sekSau" value="0" required> Aktif
+                            <br>
+                            <input type="radio" name="sekSau" value="1" required> Alumni
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">NIM
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="nim" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Nama Perusahaan
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="perSau">
+                            <input type="text" value="tambah" name="id" hidden>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Tahun Angkatan
+                        </label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control" name="angkatan" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/if}
+        </div>
+    </div>
+</form>
+
+<script>
+$('#minSau').click(function(){
+	document.getElementById("detSau").style.display = "none" ;
+	document.getElementById("minSau").style.display = "none" ;
+	document.getElementById("plusSau").style.display = "block" ;
+});
+$('#plusSau').click(function(){
+	document.getElementById("detSau").style.display = "block" ;
+	document.getElementById("minSau").style.display = "block" ;
+	document.getElementById("plusSau").style.display = "none" ;
+});
+
+{literal}
+jQuery(document).ready(function() {	
+	
+	document.getElementById("detSau").style.display = "block" ;
+	document.getElementById("minSau").style.display = "block" ;
+	document.getElementById("plusSau").style.display = "none" ;
+
+	FormComponents.init();
+	Index.initCalendar();
+	id= "tambah";
+    $.post("{/literal}{$host}{literal}portal/formulir/keluarga",{'id':id},function(resp){
+			$('.tblKeluarga').html(resp);
+		});		
+	
+});
+{/literal}
+{literal}
+$(".formKeluarga").submit( function() {			
+		
+		$.post("{/literal}{$host}{literal}portal/formulir/keluarga/add",$(this).serialize(),function(resp){
+			$('.tblKeluarga').html(resp);
+		});
+		$('.formKeluarga').trigger("reset");
+		return false;
+		
+	});
+	
+{/literal}
+{literal}
+$(".deleting").each(function (i, v){
+	$(this).click( function() {	
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+			id= "tambah";
+		$.post("{/literal}{$host}{literal}portal/formulir/keluarga/delete", {'opt':opt, 'val':val, 'id':id},function(resp){
+			id= "tambah";
+			$.post("{/literal}{$host}{literal}portal/formulir/keluarga",{'id':id},function(resp){
+					$('.tblKeluarga').html(resp);
+				});	
+		});
+	});
+});
+{/literal}
+</script>

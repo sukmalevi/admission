@@ -1,0 +1,34 @@
+												<div class="col-md-12">
+												   <!-- BEGIN EXAMPLE TABLE PORTLET-->
+												   <div class="portlet box grey">
+													  <div class="portlet-title">
+														 <div class="tools">
+															<a href="javascript:;" class="collapse"></a>
+															<a href="javascript:;" class="remove"></a>
+														 </div>
+													  </div>
+													  <div class="portlet-body">
+														 <div class="table-toolbar">
+														 </div>
+														 <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+															<thead>
+															   <tr>
+																  <th>Nama Penghargaan</th>
+																  <th>Intuisi Pemberi</th>
+																  <th>Tahun</th>	
+															   </tr>
+															</thead>
+															<tbody>
+															{foreach name=loop from=$prestasi item=row}
+															   <tr >
+																  <td>{$row->namaPrestasi}</td>
+																  <td>{$row->namaInstitusi}</td>
+																  <td>{$row->tahun}</td>
+															   </tr>
+															{/foreach}
+															</tbody>
+														 </table>
+													  </div>
+												   </div>
+												   <!-- END EXAMPLE TABLE PORTLET-->
+												</div>

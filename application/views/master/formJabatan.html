@@ -1,0 +1,26 @@
+								<form action="{$host}master/masterJabatan/edit/do" class="form-horizontal" method="post">
+									<div class="form-body">
+										  <div class="form-group">
+                                             <label  class="control-label col-md-3">Kode</label>
+                                             <div class="input-group col-md-4">
+												<input name="kode" value="{$jabatan->kode}" hidden>
+                                                <input type="text" class="form-control" placeholder="Kode Jabatan" id="kode" value="{$jabatan->kode}" disabled>
+                                             </div>
+                                          </div>
+                                          <div class="form-group">
+                                             <label  class="control-label col-md-3">Jabatan</label>
+                                             <div class="input-group col-md-9">
+                                                <input type="text" class="form-control" placeholder="Nama Jabatan" id="jab" name="jab" value="{$jabatan->nama}">
+                                             </div>
+                                          </div><div class="form-group">
+                                             <label  class="control-label col-md-3">Singkatan</label>
+                                             <div class="input-group col-md-4">
+                                                <input type="text" class="form-control" placeholder="Singkatan" id="singkatan" name="singkatan" value="{$jabatan->singkatan}">
+                                             </div>
+                                          </div>
+									</div>
+								  <div class="modal-footer">
+									 <button type="button" class="btn default" data-dismiss="modal">Close</button>
+									 <button type="submit" class="btn blue" id="edit" value="edit" name="opt"> Simpan <i class="icon-plus"></i></a>
+								  </div>
+								</form>

@@ -1,0 +1,43 @@
+											{foreach name=loop from=$saudara item=row}
+												<div class="row portfolio-block" style="height: 105px;background-color: #FFF;">
+													<div class="col-md-1" style="padding: 10px 0;">
+													  <div class="portfolio-info">
+														 <p></p>
+														 <p></P>
+														 <a href="#" class="btn bigicn-only" style="padding:0;" >
+															<span>{$row->singProdi}</span>
+														 </a>
+														   
+													  </div>
+												   </div>
+												   <div class="col-md-3">
+													  <div class="portfolio-info">
+														 <div class="portfolio-text-info" style=";padding-left: 10px;">
+															<h4>{$row->namaSaudara}</h4>
+															<p>{$row->gender}, {$row->tanggalLahir}</p>
+															<p>Anak Ke-{$row->nomor}</p>
+														 </div>
+													  </div>
+												   </div>
+												   <div class="col-md-3">
+													  <div class="portfolio-info">
+														 <h4>{$row->prodi}</h4>
+														 <p>NIM : {$row->nim}</p>
+														 <p>Angkatan : {$row->angkatan}, {if $row->lulus eq '1'}Alumni{else}Aktif{/if}</p>
+													  </div>
+													</div>
+													<div class="col-md-3">
+													  <div class="portfolio-info">
+														 <h4>Perusahaan</h4>
+														 <p>{$row->kerja}</p>
+													  </div>
+													</div>
+												   <div class="col-md-2">
+													   <div class="portfolio-info">
+														 <p></p>
+														 <p></P>
+														 <a href="#" class="deleting" name="delete" value="{$row->kodeSaudara}" data-toggle="modal"><span style="color:green;">DELETE</span></a>
+													   </div>
+												   </div>
+												</div>
+											{/foreach}

@@ -1,0 +1,239 @@
+<script type="text/javascript" src="{$host}assets/js/jquery.formatCurrency-1.4.0.js"></script>
+{if $method eq '1'}
+	<label class="col-md-3">
+		<h4>Uang Masuk</h4>
+	</label>
+	<label class="col-md-9">
+		<h4>: Rp
+			<font class="biaya">{$uangMasuk}</font>
+		</h4>
+	</label>
+	<br>
+{else}
+	<label class="col-md-3">
+		<h4>Uang Masuk</h4>
+	</label>
+	<label class="col-md-9">
+		<h4>
+			: Rp
+			<font class="biaya">{$uangMasuk}</font>
+			<small>( {$biaya->tempoAngsuran} X Angsuran )</small>
+		</h4>
+	</label>
+	<br>
+{/if}
+	<label class="col-md-3">
+		<h4>SPP Semester 1</h4>
+	</label>
+	<label class="col-md-9">
+		<h4>: Rp
+			<font class="biaya">{$biaya->spp}</font>
+		</h4>
+	</label>
+	<br>
+	<label class="col-md-3">
+		<h4>SKS Semester 1</h4>
+	</label>
+	<label class="col-md-9">
+		<h4>: Rp
+			<font class="biaya">{$biaya->sks}</font>({$biaya->jumlahSks} x Rp <font class="biaya">{$biaya->sks/$biaya->jumlahSks}</font>)
+		</h4>
+	</label>
+	<br>
+	<label class="col-md-3">
+		<h4>Biaya Orientasi</h4>
+	</label>
+	<label class="col-md-9">
+		<h4>: Rp
+			<font class="biaya">{$biaya->bpp} </font> (Hanya 1x)</h4>
+	</label>
+{if $method eq '1'}
+	<br>
+	<label class="col-md-3">
+		<h4>Diskon</h4>
+	</label>
+	<label class="col-md-9">
+		<h4>
+			{if $prodi neq '1204'} {if $jalur neq 'KP'} 
+			: Rp <font class="biaya">1000000</font>
+				{if $sau gt '0'} + Rp <font class="biaya">{$diskonSau}</font>{/if} 
+			{else} : - {/if} {else} : - {/if}
+		</h4>
+	</label>
+{else}
+	<br>
+	<label class="col-md-3">
+		<h4>Diskon</h4>
+	</label>
+	<label class="col-md-9">
+		<h4>
+			{if $sau gt '0'} : Rp
+			<font class="biaya">{$diskonSau}</font>
+			{else} : - {/if}
+		</h4>
+	</label>
+{/if}
+<hr>
+{if $method eq '1'}
+	<label class="col-md-3">
+		<h4 style="font-size:19px;font-family: Arial,sans-serif;">Total Biaya</h4>
+	</label>
+	<label class="col-md-9">
+		<h4 style="font-size:19px;font-family: Arial,sans-serif;">: Rp
+			<font class="biaya">{$total}</font>
+			<input id="totalLunas" value="{$total}" hidden>
+		</h4>
+	</label>
+	<br>
+	<input type="text" name="totalDaftarUlang" id="totalDaftarUlang" value="{$total}" hidden>
+{else}
+	<label class="col-md-8">
+		<h4 style="font-size:19px;font-family: Arial,sans-serif;">Total Biaya Keseluruhan</h4>
+	</label>
+	<label class="col-md-4">
+		<h4 style="font-size:19px;font-family: Arial,sans-serif;">: Rp
+			<font class="biaya">{$total - $diskonSau}</font>
+		</h4>
+	</label>
+	<br>
+
+	<input id="totalAngsurBayar" value="{$total}" hidden>
+	<label class="col-md-8">
+		<h4 style="font-size:19px;font-family: Arial,sans-serif;">Total Pembayaran Daftar Ulang</h4>
+	</label>
+	<label class="col-md-4">
+		<h4 style="font-size:19px;font-family: Arial,sans-serif;">: Rp
+			<font class="biaya">{$totalbayar}</font>
+		</h4>
+	</label>
+	<br>
+
+<input type="text" name="totalDaftarUlang" id="totalDaftarUlang" value="{$totalbayar}" hidden>
+<hr>
+<h3>Detail Angsuran</h3>
+	<input type="hidden" value="{$totalbayar}" name="bayarDU">
+	<input type="hidden" value="{$angsuran.angsuran1}" name="angsuran1">
+	<input type="hidden" value="{$angsuran.angsuran2}" name="angsuran2">
+	<input type="hidden" value="{$angsuran.angsuran3}" name="angsuran3">
+<hr>
+<div class="row col-md-12">
+    <label class="col-md-8">
+        <h4>Angsuran Pertama</h4>
+    </label>
+    <label class="col-md-4">
+        <h4>: Rp
+            <font class="biaya">{$angsuran.angsuran1}</font>
+        </h4>
+    </label>
+    <br>
+    <label class="col-md-8">
+        <h4>Angsuran Kedua</h4>
+    </label>
+    <label class="col-md-4">
+        <h4>: Rp
+            <font class="biaya">{$angsuran.angsuran2}</font>
+        </h4>
+    </label>
+    <br>
+    <label class="col-md-8">
+        <h4>Angsuran Ketiga</h4>
+    </label>
+    <label class="col-md-4">
+        <h4>: Rp
+            <font class="biaya">{$angsuran.angsuran3}</font>
+        </h4>
+    </label>
+    <br>{if $jalur eq 'KP'} {if $prodi eq '1208' or $prodi eq '1206'}
+    <label class="col-md-8">
+        <h4>Angsuran Keempat</h4>
+    </label>
+    <label class="col-md-4">
+        <h4>: Rp
+            <font class="biaya">{$biaya->angsuran4}</font>
+        </h4>
+    </label>
+    {/if} {/if}
+    {if $jalur eq 'KP'} 
+    {if $prodi eq '1208'}
+    <label class="col-md-8">
+        <h4>Angsuran Kelima</h4>
+    </label>
+    <label class="col-md-4">
+        <h4>: Rp
+            <font class="biaya">{$biaya->angsuran5}</font>
+        </h4>
+    </label>
+    <br>
+    <label class="col-md-8">
+        <h4>Angsuran Keenam</h4>
+    </label>
+    <label class="col-md-4">
+        <h4>: Rp
+            <font class="biaya">{$biaya->angsuran6}</font>
+        </h4>
+    </label>
+    <br>
+    <label class="col-md-8">
+        <h4>Angsuran Ketujuh</h4>
+    </label>
+    <label class="col-md-4">
+        <h4>: Rp
+            <font class="biaya">{$biaya->angsuran7}</font>
+        </h4>
+    </label>
+    <br>
+    <label class="col-md-8">
+        <h4>Angsuran Kedelapan</h4>
+    </label>
+    <label class="col-md-4">
+        <h4>: Rp
+            <font class="biaya">{$biaya->angsuran8}</font>
+        </h4>
+    </label>
+    {/if} {/if}
+    <br>
+    <br>
+	<hr>
+    <label class="col-md-8">
+        <h4>Total Uang Masuk</h4>
+    </label>
+    <label class="col-md-4">
+        <h4>: Rp
+            <font class="biaya">{$angsuran.angsuran1 + $angsuran.angsuran2 + $angsuran.angsuran3}</font>
+        </h4>
+    </label>
+    <br>
+
+    <label class="col-md-8">
+        <h4 style="font-size:19px;font-family: Arial,sans-serif;">Sisa Angsuran</h4>
+    </label>
+    <label class="col-md-4">
+        <h4 style="font-size:19px;font-family: Arial,sans-serif;">: Rp
+            <font class="biaya">{$angsuran.angsuran1 + $angsuran.angsuran2 + $angsuran.angsuran3}</font>
+        </h4>
+    </label>
+    <br>
+</div>
+{/if}
+
+<input type="text" name="kodeMetod" value="{$biaya->kode_pembayaran}" hidden>
+
+<script>
+$(document).ready(function() {
+    var totalBayar = $('#totalDaftarUlang').attr("value");
+    var totalAngsurBayar = $('#totalDaftarUlang').attr("value");
+
+
+    if (val == '1') {
+        $("#jumlahBayar").val(totalBayar);
+        $("#jumlahDataBayar").val(totalBayar);
+    } else {
+        $("#jumlahBayar").val(totalAngsurBayar);
+        $("#jumlahDataBayar").val(totalAngsurBayar);
+        // alert(totalAngsurBayar);
+    }
+
+    $('.biaya').formatCurrency();
+});
+</script>
+

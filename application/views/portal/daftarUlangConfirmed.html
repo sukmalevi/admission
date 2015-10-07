@@ -1,0 +1,377 @@
+<script type="text/javascript" src="{$host}assets/js/jquery.formatCurrency-1.4.0.js"></script>
+<!-- BEGIN FORM-->
+<div class="row">
+    <div class="col-md-12" style="padding-bottom: 15px; padding-top: 5px; padding-right: 0px;">
+
+    </div>
+</div>
+<form action="#" enctype="multipart/form-data" class="form-horizontal form-bordered form-row-stripped" id="form_sample_1" method="post">
+    <div class="portlet box grey">
+        <div class="portlet-body form" style="border-top: 1px double #4682B4;">
+            <div class="form-body" style="font-size:bold">
+                <h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">DATA DIRI</h3>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Nama Lengkap
+                    </label>
+                    <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <label>
+                            <h4>{$nama}</h4>
+                        </label>
+                        <input value="{$cmb->kode_smb}" name="kode" hidden>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Program Studi
+                    </label>
+                    <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <label>
+                            <h4>{$cmb->progdi}</h4>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-body">
+                <h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">Transaksi Pembayaran</h3>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Metode Pembayaran
+                    </label>
+                    <div class="col-md-3" style="width: 862px;; padding-left: 35px; padding-top: 5px;">
+                        {if $jalur neq 'KP'}
+                        <div class="checkbox-list">
+                            <label>
+                                {if $saudara gt 0}
+                                <input type="checkbox" name="yes" checked="true" disabled>Memiliki Saudara Kandung
+                                <input name="sau" id="sau" value="1" hidden>{else if $saudara eq 0}
+                                <input type="checkbox" name="no" disabled>Memiliki Saudara Kandung
+                                <input name="sau" id="sau" value="0" hidden>{/if}
+                            </label>
+                        </div>
+                        {/if} {if $method eq '1'}
+                        <div class="radio-list">
+                            <label>
+                                <input type="radio" name="metodBayar" class="mBayar" value="1" checked="true" disabled>Pembayaran Lunas
+                            </label>
+                            <label>
+                                <input type="radio" name="metodBayar" class="mBayar" value="0" disabled>Pembayaran Angsuran
+                            </label>
+                        </div>
+                        {else}
+                        <div class="radio-list">
+                            <label>
+                                <input type="radio" name="metodBayar" class="mBayar" value="1" disabled>Pembayaran Lunas
+                            </label>
+                            <label>
+                                <input type="radio" name="metodBayar" class="mBayar" value="0" checked="true" disabled>Pembayaran Angsuran
+                            </label>
+                        </div>
+                        {/if}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Rincian Biaya
+                    </label>
+                    <div class="detailBiaya col-md-9" style="width: 862px; padding-left: 35px; padding-top: 5px;">
+                        <!-- {if $method eq '1'}
+													<label style="width:140px"><h4>Uang Masuk</h4></label> <label><h4>: Rp<font class="biaya">{$biaya->uangMasuk}</font></h4></label> <br>
+													{else}
+													<label style="width:140px"><h4>Uang Masuk</h4></label> <label><h4>: Rp<font class="biaya">{$biaya->uangMasuk}</font> {$biaya->tempoAngsuran}x Angsuran, Total yang harus dibayar : Rp<font class="biaya">{$biaya->totalAngsuran}</font></h4></label> <br>
+													{/if}
+													<label style="width:140px"><h4>SPP Semester 1</h4></label> <label><h4>: Rp<font class="biaya">{$biaya->spp}</font></h4></label> <br>
+													<label style="width:140px"><h4>SKS Semester 1</h4></label> <label><h4>: Rp<font class="biaya">{$biaya->sks}</font> ({if $biaya->prodiTipe eq '1'}22{else}21{/if} x Rp.200.000,00)</h4></label> <br>
+													<label style="width:140px"><h4>Biaya Orientasi</h4></label> <label><h4>: Rp<font class="biaya">{$biaya->bpp}</font> (Hanya 1x) </h4></label>
+													{if $method eq '1'}
+													<br><label style="width:140px"><h4>Diskon</h4></label> <label><h4>: Rp<font class="biaya">1000000</font></h4></label>
+													{/if}
+													<hr>
+													{if $method eq '1'}
+													<label style="width:140px"><h4>Total Biaya</h4></label> <label><h4>: Rp<font class="biaya">{$total}</font></h4></label><br>
+													{else}
+													<label style="width:230px"><h4>Total Biaya Daftar Ulang</h4></label> <label><h4>: Rp<font class="biaya">{$biaya->total}</font></h4></label><br>
+													{/if} -->
+
+                        {if $method eq '1'}
+                        <label style="width:140px">
+                            <h4>Uang Masuk</h4>
+                        </label>
+                        <label>
+                            <h4>: Rp
+                                <font class="biaya">{$biaya->uangMasuk}</font>
+                            </h4>
+                        </label>
+                        <br>{else}
+                        <label style="width:140px">
+                            <h4>Uang Masuk</h4>
+                        </label>
+                        <label>
+                            <h4>: Rp
+                                <font class="">{$angsuran.angsuran1}</font> ( {$biaya->tempoAngsuran} X Angsuran ) dari total yang harus dibayar, sebesar Rp
+                                <font class="biaya">{$angsuran.angsuran1+$angsuran.angsuran2+$angsuran.angsuran3}</font>
+                            </h4>
+                        </label>
+                        <br>{/if}
+                        <label style="width:140px">
+                            <h4>SPP Semester 1</h4>
+                        </label>
+                        <label>
+                            <h4>: Rp
+                                <font class="biaya">{$biaya->spp}</font>
+                            </h4>
+                        </label>
+                        <br>
+                        <label style="width:140px">
+                            <h4>SKS Semester 1</h4>
+                        </label>
+                        <label>
+                            <h4>: Rp
+                                <font class="biaya">{$biaya->sks}</font>(21 x Rp.200.000,00)</h4>
+                        </label>
+                        <br>
+                        <label style="width:140px">
+                            <h4>Biaya Orientasi</h4>
+                        </label>
+                        <label>
+                            <h4>: Rp
+                                <font class="biaya">{$biaya->bpp}</font>(Hanya 1x)</h4>
+                        </label>
+                        {if $method eq '1'}
+                        <br>
+                        <label style="width:140px">
+                            <h4>Diskon</h4>
+                        </label>
+                        <label>
+                            <h4>
+                                : Rp
+                                <font class="biaya">1000000</font>
+                                {if $saudara gt '0'} + Rp
+                                <font class="biaya">1000000</font>
+                                {/if}
+                            </h4>
+                        </label>
+                        {else}
+                        <br>
+                        <label style="width:140px">
+                            <h4>Diskon</h4>
+                        </label>
+                        <label>
+                            <h4>
+                                {if $saudara gt '0'} : Rp
+                                <font class="biaya">1000000</font>
+                                {else} : - {/if}
+                            </h4>
+                        </label>
+                        {/if}
+                        <hr>{if $method eq '1'}
+                        <label style="width:300px">
+                            <h4 style="font-size:19px;font-family: Arial,sans-serif;">Total Biaya Keseluruhan</h4>
+                        </label>
+                        <label>
+                            <h4 style="font-size:19px;font-family: Arial,sans-serif;">: Rp
+                                <font class="biaya">{$total}</font>
+                            </h4>
+                        </label>
+                        <br>
+                        <input type="text" name="totalDaftarUlang" value="{$total}" hidden>{else}
+
+                        <label style="width:300px">
+                            <h4 style="font-size:19px;font-family: Arial,sans-serif;">Total Pembayaran Daftar Ulang</h4>
+                        </label>
+                        <label>
+                            <h4 style="font-size:19px;font-family: Arial,sans-serif;">: Rp
+                                <font class="biaya">{$total}</font>
+                            </h4>
+                        </label>
+                        <br>
+
+                        <label style="width:300px">
+                            <h4 style="font-size:19px;font-family: Arial,sans-serif;">Total yang harus dibayar</h4>
+                        </label>
+                        <label>
+                            <h4 style="font-size:19px;font-family: Arial,sans-serif;">: Rp
+                                <font class="biaya">{$totalAll}</font>
+                            </h4>
+                        </label>
+                        <br>
+
+                        <input type="text" name="totalDaftarUlang" value="{$total}" hidden>
+                        <hr>
+                        <h3>Detail Angsuran</h3>
+                        <hr>
+                        <div class="row col-md-6">
+                            <label class="col-md-8">
+                                <h4>Angsuran Pertama(UM)</h4>
+                            </label>
+                            <label>
+                                <h4>: Rp
+                                    <font class="biaya">{$angsuran.angsuran1}</font>
+                                </h4>
+                            </label>
+                            <br>
+                            <label class="col-md-8">
+                                <h4>Angsuran Kedua</h4>
+                            </label>
+                            <label>
+                                <h4>: Rp
+                                    <font class="biaya">{$angsuran.angsuran2}</font>
+                                </h4>
+                            </label>
+                            <br>
+                            <label class="col-md-8">
+                                <h4>Angsuran Ketiga</h4>
+                            </label>
+                            <label>
+                                <h4>: Rp
+                                    <font class="biaya">{$angsuran.angsuran3}</font>
+                                </h4>
+                            </label>
+                            <br>{if $jalur eq 'KP'} {if $cmb->kodeProdi eq '1208' or $cmb->kodeProdi eq '1206'}
+                            <label class="col-md-8">
+                                <h4>Angsuran Keempat</h4>
+                            </label>
+                            <label>
+                                <h4>: Rp
+                                    <font class="biaya">{$biaya->angsuran4}</font>
+                                </h4>
+                            </label>
+                            {/if} {/if}
+                        </div>
+                        {if $jalur eq 'KP'} {if $cmb->kodeProdi eq '1208'}
+                        <div class="row col-md-6">
+                            <label class="col-md-8">
+                                <h4>Angsuran Kelima</h4>
+                            </label>
+                            <label>
+                                <h4>: Rp
+                                    <font class="biaya">{$biaya->angsuran5}</font>
+                                </h4>
+                            </label>
+                            <br>
+                            <label class="col-md-8">
+                                <h4>Angsuran Keenam</h4>
+                            </label>
+                            <label>
+                                <h4>: Rp
+                                    <font class="biaya">{$biaya->angsuran6}</font>
+                                </h4>
+                            </label>
+                            <br>
+                            <label class="col-md-8">
+                                <h4>Angsuran Ketujuh</h4>
+                            </label>
+                            <label>
+                                <h4>: Rp
+                                    <font class="biaya">{$biaya->angsuran7}</font>
+                                </h4>
+                            </label>
+                            <br>
+                            <label class="col-md-8">
+                                <h4>Angsuran Kedelapan</h4>
+                            </label>
+                            <label>
+                                <h4>: Rp
+                                    <font class="biaya">{$biaya->angsuran8}</font>
+                                </h4>
+                            </label>
+                        </div>
+                        {/if} {/if}
+                        <br>
+                        <br>
+                        <div class="row col-md-12">
+                            <label class="col-md-8">
+                                <h4>Total Uang Masuk</h4>
+                            </label>
+                            <label class="col-md-4">
+                                <h4>: Rp
+                                    <font class="biaya">{$uangMasuk}</font>
+                                </h4>
+                            </label>
+                            <br>
+
+                            <label class="col-md-8">
+                                <h4 style="font-size:19px;font-family: Arial,sans-serif;">Sisa Angsuran</h4>
+                            </label>
+                            <label class="col-md-4">
+                                <h4 style="font-size:19px;font-family: Arial,sans-serif;">: Rp
+                                    <font class="biaya">{$sisaAng}</font>
+                                </h4>
+                            </label>
+                            <br>{/if}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Jumlah Pembayaran
+                    </label>
+                    <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <label>
+                            <h4>Rp
+                                <font class="biaya">{$transPaid->reapplyBankTransferAmount}</font>
+                            </h4>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Tanggal Pembayaran
+                    </label>
+                    <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="yyyy-mm-dd">
+                            <label>
+                                <h4>{$transPaid->tanggal_trans}</h4>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Metode Pembayaran
+                    </label>
+                    <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <label>
+                            <h4>{$transPaid->typeTrans}</h4>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Rekening Tujuan
+                    </label>
+                    <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <label>
+                            <h4>{$bankAkun->nama}</h4>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">No. Rek. Pengirim
+                    </label>
+                    <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <label>
+                            <h4>{$transPaid->noRekPengirimDaftarUlang}</h4>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Nama Rek. Pengirim
+                    </label>
+                    <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <label>
+                            <h4>{$transPaid->namaRekPengirimDaftarUlang}</h4>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Bukti Pembayaran
+                    </label>
+                    <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <label>
+                            <h4>{$transPaid->buktiBayarDaftarUlang}</h4>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+$(document).ready(function() {
+    $('.biaya').formatCurrency();
+});
+</script>

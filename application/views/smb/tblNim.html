@@ -1,0 +1,140 @@
+		<h4>TOTAL MAHASISWA : {$total->total} Orang</h4>
+				<div class="portlet">
+                     <div class="portlet-title">
+                        <!-- <div class="caption"><i class="icon-calendar"></i>NIM MAHASISWA BARU</div> -->
+                        <!-- <div class="tools">
+                           <a href="javascript:;" class="collapse"></a>
+                           <a href="javascript:;" class="reload"></a>
+                           <a href="javascript:;" class="remove"></a>
+                        </div> -->
+                     </div>
+                     <div class="portlet-body flip-scroll">
+                        <table class="table table-advance table-bordered table-striped table-condensed flip-content" >
+                           <thead class="flip-content">
+                              <tr>
+                                 <th>NAMA MAHSISWA</th>
+                                 <th>JALUR</th>
+                                 <th>PRODI</th>
+                                 <th>NIM</th>
+                                 <th>MUNDUR</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+							{foreach name=loop from=$sql item=row}
+                              <tr>
+                                 <td>									
+									<div class="panel-default">
+                                          <div class="panel-heading">
+                                             <h4 class="panel-title">
+                                                {$row->nama_cm}
+                                             </h4>
+                                          </div>
+									</div>
+								 </td>
+								 <td>
+									<div class="panel-default">
+                                          <div class="panel-heading">
+                                             <h4 class="panel-title">
+                                                {$row->n_jalur}
+                                             </h4>
+                                          </div>
+									</div>
+								 </td>
+								 <td>
+									<div class="panel-default">
+                                          <div class="panel-heading">
+                                             <h4 class="panel-title">
+                                                {$row->progdi}
+                                             </h4>
+                                          </div>
+									</div>
+								 </td>
+                                 <td class="nim{$row->no_smb}">
+							  {if $row->nim neq ''}
+								 <div id="accordion1{$row->no_smb}" class="panel-group">
+                                       <div class="panel panel-info">
+                                          <div class="panel-heading">
+                                             <h4 class="panel-title">
+                                                {$row->nim}
+                                             </h4>
+                                          </div>
+                                       </div>
+								 </div>
+							  {else}
+								 <div id="accordion1" class="panel-group" >
+									<a class="confirm btn dark" href="#" value="{$row->no_smb}" id="generate"><i class="icon-play"></i></a>
+									</div>
+							  {/if}
+								 </td>
+								 <td>
+								{if $row->stsMundurAfterReapply eq '1'}
+									<div class="panel-danger">
+                                          <div class="panel-heading">
+                                             <h4 class="panel-title">
+                                                Mengundurkan Diri
+                                             </h4>
+                                          </div>
+									</div>
+								{else}
+									<div class="panel-success">
+                                          <div class="panel-heading">
+                                             <h4 class="panel-title">
+                                                <a class="accordion-toggle" href="{$host}smb/mundurDiri/{$row->no_smb}/mundur">
+                                                Pengunduran Diri
+                                                </a>
+                                             </h4>
+                                          </div>
+									</div>
+								{/if}
+								 </td>
+                              </tr>
+							{/foreach}
+                           </tbody>
+                        </table>
+                     </div>
+               </div>
+			   
+					 <div class="modal fade" id="formMundur" tabindex="-1" role="basic" aria-hidden="true">
+                        <div class="modal-dialog  modal-wide">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                 <h4 class="modal-title">Edit Buka Pendaftaran Seleksi</h4>
+                              </div>
+                              <div class="modal-body">
+								<div id="form"></id>							  
+                              </div>
+                           </div>
+						  </div>
+                           <!-- /.modal-content -->
+                        </div>
+					</div>
+<script>
+{literal}
+$(".confirm").each(function (i, v){
+	$(this).click( function() {
+		var val = $(this).attr("value");
+		var opt = $(this).attr("id");
+		$.post("{/literal}{$host}{literal}smb/smbNim/confirm",{
+				'val':val,
+				'opt':opt
+					},function(resp){
+					$('.nim'+val).html(resp);
+				}); 
+		return false;
+	});
+});
+{/literal}
+
+{literal}
+	$(".mundurDiri").each(function (i, v){
+	$(this).click( function() {	
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}smb/mundurDiri/mundur", {'opt':opt, 'val':val},function(resp){
+			$('#form').html(resp);
+		});
+	});
+	});
+{/literal}
+</script>

@@ -1,0 +1,128 @@
+<div id="bar" style="border: 1px solid;margin-bottom: 20px;" class="hidden-print"></div>
+<div class="row col-md-1"></div>
+<div class="row col-md-10">
+    <div class="invoice col-xs-12">
+        <div class="row invoice-logo">
+            <div class="col-xs-12 invoice-logo-space" style="text-align: center;">
+                <img src="{$host}assets/img/logop.png" alt="" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" style="text-align: center; font-weight: bold;">
+                <h3><b>KARTU TANDA PESERTA UJIAN</b>
+                </h3>
+            </div>
+        </div>
+        <hr>
+        <div class="row" style="font-size:12px">
+            <div class="col-xs-3">
+                {if $cmb->foto eq ''}
+                <img src="{$host}assets/img/ava.png" class="img-responsive" alt=""/>{else}
+                <img src="{$host}assets/upload/foto/{$cmb->foto}" class="img-responsive" alt="" />{/if}
+            </div>
+            <div class="col-xs-8 invoice-payment">
+                <ul class="list-unstyled">
+                    <li>
+                        <label style="width: 165px;">Nama Lengkap</label>
+                        <label>: {$jadwal->namaCmb}</label>
+                    </li>
+                    <li>
+                        <label style="width: 165px;">Nomor Formulir</label>
+                        <label>: {$jadwal->nomor}</label>
+                    </li>
+                    <li>
+                        <label style="width: 165px;">Periode</label>
+                        <label>: {$jadwal->namaEvent}</label>
+                    </li>
+                    <li>
+                        <label style="width: 165px;">Program Studi</label>
+                        <label>: {$jadwal->progdi}</label>
+                    </li>
+                    <li>
+                        <label style="width: 165px;">Jalur Seleksi</label>
+                        <label>: {$jadwal->jalurCmb}</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-4">
+                <h4>Tanggal Ujian</h4>
+                <ul class="list-unstyled">
+                    <li style="border: 1px solid;padding: 10px;margin-right:90px;">{$jadwal->hari}, {$jadwal->days} {$jadwal->bulan} {$jadwal->tahun}</li>
+                </ul>
+                <ul class="list-unstyled">
+                    <li style="border: 1px solid;padding: 10px;margin-right:90px;">{$jadwal->jamMasuk} - {$jadwal->jamKeluar}</li>
+                </ul>
+            </div>
+            <div class="col-xs-5">
+                <h4>Lokasi Ujian</h4>
+                <ul class="list-unstyled">
+                    <li>{$jadwal->prop}, {$jadwal->kabKota}</li>
+                    <li>{$jadwal->alamat}, {$jadwal->kodePos}</li>
+                    <li>Tlp. {$jadwal->tel}</li>
+                    <li>Fax. {$jadwal->fax}</li>
+                    <li>admission@paramadina.ac.id</li>
+                    <li>{$jadwal->namaGedung}, {$jadwal->namaRuang}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-9">
+            <h4>Perlengkapan Persyaratan</h4>
+            <ul class="list-unstyled">
+                <li>1. Foto</li>
+                <li>2. Foto Copy KTP Orang Tua</li>
+                <li>3. Rapor Kelas 1 s/d 3 SMA Sederajat</li>
+                <li><b>Copy Seluruh data kelengkapan untuk dibawa pada saat ujian seleksi masuk.</b>
+                </li>
+                <li><b>Perlengkapan persyaratan ujian diserahkan ke kampus H-2 ujian atau bisa di 
+                scan dan dikirim via email ke admission@paramadina.ac.id</b>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="col-xs-4">
+            <h4>Tanda Tangan,</h4>
+            <ul class="list-unstyled">
+                <li>
+                    <br>
+                </li>
+                <li>
+                    <br>
+                </li>
+                <li>
+                    <br>
+                </li>
+                <li>Pengawas</li>
+            </ul>
+        </div>
+        <div class="col-xs-4">
+
+        </div>
+        <div class="col-xs-4">
+            <h4>Tanda Tangan,</h4>
+            <ul class="list-unstyled">
+                <li>
+                    <br>
+                </li>
+                <li>
+                    <br>
+                </li>
+                <li>
+                    <br>
+                </li>
+                <li>Pewawancara</li>
+            </ul>
+        </div>
+        <div class="row hidden-print">
+            <div class="col-xs-8 invoice-block">
+                <ul class="list-unstyled amounts">
+                    <br />
+                    <a class="btn btn-lg blue hidden-print" onclick="javascript:window.print();">Print <i class="icon-print"></i></a>
+                    </br>
+                    <br>
+                    <span>Note : Gunakan browser Chrome untuk lebih mudah memodifikasi halaman print</span>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

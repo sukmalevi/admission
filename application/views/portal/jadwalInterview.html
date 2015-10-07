@@ -1,0 +1,98 @@
+		<div id="bar" style="border: 1px solid;margin-bottom: 20px;" class="hidden-print"></div>
+		<div class="invoice">
+            <div class="row invoice-logo" style="text-align:center">
+              <!--  <div class="col-xs-12 invoice-logo-space"><img src="{$host}assets/img/logop.png" alt="" /> </div> -->
+            </div>
+            <div class="row" style="border-top: 0px solid;">
+			<div class="row" style="border: 1px solid;width:555px;position:absolute;right:25%;margin-top:1px">				
+				<div class="col-xs-12 invoice-logo-space" style="text-align: center;padding-top:5px"><img src="{$host}assets/img/logop.png" alt="" /> </div>
+				<div class="col-xs-12" style="text-align: center;border-top:1px solid;"><h3>JADWAL INTERVIEW via PHONE</h3></div>
+				   <div class="col-xs-12 invoice-payment">
+					  <ul class="list-unstyled">
+						 <li><label style="width: 165px;">Nama Lengkap</label> <label>: {$jadwal->namaCmb}</label></li>
+						 <li><label style="width: 165px;">Nomor Formulir</label> <label>: {$jadwal->nomor}</label></li>
+						 <li><label style="width: 165px;">Periode</label> <label>: 	{$jadwal->namaEvent}</label></li>
+						 <li><label style="width: 165px;">Program Studi</label> <label>: {$jadwal->progdi}</label></li>
+						 <li><label style="width: 165px;">Jalur Seleksi</label> <label>: {$jadwal->jalurCmb}</label></li>
+					  </ul>
+				   </div>	
+				   <div class="col-xs-5">
+					  <h4>Tanggal Interview</h4>
+					  <ul class="list-unstyled">
+						 <li style="border: 1px solid;width:170px;padding: 10px;">{$phone->hariPhone}, {$phone->tanggalPhone} {$phone->bulanPhone} {$phone->tahunPhone}</li>
+					  </ul>
+					  <h4>No Kontak</h4>
+					  <ul class="list-unstyled">
+						 <li style="border: 1px solid;width:170px;padding: 10px;">No Telp : {$phone->no_hp1}</li><br>
+						 <li style="border: 1px solid;width:170px;padding: 10px;">No HP : {$phone->no_hp2}</li>
+					  </ul>
+				   </div>
+				   <div class="col-xs-4">
+					  {if $cmb->foto eq ''}
+						<img src="{$host}assets/img/ava.png" height="220px" width="200px"/>
+					  {else}
+						<img src="{$host}assets/upload/foto/{$cmb->foto}" height="220px" width="200px"/>
+					  {/if}
+				   </div>
+				   <!-- <div class="col-xs-4">
+					  <h4>Lokasi Ujian</h4>
+					  <ul class="list-unstyled">
+						 <li>{$jadwal->prop}, {$jadwal->kabKota}</li>
+						 <li>{$jadwal->alamat}, {$jadwal->kodePos}</li>
+						 <li>Tlp. {$jadwal->tel}</li>
+						 <li>Fax. {$jadwal->fax}</li>
+						 <li>{$jadwal->namaGedung}, {$jadwal->namaRuang}</li>
+					  </ul>
+				   </div> -->
+				   <div class="col-xs-10">
+					  <!-- <h4>Perlengkapan Persyaratan</h4>
+					  <ul class="list-unstyled">
+						 <li>1. Foto</li>
+						 <li>2. Foto Copy KTP Orang Tua</li>
+						 <li>3. Rapor Kelas 1 s/d 3 SMA Sederajat</li>
+						 <li><b>Copy Seluruh data Kelengkapan untuk dibawa pada saat ujian seleksi masuk.</b></li>
+					  </ul> -->
+				   </div>
+				</div>
+			</div>
+			<!-- 
+            <div class="row">				
+			   <div class="col-xs-1">
+					 
+               </div>
+               <div class="col-xs-4">
+				<h4>Tanda Tangan,</h4>
+                  <ul class="list-unstyled">
+                     <li><br></li>
+                     <li><br></li>
+					 <li><br></li>
+                     <li>Pengawas</li>
+                  </ul> 
+               </div>
+			   <div class="col-xs-2">
+					 
+               </div>
+			   <div class="col-xs-4">
+				<h4>Tanda Tangan,</h4>
+                  <ul class="list-unstyled">
+                     <li><br></li>
+                     <li><br></li>
+					 <li><br></li>
+                     <li>Pewawancara</li>
+                  </ul>	 
+               </div>			
+			   <div class="col-xs-1">
+					 
+               </div>
+            </div> -->
+            <!-- <div class="row">
+               <div class="col-xs-">
+               </div>
+               <div class="col-xs-8 invoice-block">
+                  <ul class="list-unstyled amounts">
+                  </ul>
+                  <br />
+                  <a class="btn btn-lg blue hidden-print" onclick="javascript:window.print();">Print <i class="icon-print"></i></a>
+               </div>
+            </div> -->
+         </div>

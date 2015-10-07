@@ -1,0 +1,260 @@
+   <!-- BEGIN FORM-->
+<form action="{$host}registrasi/formRegistrasi" class="form-horizontal form-bordered form-row-stripped" id="form_sample_1" method="post">
+    <div class="portlet box grey">
+        <div class="portlet-body form" style="border-top: 1px double #4682B4;">
+            <div class="form-body">
+                <h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">Registrasi</h3>
+                <div class="alert alert-error display-hide">
+                    <button class="close" data-dismiss="alert"></button>
+                    You have some form errors. Please check below.
+                </div>
+                <div class="alert alert-success display-hide">
+                    <button class="close" data-dismiss="alert"></button>
+                    Your form validation is successful!
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Jenjang
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10">
+                        <select class="form-control" name="jenjang" id="jenjang">
+                            <option>--Silahkan Pilih--</option>
+                            <option value="1">S1 (Sarjana)</option>
+                            <option value="2">S2 (Pasca Sarjana)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Program Studi
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10">
+                        <select class="form-control" name="prodi" id="prodi">
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Jalur Seleksi
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10">
+                        <select class="form-control" name="jalur" id="jalur">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-body">
+                <h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">Login Pengguna</h3>
+                <!-- <div class="form-group">
+											   <label class="control-label col-md-2" >Username<span class="required">*</span>
+											   </label>
+											   <div class="col-md-10" >
+												   <div class="input-icon">
+													<i class="icon-user"></i>
+													  <input type="text" placeholder="username" class="form-control" data-required="1" name="username"/>
+													</div>
+													  <span class="help-block">Username untuk Login</span>
+											   </div>
+											</div> -->
+                <div class="form-group">
+                    <label class="control-label col-md-2">Email
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10">
+                        <div class="input-icon">
+                            <i class="icon-envelope"></i>
+                            <input type="text" placeholder="email" class="form-control placeholder-no-fix" name="email" id="email" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Konfirmasi Email
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10">
+                        <div class="input-icon">
+                            <i class="icon-envelope"></i>
+                            <input type="text" placeholder="Retype email" class="form-control placeholder-no-fix" name="remail" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Password
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10">
+                        <div class="input-icon">
+                            <i class="icon-key"></i>
+                            <input type="password" placeholder="Password" class="form-control" name="password" id="password" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Konfirmasi Password
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10">
+                        <div class="input-icon">
+                            <i class="icon-key"></i>
+                            <input type="password" placeholder="Retype password" class="form-control" name="rpassword" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-body">
+                <h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">Data Pribadi</h3>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Nama Lengkap
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10">
+                        <input type="text" placeholder="Nama Lengkap" class="form-control placeholder-no-fix" name="name" />
+                        <span class="help-block">Sesuai dengan ijazah terakhir</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Alamat Rumah</label>
+                    <div class="col-md-10">
+                        <textarea rows="3" name="occupation" placeholder="Alamat Sekarang" class="form-control placeholder-no-fix"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Jenis Kelamin</label>
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="icon-male"></i>
+                            </span>
+                            <select class="form-control" name="sex">
+                                {foreach name=loop from=$gender item=row}
+                                <option value="{$row->kode}">{$row->nama}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Nomor Handphone</label>
+                    <div class="col-md-10">
+                        <input type="text" placeholder="No. HP" class="form-control" id="no_hp" name="no_hp" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Tempat/Tanggal Lahir</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" placeholder="Tempat Lahir" name="tempatLahir">
+                        <!-- <input class="form-control form-control-inline input-medium date-picker" data-date-format="yyyy-mm-dd"  size="16" type="text" value="" style="width:353px;display:inline" name="tanggalLahir"/> -->
+
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control form-control-inline input-medium " placeholder="DD-MM-YYYY" name="tanggalLahir">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Asal Sekolah</label>
+                    <div class="col-md-10">
+                        <input type="text" placeholder="Nama Sekolah Asal" class="form-control" name="sekolah" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Tahun Lulus</label>
+                    <div class="col-md-10">
+                        <input type="number" placeholder="Tahun Kelulusan" class="form-control" name="tahunLulus" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Jurusan</label>
+                    <div class="col-md-10">
+                        <input type="text" placeholder="Jurusan SMA" class="form-control" name="jurusan" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Kode reCaptcha</label>
+                    <div class="col-md-10">
+
+                        <!-- BEGIN REPCAPTCHA -->
+                        <div id="recaptcha_widget" class="form-recaptcha">
+
+                            <div class="form-recaptcha-img" style="width: 325px">
+                                <a id="recaptcha_image" href="#"></a>
+                                <div class="recaptcha_only_if_incorrect_sol" style="color:red">Incorrect please try again</div>
+                            </div>
+
+                            <div class="input-group" style="width: 325px">
+                                <input type="text" class="form-control" id="recaptcha_response_field" name="recaptcha_response_field">
+                                <div class="input-group-btn">
+                                    <a class="btn default" href="javascript:Recaptcha.reload()"><i class="icon-refresh"></i></a>
+                                    <a class="btn default recaptcha_only_if_image" href="javascript:Recaptcha.switch_type('audio')"><i title="Get an audio CAPTCHA" class="icon-headphones"></i></a>
+                                    <a class="btn default recaptcha_only_if_audio" href="javascript:Recaptcha.switch_type('image')"><i title="Get an image CAPTCHA" class="icon-picture"></i></a>
+                                    <a class="btn default" href="javascript:Recaptcha.showhelp()"><i class="icon-question-sign"></i></a>
+                                </div>
+                            </div>
+
+                            <p class="help-block">
+                                <span class="recaptcha_only_if_image">Enter the words above</span>
+                                <span class="recaptcha_only_if_audio">Enter the numbers you hear</span>
+                            </p>
+
+                        </div>
+                        <!-- END REPCAPTCHA -->
+                    </div>
+                </div>
+                <div class="form-actions fluid">
+                    <div class="col-md-offset-3 col-md-10">
+                        <button type="reset" class="btn blue">Reset</button>
+                        <button type="submit" class="btn green">Submit</button>
+                        <button type="button" class="btn default">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+							  
+			
+<!-- BEGIN GOOGLE RECAPTCHA -->
+   <script type="text/javascript">
+      var RecaptchaOptions = {
+         theme : 'custom',
+         custom_theme_widget: 'recaptcha_widget'
+      };
+   </script>
+   <script type="text/javascript" src="https://www.google.com/recaptcha/api/challenge?k=6Lcj_eoSAAAAAM43ZI_sA8acDwPxPIJn6nwRS5WV"></script>
+   <!-- END GOOGLE RECAPTCHA -->				  
+   
+<script>
+{literal}
+function prodi() {
+    $.post("{/literal}{$host}{literal}registrasi/selectProdi",{
+					'jenjang':$('#jenjang').val()				
+				},function(resp){
+                $('select#prodi').html(resp);
+            });
+}
+{/literal}
+{literal}
+function jalur() {
+    $.post("{/literal}{$host}{literal}registrasi/selectJalur",{
+					'prodi':$('#prodi').val()				
+				},function(resp){
+                $('select#jalur').html(resp);
+            });
+}
+{/literal}
+
+$(document).ready(function(){
+	prodi();
+	jalur();
+});
+
+$("#jenjang").change(function(){
+	prodi();
+	jalur();
+});
+
+$("#prodi").change(function(){
+	jalur()
+});
+</script>

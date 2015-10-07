@@ -1,0 +1,31 @@
+<div class="form-group">
+            <label >Jalur Seleksi</label>
+            <select  class="form-control" name="wil" id="wil">
+				{foreach name=lope from=$jalur item=row}
+				<option value="{$row->kode}">{$row->nama}</option>
+				{/foreach}
+            </select>
+        </div>
+		<div id="tblWilayah">				
+		</div>	
+<script>
+{literal}
+	$(document).ready(function(){
+		$.post("{/literal}{$host}{literal}master/mDaftarUlang/table",{
+					'jalur':$('#wil').val()					
+				},function(resp){
+                $('#tblWilayah').html(resp);
+            });
+	});
+	$("#wil").change(function(){
+		$.post("{/literal}{$host}{literal}master/mDaftarUlang/table",{
+					'jalur':$('#wil').val()					
+				},function(resp){
+                $('#tblWilayah').html(resp);
+            });
+	});
+
+</script>
+{/literal}
+
+												  

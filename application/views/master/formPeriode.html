@@ -1,0 +1,70 @@
+
+                                <form action="{$host}master/masterPeriode/edit/do" class="form-horizontal" method="post">
+									<div class="form-body">
+										  <div class="form-group">
+                                             <label  class="control-label col-md-3">Kode</label>
+                                             <div class="input-group col-md-6">
+												<input type="text" id="kode" name="kode" hidden value="{$periode->id}">
+                                                <input type="text" class="form-control" placeholder="Kode Jalur Seleksi[Automatic]" id="kode" name="kode" disabled value="{$periode->id}">
+                                             </div>
+                                          </div>										  
+										  <div class="form-group">
+											<label  class="control-label col-md-3">Periode</label>
+												<div class="col-md-9">
+													<select class="form-control" id="periode"  name="periode" class="periode">
+														<option value="{$periode->idMaster}">{$periode->periodeMaster}</option>
+													{foreach name=loop from=$masterPeriode item=row}
+														<option value="{$row->kode}">{$row->nama}</option>
+													{/foreach}
+													</select>
+												</div>
+										  </div>
+										  <div class="form-group">
+											  <label class="control-label col-md-3">Date Range</label>
+											  <div class="col-md-4">
+												 <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="yyyy-mm-dd">
+													<input type="text" class="form-control" name="from" value="{$periode->tanggalMulai}">
+													<span class="input-group-addon">to</span>
+													<input type="text" class="form-control" name="to" value="{$periode->tanggalSelesai}">
+												 </div>
+												 <!-- /input-group -->
+												 <span class="help-block">Select date range</span>
+											  </div>
+										   </div>
+										  <div class="form-group">
+                                             <label  class="control-label col-md-3">Sesi Ke-</label>
+                                             <div class="input-group col-md-3">
+                                                <input type="text" class="form-control" placeholder="Sesi Ke-" id="sesi" name="sesi" pattern="\d+" value="{$periode->sesi}">
+                                             </div>
+                                          </div>
+										  <div class="form-group">
+                                             <label  class="control-label col-md-3">Nama Periode</label>
+                                             <div class="input-group col-md-9">
+                                                <input type="text" class="form-control" placeholder="[Tahun Mulai]-[Tahun Selesai]-[Jenjang]-[Semester]" id="nama" name="nama" value="{$periode->nama}">
+                                             </div>
+                                          </div>
+										  <div class="form-group">
+											<label  class="control-label col-md-3">Status</label>
+												<div class="col-md-9">
+													<select class="form-control" id="status"  name="status" class="status">
+														{if $periode->status eq '1'}
+															<option value="1">AKTIF</option>
+														{else}
+															<option value="0">TIDAK AKTIF</option>
+														{/if}
+														<option value="1">AKTIF</option>
+														<option value="0">TIDAK AKTIF</option>
+													</select>
+												</div>
+										  </div>
+									  <div class="modal-footer">
+										 <button type="button" class="btn default" data-dismiss="modal">Close</button>
+										 <button type="submit" class="btn blue" id="edit" value="edit" name="opt"> Save </a>
+									  </div>
+								</form>
+<script>
+	jQuery(document).ready(function() {       
+         // initiate layout and plugins
+         FormComponents.init();
+	});
+</script>

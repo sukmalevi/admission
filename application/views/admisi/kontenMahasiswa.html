@@ -1,0 +1,39 @@
+				<div class="portlet box grey">
+                     <div class="portlet-title">
+                        <div class="caption"><i class="icon-cogs"></i>Peserta Calon Mahasiswa Baru Prodi {$prodi->nama}</div>
+                        <div class="tools">
+						   <a href="{$host}admisi/exportToExcel/{$kodeSmb}/{$prodi->nama}" class="btn default btn-xs black" style="margin-bottom: 12px;"><i class="icon-download-alt"></i></a>
+                           <a href="javascript:;" class="collapse"></a>
+                           <a href="javascript:;" class="reload"></a>
+                           <a href="javascript:;" class="remove"></a></div>
+                     </div>
+                     <div class="portlet-body flip-scroll">
+                        <table class="table table-bordered table-striped table-condensed flip-content">
+                           <thead class="flip-content">
+                              <tr>
+                                 <th>No </th>
+                                 <th>No. Registrasi</th>
+                                 <th>Nama Peserta</th>
+                                 <th>Email</th>
+                                 <th>Tanggal Pendaftaran</th>
+                                 <th>Jalur</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+							  {foreach name=loop from=$mahasiswa item=row}
+                              <tr>
+                                 <td>{$row->No}</td>
+								 {assign var=key value='No Registrasi'}
+                                 <td>{$row->$key}</td>
+								 {assign var=key1 value='Nama Lengkap'}
+                                 <td>{$row->$key1}</td>	
+                                 <td>{$row->Email}</td>	
+								 {assign var=key2 value='Tanggal Pendaftaran'}						 
+                                 <td>{$row->$key2}</td>
+                                 <td>{$row->Jalur}</td>
+                              </tr>
+								{/foreach}
+                           </tbody>
+                        </table>
+                     </div>
+					</div>

@@ -1,0 +1,89 @@
+<div class="portlet box blue">
+    <div class="portlet-title">
+    </div>
+    <div class="portlet-body flip-scroll">
+        <table class="table table-bordered table-striped table-condensed flip-content" id="sample_editable_1"> 
+            <thead clas="flip-content">
+                <tr>
+                    <th>NO. REG</th>
+                    <th>NAMA CMB</th>
+                    <th>PROGRAM STUDI</th>
+                    <th>JALUR</th>
+                    <th>TANGGAL DAFTAR</th>
+                    <th>STATUS</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach name=loop from=$sql item=row}
+                <tr>
+                    <td>
+                     {if $row->foto neq ''}	
+                    	<div class="tiles">
+                         <div class="tile image">
+                         <a  style="color:black" class="accordion-toggle" href="{$host}cmb/profil/{$row->no_smb}">
+					        <div class="tile-body">				            
+                        		<img class="img-responsive" alt="" src="{$host}assets/upload/foto/{$row->foto}">
+					        </div>
+					        <div class="tile-object" style="background-color:#006895">
+					            <div class="name">{$row->no_smb}</div>
+					        </div>
+					     </a>
+					    </div>
+					   </div>
+                    {else}						
+						<a class="btn default" href="{$host}cmb/profil/{$row->no_smb}" value="{$row->no_smb}">{$row->no_smb}</a>
+                    {/if}
+
+
+                    </td>
+                    <td>
+                    <a class="accordion-toggle" href="{$host}cmb/formulir/{$row->no_smb}">
+                        <div class="panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">{$row->nama_cm}</h4>
+                            </div>
+                        </div>
+                    </a>
+                    </td>
+                    <td><div class="panel-info">
+                            <div class="panel-heading">
+							<h4 class="panel-title">{$row->prodi_sing}</h4>
+                            </div>
+                        </div>
+					</td>
+                    <td><div class="panel-info">
+                            <div class="panel-heading">
+							<h4 class="panel-title">{$row->n_jalur}</h4>
+                            </div>
+                        </div>
+					</td>
+                    <td><div class="panel-info">
+                            <div class="panel-heading">
+							<h4 class="panel-title">{$row->tanggal|date_format:"%e %b %Y"}</h4>
+                            </div>
+                        </div>
+					</td>
+                    <td>
+						{if $row->comfirm_keu eq '1'}
+							<a class="keu btn green" href="#"> CONFIRMED <i class=" icon-ok"></i> </a>
+						{else if $row->stsReapplyPaid eq '1'}
+							<a name="keu" class="keu btn default" 
+								href="{if $levelID eq '99' or $levelID eq '77' or $levelID eq '101'}{$host}cmb/detailPayment/{$row->no_smb}{else}#{/if}"
+							> Approve KEU <i class=" icon-chevron-right"></i> </a>
+						{else}
+							<a name="keu" class="keu btn blue-dark" 
+								href="{if $levelID eq '99' or $levelID eq '66' or $levelID eq '55' or $levelID eq '33' or $levelID eq '101' }
+								{$host}cmb/payment/{$row->no_smb}{else}#{/if}"
+							>Daftar Ulang <i class=" icon-chevron-right"></i> </a>
+						{/if}
+                    </td>
+                    {/foreach}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+jQuery(document).ready(function() {
+    TableEditable.init();
+}); 
+</script>

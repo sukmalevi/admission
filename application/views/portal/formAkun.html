@@ -1,0 +1,85 @@
+<!-- BEGIN FORM-->
+<form action="{$host}portal/editProfil/edit/save" enctype="multipart/form-data" class="form-horizontal form-bordered form-row-stripped" id="form_sample_1" method="post">
+    <div class="portlet box grey">
+        <div class="portlet-body form" style="border-top: 1px double #4682B4;">
+            <div class="form-body" style="font-size:bold">
+                <h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">DATA DIRI</h3>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Nama Lengkap
+                    </label>
+                    <div class="col-md-9" style="height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <label>
+                            <h4>{$nama}</h4>
+                        </label>
+                        <input value="{$cmb->kode_smb}" name="kode" hidden>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Program Studi
+                    </label>
+                    <div class="col-md-9" style="height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <label>
+                            <h4>{$cmb->progdi}</h4>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-body">
+                <h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">Change Password</h3>                
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Username / Email
+                    </label>
+                    <div class="col-md-9" style="height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <label>
+                            <h4>{$cmb->kode_smb}</h4>
+                        </label>
+                    </div>
+                </div>                
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Old Password
+                    </label>
+                    <div class="col-md-5" style="height: 46px; padding-left: 35px; padding-top: 5px;">
+                    	<input name="kode" value="{$cmb->kode_smb}" hidden>
+                        <input type="password" class="form-control" id="oldPass" name="oldPass" style="text-align: left;" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">New Password
+                    </label>
+                    <div class="col-md-5" style="height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <input type="password" class="form-control" id="newPass" name="newPass" style="text-align: left;" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="text-align:left;width: 220px;">Confirm Password
+                    </label>
+                    <div class="col-md-5" style="height: 46px; padding-left: 35px; padding-top: 5px;">
+                        <input type="password" class="form-control" id="confirmPass" name="confirmPass" style="text-align: left;" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn default" data-dismiss="modal">Reset</button>
+                    <button type="submit" class="btn blue" id="save" value="passW" name="opt">Simpan <i class="icon-save"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+    $(document).ready(function() {
+      $("#form_sample_1").validate({
+        rules: {
+          oldPass: { 
+                required: true, minlength: 5
+          },
+          newPass: { 
+                required: true, minlength: 5
+          },
+          confirmPass: { 
+                required: true, equalTo: "#newPass", minlength: 5
+          }
+        }
+      });
+    });
+  </script>

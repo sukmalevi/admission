@@ -1,0 +1,163 @@
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption"><i class=" icon-money"></i> PEMBAYARAN CALON MAHASISWA BARU</div>
+        <div class="tools">
+            <a href="javascript:;" class="collapse"></a>
+            <a href="javascript:;" class="reload"></a>
+            <a href="javascript:;" class="remove"></a>
+        </div>
+    </div>
+    <div class="portlet-body flip-scroll">
+        <table class="table table-bordered table-striped table-condensed flip-content" id="sample_editable_1">
+            <thead class="flip-content">
+                <tr>
+                    <th>NO. REG</th>
+                    <th>NAMA CMB</th>
+                    <th>PROGRAM STUDI</th>
+                    <th>JALUR</th>
+                    <th>STATUS</th>
+                    <th>CONFIRM</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach name=loop from=$sql item=row}
+                <tr>
+                    <td>
+                        <h4 class="panel-title">{$row->no_smb}</h4>
+                    </td>
+                    <td>
+                        <h4 class="panel-title">{$row->nama_cm}</h4>
+                    </td>
+                    <td>
+                        <h4 class="panel-title">{$row->progdi}</h4>
+                    </td>
+                    <td>
+                        <h4 class="panel-title">{$row->n_jalur}</h4>
+                    </td>
+                    <td>
+                        <div id="accordion1{$row->no_smb}" class="panel-group">
+                            {if $row->statusBayar eq '1'}
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1{$row->no_smb}" href="#accordion1_1{$row->no_smb}">
+                                                Pembayaran Registrasi Sudah Dilakukan
+                                                </a>
+                                    </h4>
+                                </div>
+                                <div id="accordion1_1{$row->no_smb}" class="panel-collapse collapse" style="width:555px">
+                                    <div class="panel-body">
+                                        <form>
+                                            <fieldset>
+                                                <label style="width:140px;">Metode</label>
+                                                <label>: {$row->metode}</label>
+                                                <br>
+                                                <label style="width:140px;">No Kartu ATM</label>
+                                                <label>: {if $row->noAtmCardPendaftaran eq '0'}-{else}{$row->noAtmCardPendaftaran}{/if}</label>
+                                                <br>
+                                                <label style="width:140px;">Rekening</label>
+                                                <label>: {$row->rekening}</label>
+                                                <br>
+                                                <label style="width:140px;">Jumlah</label>: Rp.{$row->jumlah}
+                                                <br>
+                                                <label style="width:140px;">Tanggal Pembayaran</label>
+                                                <label>: {$row->hari}, {$row->tglPembayaran}</label>
+                                                <br>
+                                                <label style="width:140px;">No. ATM Card</label>
+                                                <label>: {$row->noAtmCardPendaftaran}</label>
+                                                <br>
+                                                <label style="width:140px;">No. Rek. Pengirim</label>
+                                                <label>: {$row->noRekPengirimPendaftaran}</label>
+                                                <br>
+                                                <label style="width:140px;">Nama. Rek. Pengirim</label>
+                                                <label>: {$row->namaRekPengirimPendaftaran}</label>
+                                                <br>
+                                                <label style="width:140px;">Bukti Bayar</label>
+                                                <label>: <a href="{$host}/assets/upload/bukti_bayar/{$row->buktiBayarPendaftaran}" class="btn green">{$row->buktiBayarPendaftaran}</a>
+                                                </label>
+                                                <br>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            {else}
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        Belum Melakukan Pendaftaran Ulang
+                                    </h4>
+                                </div>
+                            </div>
+                            {/if}
+                        </div>
+                    </td>
+                    <td id="confirm{$row->no_smb}">
+                        {if $row->confirm eq '0' and $row->statusBayar eq '1'}
+                        <a class="tolak btn red" href="#editing" data-toggle="modal" value="{$row->no_smb}" id="tolak" name="tolak"><i class="icon-remove"></i></a>
+                        <a class="confirm btn dark" href="#" value="{$row->no_smb}" id="confirm" name="{$row->kode_smb}"><i class="icon-play"></i></a>
+                        {else if $row->confirm eq '1'}
+                        <div id="accordion1" class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        CONFIRMED
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        {/if}
+                    </td>
+    </div>
+    </tr>
+    {/foreach}
+    </tbody>
+    </table>
+</div>
+</div>
+<div class="modal fade" id="editing" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Tolak Pembayaran Pendaftaran</h4>
+            </div>
+            <div class="modal-body">
+                <div id="formJabatan"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+jQuery(document).ready(function() {
+    TableEditable.init();
+}); {literal}
+$(".confirm").each(function(i, v) {
+    $(this).click(function() {
+        var val = $(this).attr("value");
+        var vale = $(this).attr("name");
+        var opt = $(this).attr("id");
+        $.post("{/literal}{$host}{literal}smb/smbPay/confirm", {
+            'val': val,
+            'value': vale,
+            'opt': opt
+        }, function() {
+            //$('#confirm'+val).html(resp);
+            location.reload();
+        });
+        return false;
+    });
+}); {/literal} {literal}
+    $(".tolak").each(function(i, v) {
+        $(this).click(function() {
+            opt = $(this).attr("name");
+            val = $(this).attr("value");
+            $.post("{/literal}{$host}{literal}smb/tolakBayarDaftar/tolak", {
+                'opt': opt,
+                'val': val
+            }, function(resp) {
+                $('#formJabatan').html(resp);
+            });
+        });
+    }); {/literal}
+</script>

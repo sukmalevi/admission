@@ -1,0 +1,194 @@
+<div class="portlet" style="margin-top:15px">
+    <div class="portlet-title">
+        <div class="caption">HASIL SELEKSI CALON MAHASISWA BARU</div>
+        <!-- <div class="tools">
+            <a href="javascript:;" class="collapse"></a>
+            <a href="javascript:;" class="reload"></a>
+            <a href="javascript:;" class="remove"></a>
+        </div> -->
+    </div>
+    <div class="portlet-body flip-scroll">
+        <table class="table table-advance table-bordered table-striped table-condensed flip-content" id="sample_editable_1">
+            <thead class="flip-content">
+                <tr>
+                    <th>NAMA CMB</th>
+                    <th>FORMULIR</th>
+                    <th>HASIL SELEKSI</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach name=loop from=$sql item=row}
+                <tr>
+                    <td class="highlight"><h4 class="panel-title">{$row->nama_cm}</h4></td>
+                    <td><a class="label label-lg label-success" href="{$host}smb/formulir/{$row->no_smb}">{$row->no_smb}</a>
+						
+                        <!-- <table class="formulir">
+                            <tr class="headers" title="Klik Untuk Detail">
+                                <td>{$row->no_smb}</td>
+
+                                <td><a id="formulir" href="#" class="btn default btn-xs black"><i class="icon-eye-open"></i> Detail</a>
+                                </td>
+                            </tr>
+                            <tr class="formulir" style="display:none" title="Click untuk Kembali">
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td>Periode</td>
+                                            <td>{$row->n_periode}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Program Studi</td>
+                                            <td>{$row->progdi}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jalur</td>
+                                            <td>{$row->n_jalur}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tanggal UMB</td>
+                                            <td>{$row->hari}, {$row->tglEvent}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jam UMB</td>
+                                            <td>{$row->jamMasuk} - {$row->jamKeluar}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ruang UMB</td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <td>{$row->ruang}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{$row->namaGedung}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{$row->alamat}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{$row->kabKota} {$row->prop} {$row->kodePos}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{$row->tel}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{$row->fax}</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                            </tr>
+                        </table> -->
+                        </td>
+                        <td>
+                            <table class="data" border="0">
+                                <tr class="headerr" title="Click Untuk melihat detail">
+                                    <td class="hsl">
+                                        {if $row->event eq ''}
+                                        <span class="label label-sm label-warning label-mini">Belum Memilih Jadwal</span>
+                                        {else if $row->konfirm eq '0'}
+                                        <span class="label label-sm label-info label-mini">Belum Diperiksa</span>
+                                        {if $row->adaSaudara eq '0'}
+	                                        <a style="float:right;" id="edit" value="{$row->no_smb}" href="#" class="btn default btn-xs black">
+	                                            <i class="icon-edit"></i>Edit
+	                                        </a>
+	                                        <a style="float:right;" id="view" value="{$row->no_smb}" href="#" class="btn default btn-xs black"><i class="icon-eye-open"></i>View</a>
+	                                        <a style="float:right;visibility:hidden;" id="hide{$row->no_smb}" value="{$row->no_smb}" href="#" class="btnHide default btn-xs black"><i class="icon-eye-close"></i>Hide</a>
+                                        {else}
+	                                        {if $row->confirmSaudara eq '0'}
+	                                        <a href="{$host}smb/profil/{$row->no_smb}">
+	                                            <span class="label label-sm label-danger label-mini">Confirm Saudara</span>
+	                                        </a>
+	                                        {else}
+		                                        <a style="float:right;" id="edit" value="{$row->no_smb}" href="#" class="btn default btn-xs black">
+		                                            <i class="icon-edit"></i>Edit
+		                                        </a>
+		                                        <a style="float:right;" id="view" value="{$row->no_smb}" href="#" class="btn default btn-xs black"><i class="icon-eye-open"></i>View</a>
+		                                        <a style="float:right;visibility:hidden;" id="hide{$row->no_smb}" value="{$row->no_smb}" href="#" class="btnHide default btn-xs black"><i class="icon-eye-close"></i>Hide</a>
+                                        	{/if} 
+                                        {/if} 
+                                        {else if $row->konfirm eq '1'} {if $row->lulusTidak eq '1'}
+                                        <span class="label label-sm label-success label-mini">Lulus Seleksi</span>
+                                        {else}
+                                        <span class="label label-sm label-danger label-mini">Tidak Lulus</span>
+                                        {/if}
+                                        <a style="float:right;" id="edit" value="{$row->no_smb}" href="#" class="btn default btn-xs black"><i class="icon-edit"></i>Edit</a> 
+                                        <a style="float:right;" id="view" value="{$row->no_smb}" href="#" class="btn default btn-xs black"><i class="icon-eye-open"></i>View</a>
+                                        <a style="float:right;visibility:hidden;" id="hide{$row->no_smb}" value="{$row->no_smb}" href="#" class="btnHide default btn-xs black"><i class="icon-eye-close"></i>Hide</a>
+                                        {/if}
+                                    </td>
+                                </tr>
+                                <tr class="detail" title="Click untuk Kembali">
+                                    <td>
+                                        <div id="formPenilaian{$row->no_smb}">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                </tr>
+                {/foreach}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+/*jQuery(document).ready(function() {
+    TableEditable.init();
+}); */
+{literal}
+$(".btn").each(function(i, v) {
+    $(this).click(function() {
+        var val = $(this).attr("value");
+        var opt = $(this).attr("id");
+        document.getElementById('hide' + val).style.visibility = "visible";
+        <!-- document.getElementById('formPenilaian' + val).style.display = 'block'; -->
+		$('#formPenilaian'+val).slideDown();
+        $.post("{/literal}{$host}{literal}smb/smbSeleksiForm/form", {
+            'val': val,
+            'opt': opt
+        }, function(resp) {
+            $('#formPenilaian' + val).html(resp);
+        });
+        return false;
+    });
+});
+
+$(".btnHide").each(function(i, v) {
+    $(this).click(function() {
+        var val = $(this).attr("value");
+        document.getElementById('hide' + val).style.visibility = "hidden";
+		<!-- $('#hide'+val).slideUp(); -->
+        <!-- document.getElementById('formPenilaian' + val).style.display = 'none'; -->
+		$('#formPenilaian'+val).slideUp();
+        return false;
+    });
+});
+
+
+{/literal}
+<!-- $('table.formulir tr.formulir').click( function() {
+/*    $(this).prevAll('tr').each( function() {
+        if ($(this).hasClass('headers')) {
+            return false;
+        }
+        $(this).hide();
+    });
+    $(this).nextAll('tr').each( function() {
+        if ($(this).hasClass('headers')) {
+            return false;
+        }
+        $(this).hide();
+    });
+});
+$('table tr.headers').click( function() {
+    $(this).nextAll('tr').each( function() {
+        if ($(this).hasClass('headers')) {
+            return false;
+        }
+        $(this).slideDown();
+    });
+}); */
+
+</script>

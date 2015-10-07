@@ -1,0 +1,127 @@
+			<h5>Periode {$periode->nama}, Jalur {$jalur->nama}</h5>
+			{foreach name=loop from=$sql item=row}
+                        <div class="row portfolio-block">
+							<div class="col-md-1" style="padding: 10px 0;">
+							  <div class="portfolio-info">
+                                 <p></p>
+								 <p></P>
+                                 <a href="{$host}admisi/mahasiswa/{$periode->kode}.{$jalur->kode}.{$row->kode_prodi}/{$row->kode_prodi}/table" class="btn bigicn-only" style="padding:0;" ><span>{$row->ini_prodi}</span></a>
+								   
+                              </div>
+                           </div>
+                           <div class="col-md-3">
+                              <div class="portfolio-text">
+                                 <div class="portfolio-text-info" style=";padding-left: 10px;">
+                                    <h4>{$row->nama_prodi}</h4>
+                                    <p>{$row->nama_buka}</p>
+                                    <p>Jenjang : {if $row->jenjang eq '1'}S1{else}S2{/if}, Tahun : {$row->tahun}</p>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-3">
+                              <div class="portfolio-text">
+                                 <h4>Rentang Pendaftaran</h4>
+								 <p>Mulai : {$row->hariBuka}, {$row->tanggalBuka}</p>
+								 <p>Akhir : {$row->hariTutup}, {$row->tanggalTutup}</p>
+                              </div>
+							</div>
+							<div class="col-md-2">
+                               <div class="portfolio-info">
+                                 <p></p>
+								 <p></P>
+                                 <a href="#" class="{if $row->status eq '1'}aktif{else}nonaktif{/if}" value="{$row->id_buka}" name="delete">{if $row->status eq '1'}<span>AKTIF</span>{else}<span style="color:#AFAF19;">TIDAK aktif</span>{/if}</a>
+							   </div>
+                           </div>
+						   <div class="col-md-1">
+                               <div class="portfolio-info">
+                                 <p></p>
+								 <p></P>
+                                 <a href="#formEdit" class="editing" name="edit" value="{$row->id_buka}" data-toggle="modal"><span style="color:green;">EDIT</span></a>
+							   </div>
+                           </div>
+						   <div class="col-md-1">
+                               <div class="portfolio-info">
+                                 <p></p>
+								 <p></P>
+                                 <a href="#verifikasi" class="deleting"  name="delete" value="{$row->id_buka}" data-toggle="modal"><span style="color:red;">DELETE</span></a>
+							   </div>
+                           </div>
+                        </div>
+						{/foreach}
+                        <!--end row-->
+                     </div>
+					 <div class="modal fade" id="formEdit" tabindex="-1" role="basic" aria-hidden="true">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                 <h4 class="modal-title">Edit Buka Pendaftaran Seleksi</h4>
+                              </div>
+                              <div class="modal-body">
+								<div id="form"></id>							  
+                              </div>
+                           </div>
+						  </div>
+                           <!-- /.modal-content -->
+                        </div>
+					</div>
+					<div id="verifikasi" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                 <h4 class="modal-title">Confirmation</h4>
+                              </div>
+							  <div id="verifikasiRuang">
+							  </div>
+                           </div>
+                        </div>
+                    </div>
+<script>
+{literal}
+	$(".editing").each(function (i, v){
+	$(this).click( function() {	
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}admisi/admisiOptBuka/edit", {'opt':opt, 'val':val},function(resp){
+			$('#form').html(resp);
+		});
+	});
+	});
+{/literal}
+{literal}
+$(".deleting").each(function (i, v){
+	$(this).click( function() {	
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}admisi/admisiOptBuka/delete", {'opt':opt, 'val':val},function(resp){
+			$('#verifikasiRuang').html(resp);
+		});
+	});
+});
+{/literal}
+{literal}
+$(".nonaktif").each(function (i, v){
+	$(this).click( function() {	
+			id = "nonaktif";
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}admisi/admisiOptBuka/delete", {'opt':opt, 'val':val, 'id':id},function(resp){
+			location.reload();
+		});
+	});
+});
+{/literal}
+{literal}
+$(".aktif").each(function (i, v){
+	$(this).click( function() {	
+			id = "aktif";
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}admisi/admisiOptBuka/delete", {'opt':opt, 'val':val, 'id':id},function(resp){
+			location.reload();
+		});
+	});
+});
+{/literal}
+</script>

@@ -1,0 +1,138 @@
+
+<script>
+$(function () {
+        $('#datetimepicker5').datetimepicker({
+            pickTime: false
+        });
+		$('#datetimepicker1').datetimepicker({
+            pickTime: false
+        });
+    });
+	$(function () {
+        $('#datetimepicker51').datetimepicker({
+            pickTime: false
+
+        });
+    });		  
+$(function () {
+	$('#data-table').dataTable({
+		"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>"
+    });
+});
+</script>	
+				<div class="primary-head">
+						<h3 class="page-header">Pengajuan Cuti</h3>
+					</div>
+					<div class="content-widgets light-gray">
+						<div class="widget-head brown">
+							<h3>Form Pengajuan Cuti</h3>
+						</div>
+									<div class="widget-container">
+										<form class="form-horizontal" name="marketer" action="{$host}cuti/addCuti/save" id="marketer" method="post">
+											<div class="control-group">
+												<label class="control-label" >Nama</label>
+												<div class="controls">
+													<input type="text" name="id_peg" id="id_peg" style="display:none" value="{$pegawai->id}">
+													<label class="right-label" id="nama" style="width:255px">{$pegawai->nama}</label>
+												</div>
+												<label class="control-label" >Bagian</label>
+												<div class="controls">
+													<label class="right-label" id="depart">{$pegawai->depart}</label>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" >Jabatan</label>
+												<div class="controls">
+													<label class="right-label" id="jabatan" style="width:255px">{$pegawai->jabatan}</label>
+												</div>
+												<label class="control-label" >Atasan</label>
+												<div class="controls">
+													<select data-placeholder="Atasan" class="span" tabindex="2" name="atasan" id="atasan">												
+														{foreach name=loop from=$atasan item=row}
+														<option value="{$row->id_karyawan}" >{$row->nama}</option>
+														{/foreach}
+													</select>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" >Masa Kerja</label>
+												<div class="controls">
+													<label class="right-label" id="periode" name="periode" value="{$tahun->id_periode}" style="width:255px">Periode Tahun {$tahun->periode_cuti}</label>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" >Jenis Cuti</label>
+												<div class="controls">
+													<select data-placeholder="Departemen" class="span" tabindex="2" name="jenis_cuti" id="jenis_cuti">												
+														<option></option>
+														{foreach name=loop from=$jcuti item=row}
+														<option value="{$row->id_jenis_cuti}" >{$row->jenis_cuti}</option>
+														{/foreach}
+													</select>
+												</div>
+											</div>
+										<div id="cuti_utama">
+										<div id="cuti_utama">
+											<div class="control-group">
+												<label class="control-label">Periode Cuti</label>
+												<div class="controls">
+													<div id="datetimepicker5" class="input-append date ">
+														<input data-format="yyyy-MM-dd" type="text" name="tgl_mulai" id="tgl_mulai"><span class="add-on "><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+													</div> s.d.
+													<div id="datetimepicker51" class="input-append date ">
+														<input data-format="yyyy-MM-dd" type="text" name="tgl_selesai" id="tgl_selesai"><span class="add-on "><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+													</div>
+												</div>
+											</div><!-- 
+											<div class="control-group">
+												<label class="control-label" >Jumlah Hari</label>
+												<div class="controls">
+													<input type="text" name="total" id="total" value="5">
+												</div>
+											</div> -->
+											<div class="control-group">
+												<label class="control-label" >Kembali Bekerja</label>
+												<div class="controls">
+													<div id="datetimepicker1" class="input-append date ">
+														<input data-format="yyyy-MM-dd" type="text" name="tgl_kembali" id="tgl_kembali"><span class="add-on "><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+													</div>  Total Cuti 
+													<input type="text" name="total_cuti" id="total_cuti" name="total_cuti" class="span1"><b> Hari</b>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" >Alasan</label>
+												<div class="controls">										
+													<textarea rows="4" class="span5" cols="50" name="alasan" id="alasan"></textarea>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" >Alamat Sewaktu Cuti</label>
+												<div class="controls">										
+													<textarea rows="2" class="span5" cols="50" name="al_cuti" id="al_cuti"></textarea>
+												</div>
+											</div>
+										</div>
+												<button type="submit" class="btn btn-success" name="save" id="save" value="save">Save</button>
+												<button type="reset" class="btn">Reset</button>
+										
+										</form>
+									</div>
+						</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+		$("#datetimepicker5s, #datetimepicker51s").on('changeDate',function(ev){
+		var d1 = $('#tgl_mulai').datepicker('getDate'), 
+		d2 = $('#tgl_selesai').datepicker('getDate'),
+		diff=0;
+		
+		alert(d2);
+		
+		d1 = Date.parse(d1);
+		d2 = Date.parse(d2);
+			diff = Math.floor((d2.getTime() - d1.getTime()) / 86400000);
+		
+		alert(diff);
+		});
+	});
+</script>

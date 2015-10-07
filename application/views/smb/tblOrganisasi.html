@@ -1,0 +1,38 @@
+												<div class="col-md-12">
+												   <!-- BEGIN EXAMPLE TABLE PORTLET-->
+												   <div class="portlet box purple">
+													  <div class="portlet-title">
+														 <div class="tools">
+															<a href="javascript:;" class="collapse"></a>
+															<a href="javascript:;" class="remove"></a>
+														 </div>
+													  </div>
+													  <div class="portlet-body">
+														 <div class="table-toolbar">
+														 </div>
+														 <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+															<thead>
+															   <tr>
+																  <th>Nama Kegiatan</th>
+																  <th>Tempat</th>
+																  <th>Jabatan</th>	
+																  <th>Tahun Mulai</th>
+																  <th>Tahun Selesai</th>	
+															   </tr>
+															</thead>
+															<tbody>
+															{foreach name=loop from=$organisasi item=row}
+															   <tr >
+																  <td>{$row->namaKegiatan}</td>
+																  <td>{$row->tempat}</td>
+																  <td>{$row->jabatan}</td>
+																  <td>{$row->dariTahun}</td>
+																  <td>{$row->sampaiTahun}</td>
+															   </tr>
+															{/foreach}
+															</tbody>
+														 </table>
+													  </div>
+												   </div>
+												   <!-- END EXAMPLE TABLE PORTLET-->
+												</div>

@@ -1,0 +1,262 @@
+{if $cmb->tolakPendaftaran eq '1' or $cmb->tolakDU eq '1'}
+<div class="row col-md-12" style="float:left">
+    <div class="note note-danger">
+        <h4 class="block">
+         <b>PENOLAKAN PEMBAYARAN </b> {if $cmb->tolakPendaftaran eq '1'}-- Pembayaran Pendaftaran -- {/if} {if $cmb->tolakDU eq '1'}-- Pembayaran Daftar Ulang -- {/if}
+        </h4>
+        {if $cmb->tolakPendaftaran eq '1'}
+        <p>Pembayaran <b>pendaftaran</b> Anda tidak dapat diproses oleh bagian keuangan Universitas Paramadina. Mohon lakukan pengisian kembali formulir bukti bayar anda.</p>
+        {/if} {if $cmb->tolakDU eq '1'}
+        <p>Pembayaran <b>daftar ulang</b> Anda tidak dapat diproses oleh bagian keuangan Universitas Paramadina. Mohon lakukan pengisian kembali formulir bukti bayar anda.</p>
+        <p>
+            {/if}
+            <h5>Pesan Keuangan :</h5>
+            {if $cmb->tolakPendaftaran eq '1'} {$cmb->pesanTolakP} {/if} {if $cmb->tolakDU eq '1'} {$cmb->pesanTolakDU} {/if}
+
+        </p>
+        <p>
+            Silahkan menuju ke menu {if $cmb->tolakPendaftaran eq '1'}
+            <a href="{$host}portal/pembayaran">Pembayaran.</a>
+            {/if} {if $cmb->tolakDU eq '1'}
+            <a href="{$host}portal/daftarUlang">Daftar Ulang.</a>
+            {/if}
+        </p>
+    </div>
+</div>
+{/if}
+{if $cmb->jalur eq 'KP'}
+{if $cmb->stsPribadiConfirm eq '1' and $cmb->stsResultConfirm neq '1'}
+<div class="row col-md-12" style="float:left"> 
+   <div class="note note-info">
+        <h5 class="block">
+         <p>Terima kasih telah melengkapi formulir pendataran.</p>
+         <p>Selanjutnya, silahkan tunggu konfirmasi kelulusan dari Admin Admission</p>
+        </h5>
+   </div>
+</div>
+{/if}
+{if $cmb->stsResultConfirm eq '1' and $cmb->stsReapplyPaidConfirm neq '1'}
+<div class="row col-md-12" style="float:left"> 
+   <div class="note note-success">
+        <h5 class="block">
+         <p>Kelulusan anda telah di konfirmasi.</p>
+         <p>Silahkan masuk ke menu <a href="{$host}portal/seleksi">kelulusan</a> untuk melihat hasil.</p>
+        </h5>
+   </div>
+</div>
+{/if}
+{if $cmb->stsReapplyPaidConfirm eq '1'}
+<div class="row col-md-12" style="float:left"> 
+   <div class="note note-info">
+        <h4 class="block">
+         <p>Selamat, Anda sudah menjadi mahasiswa Program Studi {$cmb->progdi} Universitas Paramadina.</p>
+         <p>Nomor Induk Mahasiswa (NIM) Anda adalah <b>{$cmb->nim}</b>.</p>
+        </h4>
+   </div>
+</div>
+{/if}
+{/if}
+<div class="tiles">
+    <div class="tile double-down selected bg-dark">
+        {if $cmb->validation_status eq '1'}<a href="{$host}portal/pendaftaran">{/if}
+               {if $cmb->validation_status eq '1'}
+               <div class="corner"></div>
+               <div class="check"></div>
+            {/if}
+               <div class="tile-body">
+                  <i class="icon-pencil"></i>
+               </div>
+               <div class="tile-object">
+                  <div class="name">
+                     Pendaftaran
+                  </div>
+                  <div class="number">
+                     1
+                  </div>
+               </div>
+         {if $cmb->validation_status eq '1'}</a>{/if}
+    </div>
+    <div class="tile {if $cmb->validation_status eq '1'}selected{/if} bg-green">
+        {if $cmb->validation_status eq '1'}<a href="{$host}portal/pendaftaran">{/if}
+               {if $cmb->stsApplyPaidConfirm eq '1'}
+               <div class="corner"></div>
+               <div class="check"></div>
+            {/if}
+               <div class="tile-body">
+                  <i class="icon-money"></i>
+               </div>
+               <div class="tile-object">
+                  <div class="name">
+                     Pembayaran
+                  </div>
+                  <div class="number">
+                     2
+                  </div>
+               </div>
+         {if $cmb->validation_status eq '1'}</a>{/if}
+    </div>
+    <div class="tile double {if $cmb->stsApplyPaidConfirm eq '1'}selected{/if} bg-blue" id="{if $cmb->stsApplyPaidConfirm neq '1'}fo{/if}">
+        {if $cmb->stsApplyPaidConfirm eq '1'}<a href="{$host}portal/formulir">{/if}
+               {if $cmb->stsPribadiConfirm eq '1'}
+               <div class="corner"></div>
+               <div class="check"></div>
+            {/if}
+               <div class="tile-body">
+                  <h4>Lengkapi</h4>
+                  <p><h3>Formulir Pendaftaran</h3></p>
+               </div>
+               <div class="tile-object">
+                  <div class="name">
+                     <i class="icon-folder-open"></i>
+                  </div>
+                  <div class="number">
+                     3
+                  </div>
+               </div>
+         {if $cmb->stsApplyPaidConfirm eq '1'}</a>{/if}
+    </div>
+{if $cmb->jalur neq 'KP'}
+    <div class="tile {if $cmb->stsPribadiConfirm eq '1'}selected{/if} bg-red" id="{if $cmb->stsPribadiConfirm neq '1'}ju{/if}">
+        {if $cmb->stsEventConfirm eq '1'}<a href="{$host}portal/jadwal">{/if}
+               {if $cmb->stsEventConfirm eq '1'}
+               <div class="corner"></div>
+               <div class="check"></div>
+            {/if}
+               <div class="tile-body">
+                  <i class="icon-list-ol"></i>
+               </div>
+               <div class="tile-object">
+                  <div class="name">
+                     Jadwal Ujian
+                  </div>
+                  <div class="number">
+                     4
+                  </div>
+               </div>
+         {if $cmb->stsPribadiConfirm eq '1'}</a>{/if}
+    </div>
+    <div class="tile double {if $cmb->stsEventConfirm eq '1'}selected{/if} bg-purple" id="{if $cmb->stsResultConfirm neq '1'}hu{/if}">
+        {if $cmb->stsResultConfirm eq '1'}<a href="{$host}portal/seleksi">{/if}
+               {if $cmb->stsResultConfirm eq '1'}
+               <div class="corner"></div>
+               <div class="check"></div>
+            {/if}
+               <div class="tile-body">
+                  <i class="icon-paste"></i>
+                  <h3>Hasil</h3>
+                  <p>
+                     Ujian Masuk dan Wawancara
+                  </p>
+               </div>
+               <div class="tile-object">
+                  <div class="number">
+                     5
+                  </div>
+               </div>
+         {if $cmb->stsResultConfirm eq '1'}</a>{/if}
+    </div>
+{/if}
+{if $cmb->jalur eq 'KP'}
+    <div class="tile double {if $cmb->stsEventConfirm eq '1'}selected{/if} bg-purple" id="{if $cmb->stsResultConfirm neq '1'}hu{/if}">
+        {if $cmb->stsResultConfirm eq '1'}<a href="{$host}portal/seleksi">{/if}
+               {if $cmb->stsResultConfirm eq '1'}
+               <div class="corner"></div>
+               <div class="check"></div>
+            {/if}
+               <div class="tile-body">
+                  <i class="icon-paste"></i>
+                  <h3>Konfirmasi</h3>
+                  <p>
+                    Kelulusan 
+                  </p>
+               </div>
+               <div class="tile-object">
+                  <div class="number">
+                     5
+                  </div>
+               </div>
+         {if $cmb->stsResultConfirm eq '1'}</a>{/if}
+    </div>
+{/if}
+    <div class="tile {if $cmb->stsResultPass eq '1'}selected{/if} bg-red" id="{if $cmb->stsResultPass neq '1'}du{/if}">
+        {if $cmb->stsResultPass eq '1'}<a href="{$host}portal/daftarUlang">{/if}
+               {if $cmb->stsReapplyPaidConfirm eq '1'}
+               <div class="corner"></div>
+               <div class="check"></div>
+            {/if}
+               <div class="tile-body">
+                  <i class="icon-check"></i>
+               </div>
+               <div class="tile-object">
+                  <div class="name">
+                     Daftar Ulang
+                  </div>
+                  <div class="number">
+                     6
+                  </div>
+               </div>
+         {if $cmb->stsResultPass eq '1'}</a>{/if}
+    </div>
+    <!--    <div class="tile double bg-dark">
+         <a href="{$host}portal/formulirReport/{$nomorReg}">
+               <div class="tile-body">
+            {if $cmb->foto eq ''}
+                  <img src="assets/img/ava.png" alt="" class="pull-right" height="90px" width="90px">
+            {else}
+              <img src="assets/upload/foto/{$cmb->foto}" alt="" class="pull-right" height="90px" width="90px">
+            {/if}
+                  <h3>{$firstname}</h3>
+                  <p>
+                     Click bar ini untuk mendapatkan Formulir Pendaftaran kamu!
+                  </p>
+               </div>
+               <div class="tile-object">
+                  <div class="name">
+                     <i class=" icon-file-text"></i>
+                  </div>
+               </div>
+         </a>
+            </div>
+      -->
+</div>
+
+
+<div class="tiles"> 
+    <div class="tile double" style="background-color:#006895">
+        <a href="{$host}portal/formulirReport/{$nomorReg}">
+            <div class="tile-body">
+              
+                {if $cmb->nama_cm|count_characters:true lt 15}<h3>{else}<h4>{/if}{$cmb->nama_cm} {if  $cmb->nama_cm|count_characters:true lt 15}</h3>{else}</h4>{/if}
+                <br>
+              <label class="col-md-2"><h5>PRODI</h5> </label>
+              <label class="col-md-10">{if $cmb->progdi|count_characters:true lt 22}<h5> : {else}<h5 style="margin-bottom:5px"> : {/if}{$cmb->progdi}{if $cmb->progdi|count_characters:true lt 22}</h5>{else}</h5>{/if}</label>
+              <label class="col-md-2"><h5>NIM</h5></label>
+              <label class="col-md-10"><h5> : <b>{$cmb->nim}</b></h5></label>
+              <label class="col-md-2"><h5>JALUR</h5> </label>
+              <label class="col-md-10"><h5> : {$cmb->n_jalur}</h5></label>
+            </div>
+            <div class="tile-object">
+                <div class="name">
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <a href="{$host}portal/profil">
+    <div class="tile selected image"> 
+        <div class="tile-body">
+          {if $cmb->foto eq ''}
+            <img alt="" src="{$host}assets/img/ava.png"/>
+          {else}
+            <img alt="" src="{$host}assets/upload/foto/{$cmb->foto}">
+          {/if}
+        </div>
+        <div class="tile-object">
+            <div class="name">
+
+            </div>
+        </div>
+    </div>
+    </a>
+</div>
+

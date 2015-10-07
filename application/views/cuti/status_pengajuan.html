@@ -1,0 +1,120 @@
+					<div class="content-widgets white">
+									<div class="widget-container" style="display:table;margin-left: auto;margin-right: inherit; margin-top: -10px;">	
+									<form class="form-horizontal" style="border: 1px double;margin-top: -15px;width: 690px;padding-left: 35px;padding-top:10px">
+										<div style="position: inherit;text-align:center;margin-left: -35px;">
+										<img src="{$host}/assets/img/logo_biru.jpg"></img>
+										</div>
+										<div class="widget-head brown" style="margin-left: -35px; border-bottom-width: 0px; margin-bottom: 5px;">
+											<h3 style="margin: 0px; padding-left: 10px;">PENGAJUAN CUTI KARYAWAN/DOSEN</h3>
+										</div>	
+											<div class="control-group">
+												<div class="left-form">
+													<label class="form-label" >Nama</label>
+													<div class="controls">
+														<input type="text" name="id_peg" id="id_peg" style="display:none" value="{$cuti->id_cuti}">
+														<label class="isi-label" id="nama">: {$cuti->nama}</label>
+													</div>
+												</div>
+												<div class="right-form">
+													<label class="form-label" >Jabatan</label>
+													<div class="controls">
+														<label class="isi-label" id="jabatan">: {$cuti->jabatan}</label>
+													</div>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="form-label" >Bagian</label>
+												<div class="controls">
+													<label class="isi-label" id="depart" style="width:auto">: {$cuti->depart}</label>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="form-label" >Jenis Cuti</label>
+												<div class="controls">
+													<label class="isi-label" id="jabatan">: {$cuti->jenis_cuti}</label>
+												</div>
+											</div>
+											<div class="control-group">
+												<div style="width:300px;float:left;height: 80px;">
+													<label style="font-weight:bold;float: left;">Periode Cuti	:</label></br></br>
+													<div class="control-group">
+														<label class="kecil">Mulai Cuti</label>
+														<div class="controls">
+															<label class="right-kecil" id="jabatan">: {$cuti->tgl_cuti}
+														</div>												
+														<label class="kecil">Selesai Cuti</label>
+														<div class="controls">
+															<label class="right-kecil">: {$cuti->tgl_selesai_cuti}</label>
+														</div>
+													</div>
+												</div>
+												<div style="width:300px;float:left;height: 80px;">
+													<label style="font-weight:bold;float: left;">Kembali Bekerja	:</label></br></br>
+													<div class="control-group">
+														<label class="kecil" >Tanggal</label>
+														<div class="controls">
+															<label class="right-kecil" id="jabatan">: {$cuti->tgl_kembali}</label>
+														</div>
+													</div>
+												</div>
+											</div> 
+											<div class="control-group">
+											<div class="left-form">
+												<label class="form-label" >Jumlah Hari</label>
+												<div class="controls">
+													<label class="isi-label" name="total" id="total" style="width:auto">: {$cuti->jumlah_cuti} Hari</label>
+												</div>
+											</div>
+											<div class="right-form">
+												<label class="form-label" >Status</label>
+												<div class="controls">: 
+													{if $cuti->isApproved eq '0'}<span class="label label-warning">Belum Dikonfirmasi</span>
+													{else if $cuti->isApproved eq '1'}<span class="label label-success">Disetujui</span>
+													{else}<span class="label label-important">Tidak Disetujui</span>{/if}
+												</div>
+											</div>												
+											</div>	
+											<div class="control-group">
+												<label class="form-label" >Alasan</label>
+												<div class="controls">										
+													<textarea rows="2" class="span4" cols="50" name="alasan" id="alasan" style="margin-left:-30px;" disabled>{$cuti->alasan}</textarea>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="form-label" >Alamat Sewaktu Cuti</label>
+												<div class="controls">										
+													<textarea rows="2" class="span4" cols="50" name="al_cuti" id="al_cuti" style="margin-left:-30px;" disabled>{$cuti->alamat_cuti}</textarea>
+												</div>
+											</div>	
+											<div class="control-group" style="float:right;margin-right: 60px;margin-top: 30px;">
+												<legend >
+														{if $cuti->isApproved eq '0'}Belum Disetujui
+														{else if $cuti->isApproved eq '1'}Disetujui
+														{else}Tidak Disetujui{/if} Oleh :
+														</legend></br></br>
+													<label style="text-align: center;">{$atasan->nama}</label>
+												
+											</div>	
+											</br></br></br></br></br></br></br></br>
+											<a class="btn btn-success" href="{$host}cuti/tabelCuti">OK</a></br></br>
+										</form>
+									</div>
+						</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+		$("#datetimepicker5s, #datetimepicker51s").on('changeDate',function(ev){
+		var d1 = $('#tgl_mulai').datepicker('getDate'), 
+		d2 = $('#tgl_selesai').datepicker('getDate'),
+		diff=0;
+		
+		alert(d2);
+		
+		d1 = Date.parse(d1);
+		d2 = Date.parse(d2);
+			diff = Math.floor((d2.getTime() - d1.getTime()) / 86400000);
+		
+		alert(diff);
+		});
+	});
+</script>

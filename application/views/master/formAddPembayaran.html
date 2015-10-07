@@ -1,0 +1,41 @@
+<form action="{$host}master/mDaftarUlang/add" class="form-horizontal" method="post">
+    <div class="form-body">
+        <div class="form-group">
+            <label class="control-label col-md-3">Kode</label>
+            <div class="input-group col-md-6">
+                <input type="text" class="form-control" placeholder="Kode[Automatic]" id="kode" name="kode" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Nama Pembayaran</label>
+            <div class="input-group col-md-8">
+                <input type="text" class="form-control" placeholder="Nama Pembayaran" id="nama" name="nama" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Jalur Masuk</label>
+            <div class="col-md-8">
+                <select class="form-control" id="jalur" name="jalur" required>
+                    <option>-- Select Jalur --</option>
+                    {foreach name=loop from=$jlr item=row}
+                    <option value="{$row->kode}">{$row->nama}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+
+        <div id="jalurMasuk">
+            
+        </div>
+</form>
+<script type="text/javascript">
+{literal}
+$('#jalur').change(function() {
+    val = $(this).attr('value');
+    $.post('{/literal}{$host}{literal}master/mJalurUM/jalurMasuk', {'val': val}, function(resp) {
+        $('#jalurMasuk').html(resp);
+    });
+});
+{/literal}
+</script>

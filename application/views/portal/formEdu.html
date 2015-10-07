@@ -1,0 +1,225 @@
+<form action="#" class="formPendidikan form-horizontal" method="post">
+    <div class="form-body" style="background-color: #F7F7F7;">
+        <h3 class="form-section" style="margin-bottom: 15px; margin-left: 50px;margin-top: 12px;">Riwayat Pendidikan
+        </h3>
+        <div class="tblPendidikan tab-pane row" style="margin: 0 10px;">
+            <!-- Table untuk menampilkan keluarga -->
+            <div class="col-md-12">
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet box grey">
+                    <div class="portlet-title">
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"></a>
+                            <a href="javascript:;" class="remove"></a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="table-toolbar">
+                        </div>
+                        <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+                            <thead>
+                                <tr>
+                                    <th>Jenjang</th>
+                                    <th>Nama Sekolah</th>
+                                    <th>Propinsi</th>
+                                    <th>Kabupaten Kota</th>
+                                    <th>Kode Pos</th>
+                                    <th>Tahun Lulus</th>
+                                    <th>Jurusan</th>
+                                    <th>Nilai UN</th>
+                                    <th>Hapus</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {foreach name=loop from=$eduList item=row}
+                                <tr>
+                                    <td>{$row->sekolahNama}, {$row->sekolahTipe}</td>
+                                    <td>{$row->sekolah}</td>
+                                    <td>{$row->propNama}</td>
+                                    <td>{$row->kabNama}</td>
+                                    <td>{$row->kodepos}</td>
+                                    <td>{$row->tahunLulus}</td>
+                                    <td>{$row->jurusan}</td>
+                                    <td>{$row->nilai}</td>
+                                    <td><a class="delete" data-toggle="modal" href="#verifikasi" value="{$row->kodeEdu}" name="delete">Delete</a>
+                                    </td>
+                                </tr>
+                                {/foreach}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+        </div>
+        {if $cmb->statusPend eq '0'}
+        <div id="formEd col-md-12">
+            <div class="modal-footer">
+                <button type="submit" class="tambah btn green">Update <i class="icon-plus"></i>
+                </button>
+            </div>
+            <div class="row col-md-12">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Nama Sekolah
+                        </label>
+                        <div class="col-md-9">
+                            <input name="kode" value="{$kode}" hidden>
+                            <input name="id" value="tambah" hidden>
+                            <input type="text" class="form-control" name="namaSekolah" id="nama" value="{$eduData->sekolah}" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Jurusan
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="jurusan" value="{$eduData->jurusan}" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-12">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Nilai UN
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="nilai" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Tahun Lulus
+                        </label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control" name="tahunLulus" value="{$eduData->tahunLulus}" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-12">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Jenis Pendidikan
+                        </label>
+                        <div class="col-md-9">
+                            <select class="form-control" name="pendType" id="pendType" required>
+                                {foreach name=loop from=$eduSMA item=row}
+                                <option value="{$row->kode}">{$row->nama}</option>
+                                {/foreach}
+                            </select>
+                            <br>
+                            <input type="radio" name="sekType" value="09.1" required> Negeri
+                            <br>
+                            <input type="radio" name="sekType" value="09.2" required> Swasta
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Propinsi
+                        </label>
+                        <div class="col-md-9">
+                            <select class="form-control" name="prop" id="prop">
+                                <option value="">--Pilih Propinsi--</option>
+                                {foreach name=loop from=$wil item=row}
+                                <option value="{$row->kode}">{$row->nama}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Kabupaten/Kota
+                        </label>
+                        <div class="col-md-9">
+                            <select class="form-control" name="kab" id="kab">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-3" style="text-align:left;">Kabupaten/Kota
+                        </label>
+                        <div class="col-md-9">
+                            <select class="form-control" name="kpos" id="kpos">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {/if}
+    </div>
+</form>
+
+<script>
+{literal}
+jQuery(document).ready(function() {	
+	FormComponents.init();
+	Index.initCalendar();
+	//TableManaged.init();
+	//id= "tambah";
+    //$.post("{/literal}{$host}{literal}portal/formulir/pendidikan",{'id':id},function(resp){
+	//		$('.tblPendidikan').html(resp);
+	//	});	
+	var statusEdu = "{/literal}{$cmb->statusPend}{literal}";
+	if (statusEdu == 0){
+		toastr.info('Silahkan Perbaharui riwayat Pendidikan Anda');
+	}
+});
+{/literal}
+
+{literal}
+$(".formPendidikan").submit( function() {	
+
+		$.post("{/literal}{$host}{literal}portal/formulir/pendidikan/add",$(this).serialize(),function(resp){
+			$('.tblPendidikan').html(resp);
+			
+			document.getElementById("formEd").style.display = "none" ;
+			window.location.href = "{/literal}{$host}{literal}portal/formulir";
+		});
+		$('.formPendidikan').trigger("reset");
+		return false;
+		
+	});
+	
+{/literal}
+
+$("#prop").change(function(){
+    kabkota();
+	kodepos();
+});
+
+$("#kab").change(function(){
+    
+	kodepos();
+});
+{literal}
+function kabkota(){
+	$.post("{/literal}{$host}{literal}portal/selectKabKota",{
+					'propinsi':$('#prop').val()				
+				},function(resp){
+                $('select#kab').html(resp);
+            });
+	
+	kodepos();
+}
+{/literal}
+
+{literal}
+function kodepos(){
+	$.post("{/literal}{$host}{literal}portal/selectKodePos",{
+					'kabkota':$('#kab').val()				
+				},function(resp){
+                $('select#kpos').html(resp);
+            });
+}
+{/literal}
+
+</script>

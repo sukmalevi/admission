@@ -1,0 +1,54 @@
+
+			<div class="col-md-12">
+               <!-- BEGIN EXAMPLE TABLE PORTLET-->
+               <div class="portlet box grey">
+                  <div class="portlet-title">
+                     <div class="tools">
+                        <a href="javascript:;" class="collapse"></a>
+                        <a href="javascript:;" class="remove"></a>
+                     </div>
+                  </div>
+                  <div class="portlet-body">
+                     <div class="table-toolbar">
+                     </div>
+                     <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+                        <thead>
+                           <tr>
+                              <th>Jenjang</th>
+                              <th>Nama Sekolah</th>
+                              <th>Propinsi</th>
+                              <th>Kabupaten Kota</th>
+                              <th>Kode Pos</th>
+                              <th>Tahun Lulus</th>							  
+                              <th>Jurusan</th>						  
+                              <th>Nilai UN</th>					  
+                              <th>Hapus</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+						{foreach name=loop from=$eduList item=row}
+                           <tr >
+                              <td>{$row->sekolahNama}, {$row->sekolahTipe}</td>
+                              <td>{$row->sekolah}</td>
+                              <td>{$row->propNama}</td>
+                              <td>{$row->kabNama}</td>
+                              <td>{$row->kodepos}</td>
+                              <td>{$row->tahunLulus}</td>
+                              <td>{$row->jurusan}</td>
+                              <td>{$row->nilai}</td>
+                              <td><a class="delete" data-toggle="modal" href="#verifikasi" value="{$row->kodeEdu}" name="delete">Delete</a></td>
+                           </tr>
+						{/foreach}
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+					
+
+<script>
+      jQuery(document).ready(function() {       
+         //TableManaged.init();
+      });
+</script>

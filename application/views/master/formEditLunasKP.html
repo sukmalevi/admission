@@ -1,0 +1,91 @@
+<script type="text/javascript" src="{$host}assets/js/jquery.formatCurrency-1.4.0.js"></script>
+<form action="{$host}master/mDaftarUlang/edit/do" class="form-horizontal" method="post">
+    <div class="form-body">
+        <div class="form-group">
+            <label class="control-label col-md-3">Kode</label>
+            <div class="input-group col-md-6">
+                <input type="text" class="form-control" value="{$pembayaran->code}" disabled>
+                <input type="text" value="{$pembayaran->code}" name="kode" hidden>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Nama Pembayaran</label>
+            <div class="input-group col-md-8">
+                <input type="text" class="form-control" value="{$pembayaran->nama}" id="nama" name="nama">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Program Studi</label>
+            <div class="col-md-8">
+                <select class="form-control" id="prodi" name="prodi" disabled>
+                    {if $pembayaran->prodiTipe eq 'IK'}
+                    <option value="IK">Ilmu Komunikasi</option>
+                    {else if $pembayaran->prodiTipe eq 'MNJ'}
+                    <option value="MNJ">Manajemen</option>
+                    {/if}
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Metod Pembayaran</label>
+                    <div class="col-md-6">
+                        <select class="form-control" id="pembayaran" name="pembayaran" disabled>
+                            {if $pembayaran->pembayaran eq '1'}
+                            <option value="1">Lunas</option>
+                            {else}
+                            <option value="69">Angsuran</option>
+                            {/if}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Uang Masuk</label>
+            <div class="input-group col-md-8">
+                <input type="text" class="biaya form-control" value="{$pembayaran->uangMasuk}" id="um" name="um">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">SKS</label>
+            <div class="input-group col-md-8">
+                <input type="text" class="biaya form-control" value="{$pembayaran->sks}" id="sks" name="sks">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">SPP</label>
+            <div class="input-group col-md-8">
+                <input type="text" class="biaya form-control" value="{$pembayaran->spp}" id="spp" name="spp">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Status</label>
+            <div class="col-md-6">
+                <select class="form-control" id="status" name="status" class="status">
+                    {if $pembayaran->status eq '1'}
+                    <option value="1">AKTIF</option>
+                    {else}
+                    <option value="0">TIDAK AKTIF</option>
+                    {/if}
+                </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn blue" id="save" value="edit" name="opt">Save</buton>
+        </div>
+</form>
+
+<script>
+$(document).ready(function()
+	{
+    $('.biaya').formatCurrency();
+        $('.biaya').blur(function()
+        {
+            $('.biaya').formatCurrency();
+        });
+});
+</script>

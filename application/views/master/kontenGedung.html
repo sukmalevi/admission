@@ -1,0 +1,140 @@
+				<div class="tab-pane" id="tab_1_4">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="add-portfolio">
+                                 <span>Gedung Universitas Paramadina</span>  	
+								 <a class=" btn default" href="#add" data-toggle="modal" style="float:right">
+									Tambah <i class="icon-plus"></i>
+								 </a> 
+                              </div>
+                           </div>
+                        </div>
+                        <!--end add-portfolio-->
+						{foreach name=loop from=$gedung item=row}
+                        <div class="row portfolio-block">
+                           <div class="col-md-5">
+                              <div class="portfolio-text">
+                                 <img src="{$host}assets/img/profile/portfolio/logo_metronic.jpg" alt="" />
+                                 <div class="portfolio-text-info">
+                                    <h4>{$row->nama}</h4>
+                                    <p>{$row->alamat}</p>
+                                    <p>{$row->kabupaten}, {$row->propinsi}, {$row->kodePos}</p>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-5">
+                              <div class="portfolio-info">
+                                 Total Ruangan
+                                 <span style="text-align:center">{$row->total_ruang}</span>
+                              </div>
+                           </div>
+                           <div class="col-md-2">
+                              <div class="portfolio-btn">
+                                 <a href="#manageForm" class="manage btn" data-toggle="modal" name="edit" id="manage" value="{$row->kode}">
+								 <span>Manage</span></a>                      
+                              </div>
+                           </div>
+                        </div>
+						{/foreach}
+                        <!--end row-->
+                     </div>
+					 <div class="modal fade" id="add" tabindex="-1" role="basic" aria-hidden="true">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                 <h4 class="modal-title">Edit Username</h4>
+                              </div>
+								  <div class="modal-body">
+									<div class="modal-body">
+										<form action="{$host}master/masterGedung/add" class="form-horizontal" method="post">
+											<div class="form-body">
+												  <div class="form-group">
+													 <label  class="control-label col-md-3">Nama</label>
+													 <div class="input-group col-md-9">
+														<input type="text" class="form-control" placeholder="Nama Gedung" id="gedung" name="gedung">
+													 </div>
+												  </div>
+												  <div class="form-group">
+													 <label  class="control-label col-md-3">Kode</label>
+													 <div class="input-group col-md-6">
+														<input type="text" class="form-control" placeholder="Kode Gedung" id="kode" name="kode">
+													 </div>
+												  </div>
+												  <div class="form-group">
+													 <label  class="control-label col-md-3">Alamat</label>
+													 <div class="input-group col-md-9">
+														<input type="text" class="form-control" placeholder="Alamat Gedung" id="alamat" name="alamat">
+													 </div>
+												  </div>
+												  <div class="form-group">
+													 <label class="control-label col-md-3">Propinsi</label>
+													 <div class="col-md-9">
+														<select class="form-control" id="prop"  name="prop">
+															{foreach name=loop from=$prop item=row} 
+																<option value="{$row->kode}">{$row->nama}</option>
+															{/foreach}
+														</select>
+													 </div>
+												  </div>
+												  <div id="selectKabs"></div>
+												  <div class="form-group">
+													 <label  class="control-label col-md-3">Total Ruangan</label>
+													 <div class="input-group col-md-9">
+														<input type="text" class="form-control" placeholder="Jumlah Ruangan" id="ruang" name="ruang">
+													 </div>
+												  </div>
+											</div>
+										  <div class="modal-footer">
+											 <button type="button" class="btn default" data-dismiss="modal">Close</button>
+											 <button type="submit" class="btn blue" id="save" value="save" name="opt"> Tambah <i class="icon-plus"></i></a>
+										  </div>
+										</form>
+									</div>
+								</div>
+                              </div>
+                           </div>
+                           <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                     </div>
+					 
+					 <div class="modal fade" id="manageForm" tabindex="-1" role="basic" aria-hidden="true">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                 <h4 class="modal-title">Edit Data Gedung</h4>
+                              </div>
+									<div class="modal-body">
+										<div id="foGedung"></div>
+									</div>
+                           </div>
+                           <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                     </div>
+							
+<script>
+{literal}
+	$("#prop").change(function(){
+		$.post("{/literal}{$host}{literal}master/masterGedung/prop",{
+					'prop':$('#prop').val()					
+				},function(resp){
+                $('#selectKabs').html(resp);
+            });
+	});
+{/literal}
+{literal}
+$(".manage").each(function (i, v){
+	$(this).click( function() {	
+			opt = $(this).attr("name");
+			val = $(this).attr("value");
+		$.post("{/literal}{$host}{literal}master/masterGedung/edit", {'opt':opt, 'val':val},function(resp){
+			$('#foGedung').html(resp);
+		});
+	});
+});
+{/literal}
+</script>
+ 

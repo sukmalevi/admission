@@ -1,0 +1,101 @@
+                                <form action="{$host}master/periode/edit/do" class="form-horizontal" method="post">
+									<div class="form-body">
+										  <div class="form-group">
+                                             <label  class="control-label col-md-3">Kode</label>
+                                             <div class="input-group col-md-6">
+												<input type="text" id="kode" name="kode" hidden value="{$periode->kode}">
+                                                <input type="text" class="form-control" placeholder="Kode Jalur Seleksi[Automatic]" id="kode" name="kode" disabled value="{$periode->kode}">
+                                             </div>
+                                          </div>
+                                          <div class="form-group">
+											<label  class="control-label col-md-3">Jenjang Pendidikan</label>
+												<div class="col-md-9">
+													<select class="form-control" id="jenjang"  name="jenjang" class="jenjang">
+														{if $periode->jenjangType eq '1'}
+														<option value="1">S1</option>
+														{else}
+														<option value="2">S2</option>
+														{/if}
+														<option value="1">S1</option>
+														<option value="2">S2</option>
+													</select>
+												</div>
+										  </div>
+										  <div class="form-group">
+                                             <label  class="control-label col-md-3">Tahun Periode</label>
+                                             <div class="input-group col-md-4">
+                                                <input type="text" class="form-control" placeholder="Tahun Mulai" id="startYear" name="startYear" value="{$periode->tahun}">
+                                             </div>
+											 <div class="input-group col-md-4">
+                                                <input type="text" class="form-control" placeholder="Tahun Selesai" id="endYear" name="endYear" value="{$periode->tahunSelesai}">
+                                             </div>
+                                          </div>
+										  <div class="form-group">
+											  <label class="control-label col-md-3">Date Range</label>
+											  <div class="col-md-4">
+												 <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="yyyy-mm-dd">
+													<input type="text" class="form-control" name="from" value="{$periode->tanggalMulai}">
+													<span class="input-group-addon">to</span>
+													<input type="text" class="form-control" name="to" value="{$periode->tanggalSelesai}">
+												 </div>
+												 <!-- /input-group -->
+												 <span class="help-block">Select date range</span>
+											  </div>
+										   </div>
+										  <div class="form-group">
+											<label  class="control-label col-md-3">Semester</label>
+												<div class="col-md-9">
+													<select class="form-control" id="semester"  name="semester" class="semester">
+														{if $periode->semester eq '1'}
+															<option value="1">Semester {$periode->semester}</option>
+														{else if $periode->semester eq '2'}
+															<option value="2">Semester {$periode->semester}</option>
+														{else if $periode->semester eq '3'}
+															<option value="3">Semester {$periode->semester}</option>
+														{else if $periode->semester eq '4'}
+															<option value="4">Semester {$periode->semester}</option>
+														{else}
+															<option value="5">Semester {$periode->semester}</option>
+														{/if}
+														<option value="1">Semester 1</option>
+														<option value="2">Semester 2</option>
+														<option value="3">Semester 3</option>
+														<option value="4">Semester 4</option>
+														<option value="5">Semester 5</option>
+														<option value="6">Semester 6</option>
+														<option value="7">Semester 7</option>
+														<option value="8">Semester 8</option>
+													</select>
+												</div>
+										  </div>
+										  <div class="form-group">
+                                             <label  class="control-label col-md-3">Nama Periode</label>
+                                             <div class="input-group col-md-9">
+                                                <input type="text" class="form-control" placeholder="[Tahun Mulai]-[Tahun Selesai]-[Jenjang]-[Semester]" id="nama" name="nama" value="{$periode->nama}">
+                                             </div>
+                                          </div>
+										  <div class="form-group">
+											<label  class="control-label col-md-3">Status</label>
+												<div class="col-md-9">
+													<select class="form-control" id="status"  name="status" class="status">
+														{if $periode->status eq '1'}
+															<option value="1">AKTIF</option>
+														{else}
+															<option value="0">TIDAK AKTIF</option>
+														{/if}
+														<option value="1">AKTIF</option>
+														<option value="0">TIDAK AKTIF</option>
+													</select>
+												</div>
+										  </div>
+									  <div class="modal-footer">
+										 <button type="button" class="btn default" data-dismiss="modal">Close</button>
+										 <button type="submit" class="btn blue" id="edit" value="edit" name="opt"> Save </a>
+									  </div>
+								</form>
+<script>
+	jQuery(document).ready(function() {       
+         // initiate layout and plugins
+         FormComponents.init();
+	});
+</script>

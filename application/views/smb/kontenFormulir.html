@@ -1,0 +1,323 @@
+
+		<div class="invoice">
+            <div class="row invoice-logo" style="border-bottom: 2px solid rgb(0, 0, 0);">
+               <div class="col-xs-8 invoice-logo-space">
+				<img src="{$host}assets/img/logoupm.png" alt="" style="margin-top: -17px;"/> 
+				<h2 style="margin-top: 10px; margin-left: 12px;">Form Pendaftaran Mahasiswa Baru (S1)</h2>
+			   </div>
+               <div class="col-xs-4">
+			   <ul class="list-unstyled">
+				<li>Jl. Gatot Subroto Kav. 97 Mampang, 12790</li>
+				<li>T. +62 21 7918 1188 ext. 200 , 888</li>
+				<li>F. +62 21 799 3375</li>
+				<li>SMS 0815 9181 188</li>
+				<p></p>
+				<li>info@paramadina.ac.id</li>
+				<li>www.paramadina.ac.id</li>				
+			   </ul>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-xs-4">
+			    <ul class="list-unstyled">
+                  <h4>PROGRAM STUDI PILIHAN</h4>
+						<li><i class="icon-check{if $prof->proKode eq '1201'}{else}-empty{/if}"></i> Desain Komunikasi Visual </li>
+						<li><i class="icon-check{if $prof->proKode eq '1202'}{else}-empty{/if}"></i> Desain Produk Industri </li>
+						<li><i class="icon-check{if $prof->proKode eq '1204'}{else}-empty{/if}"></i> Falsafah dan Agama </li>
+						<li><i class="icon-check{if $prof->proKode eq '1205'}{else}-empty{/if}"></i> Hubungan Internasional </li>
+						<li><i class="icon-check{if $prof->proKode eq '1206'}{else}-empty{/if}"></i> Ilmu Komunikasi </li>
+						<li><i class="icon-check{if $prof->proKode eq '1208'}{else}-empty{/if}"></i> Manajemen </li>
+						<li><i class="icon-check{if $prof->proKode eq '1207'}{else}-empty{/if}"></i> Psikologi </li>
+						<li><i class="icon-check{if $prof->proKode eq '1203'}{else}-empty{/if}"></i> Teknik Informatika </li>
+				</ul>
+               </div>
+               <div class="col-xs-3">
+				{if $prof->foto neq ''}
+					<img src="{$host}assets/upload/foto/{$prof->foto}" height="140px" width="120px" style="margin-top:35px"/>
+				{else}
+                    <img src="{$host}assets/img/ava.png" height="140px" width="120px" style="margin-top:35px"/>
+				{/if}
+               </div>
+               <div class="col-xs-5">
+                  <h4>LAMPIRAN DOKUMEN</h4>
+					<ul class="list-unstyled">
+						<li><i class="icon-check-empty"></i> Fotokopi Ijazah SMA yang sudah dilegalisir </li>
+						<li><i class="icon-check-empty"></i> Fotokopi rapor SMA dari kelas 1 s.d kelas 3 SMA </li>
+						<li><i class="icon-check-empty"></i> Fotokopi KTP Orangtua/Wali </li>
+						<li><i class="icon-check-empty"></i> Foto 3x4 berwarna 2 lembar </li>
+						<li><i class="icon-check-empty"></i> ..................................... </li>
+					</ul>
+               </div>
+            </div>
+			<br>
+			<div class="row">
+				<div class="col-xs-12">
+					<h4>NO. REGISTRASI : {$prof->no_smb}</h4>
+				</div>
+			</div>
+            <div class="row">
+				<div class="col-xs-12">
+					<h4>DATA PRIBADI</h4>
+				</div>
+               <div class="col-xs-12">
+                  <table class="table table-striped table-hover">
+                     <thead>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>Nama Lengkap </th>
+                           <td>{$prof->nama_cm}</td>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>Jenis Kelamin</th>
+                           <td>
+							   <i class="icon-check{if $prof->kodeGender eq '03.W'}-empty{/if}"></i> Laki-laki 
+							   <i class="icon-check{if $prof->kodeGender eq '03.P'}-empty{/if}"></i> Perempuan
+						   </td>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>Tempat/Tanggal Lahir</th>
+                           <td>{$prof->tempatLahir}, {$prof->tLahir} {$prof->bLahir} {$prof->yLahir}</td>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>Agama</th>
+                           <td>{$prof->agamaName}</td>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>No KTP/SIM/KTS/Paspor</th>
+                           <td>{$prof->nomorKtp}</td>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>Asal Sekolah</th>
+                           <td>{$prof->namaEdu}</td>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+						   <th>Jurusan</th>
+                           <td>
+							 <i class="icon-check{if $prof->jurusan eq 'IPA'}{else}-empty{/if}"></i> IPA 
+							 <i class="icon-check{if $prof->jurusan eq 'IPS'}{else}-empty{/if}"></i> IPS
+							 <i class="icon-check{if $prof->jurusan eq 'Bahasa'}{else}-empty{/if}"></i> Bahasa
+							 <i class="icon-check{if $prof->jurusan neq 'IPA' or $prof->jurusan neq 'IPS' or $prof->jurusan neq 'Bahasa'}-empty{else}{/if}"></i> Lainnya
+						   </td>
+                        </tr>
+						<tr style="border-bottom: 1px solid #DDDDDD;">
+							<td></td>
+						</tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+						   <th>Alamat Rumah </th>
+                           <td>{$prof->rumahAlamat} {$prof->kabKotaNama} {$prof->propNama}, {$prof->kodePos}</td>
+                        </tr>						
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+						   <th>Telpon/Fax</th>
+                           <td>{$prof->rumahTel} / {$prof->rumahFax}</td>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+						   <th>Kontak</th>
+                           <td><b>Hp</b> : {$prof->rumahCell} <b>e-mail</b> : {$prof->kode_smb}</td>
+                        </tr>
+						<tr style="border-bottom: 1px solid #DDDDDD;">
+							<td></td>
+						</tr>
+						<tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+						   <th>Alamat Surat </th>
+                           <td>{$prof->suratAlamat}, {$prof->suratProp}, {$prof->suratKodPos}</td>
+                        </tr>						
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+						   <th>Telpon/Fax</th>
+                           <td>{$prof->suratTel} / {$prof->suratFax}</td>
+                        </tr>
+                     </thead>
+                  </table>
+               </div>
+            </div>
+			<br>
+			<div class="row">
+				<div class="col-xs-12">
+					<h4>RIWAYAT PENDIDIKAN FORMAL</h4>
+				</div>
+               <div class="col-xs-12">
+                  <table class="table table-striped table-hover">
+                     <thead>
+                        <tr style="border: 1px solid #DDDDDD;">
+                           <th></th>
+                           <th>Nama Sekolah</th>
+                           <th>Kota</th>
+                           <th>Tahun Lulus</th>
+                           <th>Jurusan</th>
+                           <th>NIM/IPK</th>
+                        </tr>
+					 </thead>
+					 <tbody>
+                      {foreach name=loop from=$eduList item=row}
+						<tr style="border: 1px solid #DDDDDD;">
+						   <td><b>{$row->sekolahNama}</b></td>
+						   <td>{$row->sekolah}</td>
+						   <td>{$row->kabNama}</td>
+						   <td>{$row->tahunLulus}</td>
+						   <td>{$row->jurusan}</td>
+						   <td>{$row->nilai}</td>
+                        </tr>
+					  {/foreach}
+					 </tbody>
+				  </table>
+			   </div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-xs-12">
+					<h4>KEGIATAN ORGANISASI & EKSTRAKURIKULER</h4>
+				</div>
+               <div class="col-xs-12">
+                  <table class="table table-striped table-hover">
+                     <thead>
+                        <tr style="border: 1px solid #DDDDDD;">
+                           <th>Nama Kegiatan</th>
+                           <th>Jabatan</th>
+                           <th>Tempat</th>
+                           <th>Tahun Mulai</th>
+                           <th>Tahun Selesai</th>
+                        </tr>
+					 </thead>
+					 <tbody>
+					 {foreach name=loop from=$organisasi item=row}
+						<tr style="border: 1px solid #DDDDDD;">
+                           <td>{$row->namaKegiatan}</td>
+						   <td>{$row->jabatan}</td>
+						   <td>{$row->tempat}</td>
+						   <td>{$row->dariTahun}</td>
+						   <td>{$row->sampaiTahun}</td>
+                        </tr>
+					 {/foreach}
+					 </tbody>
+				  </table>
+			   </div>
+			</div>			
+			<br>
+			<div class="row">
+				<div class="col-xs-12">
+					<h4>PRESTASI ATAU PENGHARGAAN YANG PERNAH DIPEROLEH</h4>
+				</div>
+               <div class="col-xs-12">
+                  <table class="table table-striped table-hover">
+                     <thead>
+                        <tr style="border: 1px solid #DDDDDD;">
+                           <th>Nama Penghargaan</th>
+                           <th>Intuisi Pemberi & Tempat</th>
+                           <th>Tahun</th>
+                        </tr>
+					 </thead>
+					 <tbody>
+						<tr style="border: 1px solid #DDDDDD;">
+						{foreach name=loop from=$prestasi item=row}
+                           <td>{$row->namaPrestasi}</td>
+						   <td>{$row->namaInstitusi}</td>
+						   <td>{$row->tahun}</td>
+						{/foreach}
+                        </tr>
+					 </tbody>
+				  </table>
+			   </div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-xs-12">
+					<h4>DATA KELUARGA</h4>
+				</div>
+               <div class="col-xs-12">
+                  <table class="table table-striped table-hover">
+                     <thead>
+						<tr >
+                           <th><h5>AYAH/WALI</h5></th>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>Nama Ayah/Wali</th>
+                           <td>{$ortu->ayahNama}{$ortu->waliNama}</td>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>Email Ayah/Wali</th>
+                           <td>{$ortu->ayahEmail}{$ortu->waliEmail}</td>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>Alamat Rumah</th>
+                           <td>{$ortu->ayahAlamat}, {$ortu->ayahPropNama}, {$ortu->ayahKodePosNama}</td>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>Kontak</th>
+                           <td><b>Telp</b> : {$ortu->ayahTel} <b>Hp</b> : {$ortu->ayahCell}</td>
+                        </tr>
+						<tr style="border-bottom: 1px solid #DDDDDD;">
+							<td></td>
+						</tr>	
+						<tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>Nama Ibu</th>
+                           <td>{$ortu->ibuNama}</td>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>Email Ibu</th>
+                           <td>{$ortu->ibuEmail}</td>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>Alamat Rumah</th>
+                           <td>{$ortu->ibuAlamat}, {$ortu->ibuPropNama}, {$ortu->ibuKodePosNama}</td>
+                        </tr>
+                        <tr style="border: 1px solid #DDDDDD; background-color:#F9F9F9;">
+                           <th>Kontak</th>
+                           <td><b>Telp</b> : {$ortu->ibuTel} <b>Hp</b> : {$ortu->ibuCell}</td>
+                        </tr>
+					 </thead>
+				  </table>
+			   </div>
+			   <br>
+			   <div class="col-xs-12">
+					<h4>Saudara yang pernah/sedang berkuliah di Universitas Paramadina</h4>
+			   </div>
+			   <div class="col-xs-12">
+                  <table class="table table-striped table-hover">
+                     <thead>
+                        <tr style="border: 1px solid #DDDDDD;">
+                           <th>Nama</th>
+                           <th>Program Studi</th>
+                           <th>NIM</th>
+                           <th>Tahun</th>
+                        </tr>
+					 </thead>
+					 <tbody>
+					  {foreach name=loop from=$saudara item=row}
+						<tr style="border: 1px solid #DDDDDD;">
+                           <td>{$row->namaSaudara}</td>
+						   <td>{$row->prodi}</td>
+						   <td>{$row->nim}</td>
+						   <td>{$row->angkatan}</td>
+                        </tr>
+					   {/foreach}
+					 </tbody>
+				  </table>
+			   </div>
+			</div>
+			<br>
+            <div class="row">			   
+			   <div class="col-xs-12">
+					<h4><b>PERNYATAAN</b></h4>
+			   </div>
+               <div class="col-xs-12">
+                  <div class="well">
+                     <address>
+                        Dengan ini Saya menyatakan mendaftarkan diri menjadi calon mahasiswa Universitas Paramadina
+						dan bersedia mengikuti seleksi masuk. Saya menjamin keterangan yang saya cantumkan dalam formulir pendaftaran
+						serta berkas pendukung yang Saya lampirkan adalah benar.
+                     </address>
+                     <address style="text-align:right;width: 970px;">
+                        <strong>Jakarta,.................. </strong><br />
+						<br />
+						<br />
+						<br />
+						<br />
+                        <strong>{$prof->nama_cm}</strong><br />
+                     </address>
+                  </div>
+               </div>
+               <div class="col-xs-8 invoice-block">
+                  <br />
+                  <a class="btn btn-lg blue hidden-print" onclick="javascript:window.print();">Print <i class="icon-print"></i></a>
+				  <p> * Gunakan Chrome untuk konfigurasi halaman print yang lebih mudah</p>
+               </div>
+            </div>
+         </div>

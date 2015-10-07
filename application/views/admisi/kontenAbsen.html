@@ -1,0 +1,93 @@
+	    <!-- END PAGE HEADER-->
+         <!-- BEGIN PAGE CONTENT-->
+         <div class="invoice">
+            <div class="row invoice-logo">
+			<div class="col-xs-12 invoice-logo-space" style="text-align:center"><img src="{$host}assets/img/logop.png" alt="" /> </div>
+               <div class="col-xs-12" style="text-align:center">
+                  <h3><b>Absensi Tes Potensi Akademik</b></h3>
+               </div>
+            </div>
+            <hr />
+            <div class="row">
+               <div class="col-xs-6">
+                  <ul class="list-unstyled">
+                     <li><label style="width:100px"><strong>Gelombang </strong></label>: {if $event->sesi eq '1'}Pertama{else if $event->sesi eq '2'}Kedua{else if $event->sesi eq '3'}Ketiga{else if $event->sesi eq '4'}Keempat{else if $event->sesi eq '5'}Keliam{else if $event->sesi eq '6'}Keenam{else if $event->sesi eq '7'}Ketujuh{/if}</li>
+                     <li><label style="width:100px"><strong>Ruang </strong></label>: {$event->ruang}</li>
+                     <li><label style="width:100px"><strong>Hari/ Tanggal </strong></label>: {$event->hari},{$event->days} {$event->bulan} {$event->tahun}</li>
+                  </ul>
+               </div>
+               <div class="col-xs-6">
+                  <ul class="list-unstyled">
+                     <li><label style="width:100px"><strong>Waktu </strong></label>: {$event->jamMasuk} - {$event->jamKeluar}</li>
+                     <li><label style="width:100px"><strong>Petugas </strong></label>: {$event->namaPetugas}</li>
+                  </ul>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-xs-12">
+                  <table class="table table-striped table-bordered table-hover" style="border: 1px solid black">
+                     <thead>
+                        <tr style="background-color: #3F403E;color: #FFFFFF;">
+                           <th>No</th>
+                           <th style="width: 138px;">No Registrasi</th>
+                           <th class="hidden-480">Nama Mahasiswa</th>
+                           <th class="hidden-480" style="width: 150px;text-align:center">Program Studi</th>
+                           <th class="hidden-480" style="width: 170px;text-align:center">Tanda Tangan</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+					 {foreach name=loop from=$absen item=row}
+                        <tr>
+                           <td style="border: 1px double black;padding-top: 20px;">{$smarty.foreach.loop.iteration}</td>
+                           <td style="border: 1px double black;padding-top: 20px;">{$row->nomor}</td>
+                           <td class="hidden-480" style="border: 1px double black;padding-top: 20px;">{$row->namaPeserta}</td>
+                           <td class="hidden-480" style="text-align:center;border: 1px double black;padding-top: 20px;">{$row->singkatan}</td>
+                           <td class="hidden-480" style="border: 1px double black">{$smarty.foreach.loop.iteration}</td>
+                        </tr>
+					{/foreach}
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+			<div class="row"><div class="col-xs-1 invoice-block">
+                  <ul class="list-unstyled amounts">
+                  <br />
+                  <br />
+                  <br />
+               </div>
+               <div class="col-xs-6 invoice-block">
+                  <ul class="list-unstyled amounts">
+                  <br />
+                  <br />
+                     <li><strong>Tanggal </strong>______ / _____ / 20____</li>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                     <li><strong>Jumlah Hadir</strong>___________</li>
+                  </ul>
+                  <br />
+               </div>
+			   <div class="col-xs-5 invoice-block">
+                  <ul class="list-unstyled amounts">
+                  <br />
+                  <br />
+                     <li><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Pengawas Ujian</strong></li>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                     <li><strong>(...............................................)</strong></li>
+                  </ul>
+                  <br />
+               </div>
+			</div>
+            <div class="row">
+               <div class="col-xs-12 invoice-block">
+                  <br />
+                  <a class="btn btn-lg blue hidden-print" onclick="javascript:window.print();">Print <i class="icon-print"></i></a>
+               </div>
+            </div>
+         </div>

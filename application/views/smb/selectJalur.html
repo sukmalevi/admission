@@ -1,0 +1,51 @@
+<div class="col-md-3" style="margin-bottom:10px;margin-left: -13px;">
+    <input type="text" value="{$periode}" name="periode" id="periode" hidden>
+    <select class="form-control" name="jalur" id="jalur">
+        {foreach name=lope from=$jalur item=row}
+        <option value="{$row->kode}">{$row->nama}</option>
+        {/foreach}
+    </select>
+</div>
+<div class="col-md-3" style="margin-bottom:10px;margin-left: -13px;">
+    <select class="form-control" name="prodi" id="prodi">
+		<option value="all">All Prodi</option>
+        {foreach name=lope from=$prodi item=row}
+        <option value="{$row->kode}">{$row->nama}</option>
+        {/foreach}
+    </select>
+</div>
+<script>
+{literal}
+jQuery(document).ready(function() {
+    $.post("{/literal}{$host}{literal}smb/{/literal}{$fungsi}{literal}/table", {
+        'periode': $('#periode').val(),
+        'jalur': $('#jalur').val(),
+		'prodi': $('select[name=prodi]').val()
+    }, function(resp) {
+        $('#tblJadwal').html(resp);
+    });
+}); 
+{/literal} 
+{literal}
+    $("#jalur").change(function() {
+        $.post("{/literal}{$host}{literal}smb/{/literal}{$fungsi}{literal}/table", {
+            'periode': $('#periode').val(),
+            'jalur': $('#jalur').val(),
+			'prodi': $('select[name=prodi]').val()
+        }, function(resp) {
+            $('#tblJadwal').html(resp);
+        });
+    }); 
+{/literal}
+{literal}
+    $("#prodi").change(function() {
+        $.post("{/literal}{$host}{literal}smb/{/literal}{$fungsi}{literal}/table", {
+            'periode': $('#periode').val(),
+            'jalur': $('select[name=jalur]').val(),
+			'prodi': $('#prodi').val()
+        }, function(resp) {
+            $('#tblJadwal').html(resp);
+        });
+    }); 
+{/literal}
+</script>

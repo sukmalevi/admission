@@ -1,0 +1,174 @@
+<script type="text/javascript" src="{$host}assets/js/jquery.formatCurrency-1.4.0.js"></script>
+<form action="{$host}master/mDaftarUlang/edit/do" class="form-horizontal" method="post">
+    <div class="form-body">
+        <div class="form-group">
+            <label class="control-label col-md-3">Kode</label>
+            <div class="input-group col-md-6">
+                <input type="text" class="form-control" value="{$pembayaran->code}" disabled>
+                <input type="text" value="{$pembayaran->code}" name="kode" hidden>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Nama Pembayaran</label>
+            <div class="input-group col-md-8">
+                <input type="text" class="form-control" value="{$pembayaran->nama}" id="nama" name="nama">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Program Studi</label>
+            <div class="col-md-8">
+                <select class="form-control" id="prodi" name="prodi" disabled>
+                    {if $pembayaran->prodiTipe eq 'IK'}
+                    <option value="IK">Ilmu Komunikasi</option>
+                    {else if $pembayaran->prodiTipe eq 'MNJ'}
+                    <option value="MNJ">Manajemen</option>
+                    {/if}
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Metod Pembayaran</label>
+                    <div class="col-md-6">
+                        <select class="form-control" id="pembayaran" name="pembayaran" disabled>
+                            {if $pembayaran->pembayaran eq '1'}
+                            <option value="1">Lunas</option>
+                            {else}
+                            <option value="69">Angsuran</option>
+                            {/if}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Uang Masuk</label>
+            <div class="input-group col-md-8">
+                <input type="text" class="biaya form-control" value="{$pembayaran->uangMasuk}" id="um" name="um">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">SKS</label>
+            <div class="input-group col-md-8">
+                <input type="text" class="biaya form-control" value="{$pembayaran->sks}" id="sks" name="sks">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">SPP</label>
+            <div class="input-group col-md-8">
+                <input type="text" class="biaya form-control" value="{$pembayaran->spp}" id="spp" name="spp">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Tempo Angsuran</label>
+            <div class="input-group col-md-5">
+                <input type="number" class="form-control" value="{$pembayaran->tempoAngsuran}" id="tempo" name="tempo" pattern="[0-9]">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Angsuran 1</label>
+            <div class="input-group col-md-4">
+                <input type="text" class="biaya form-control" value="{$pembayaran->angsuran1}" id="angsuran1" name="angsuran1">
+            </div>
+			<div class="input-group col-md-4">
+				<input type="text" class="form-control" value="{$pembayaran->due_date1}" placeholder="Due Date (DD-MM-YYYY)" id="d_angsur1" name="d_angsur1">
+			</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Angsuran 2</label>
+            <div class="input-group col-md-4">
+                <input type="text" class="biaya form-control" value="{$pembayaran->angsuran2}" id="angsuran2" name="angsuran2">
+            </div>
+			<div class="input-group col-md-4">
+				<input type="text" class="form-control" value="{$pembayaran->due_date2}" placeholder="Due Date (DD-MM-YYYY)" id="d_angsur2" name="d_angsur2">
+			</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Angsuran 3</label>
+            <div class="input-group col-md-4">
+                <input type="text" class="biaya form-control" value="{$pembayaran->angsuran3}" id="angsuran3" name="angsuran3">
+            </div>
+			<div class="input-group col-md-4">
+				<input type="text" class="form-control" value="{$pembayaran->due_date3}" placeholder="Due Date (DD-MM-YYYY)" id="d_angsur3" name="d_angsur3">
+			</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Angsuran 4</label>
+            <div class="input-group col-md-4">
+                <input type="text" class="biaya form-control"value="{$pembayaran->angsuran4}" id="angsuran4" name="angsuran4">
+            </div>
+			<div class="input-group col-md-4">
+				<input type="text" class="form-control" value="{$pembayaran->due_date4}" placeholder="Due Date (DD-MM-YYYY)" id="d_angsur4" name="d_angsur4">
+			</div>
+        </div>
+        {if $pembayaran->tempoAngsuran neq '4'}
+        <div class="form-group">
+            <label class="control-label col-md-3">Angsuran 5</label>
+            <div class="input-group col-md-4">
+                <input type="text" class="biaya form-control" value="{$pembayaran->angsuran5}" id="angsuran5" name="angsuran5">
+            </div>
+			<div class="input-group col-md-4">
+				<input type="text" class="form-control" value="{$pembayaran->due_date5}" placeholder="Due Date (DD-MM-YYYY)" id="d_angsur5" name="d_angsur5">
+			</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Angsuran 6</label>
+            <div class="input-group col-md-4">
+                <input type="text" class="biaya form-control" value="{$pembayaran->angsuran6}" id="angsuran6" name="angsuran6">
+            </div>
+			<div class="input-group col-md-4">
+				<input type="text" class="form-control" value="{$pembayaran->due_date6}" placeholder="Due Date (DD-MM-YYYY)" id="d_angsur6" name="d_angsur6">
+			</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Angsuran 7</label>
+            <div class="input-group col-md-4">
+                <input type="text" class="biaya form-control" value="{$pembayaran->angsuran7}" id="angsuran7" name="angsuran7">
+            </div>
+			<div class="input-group col-md-4">
+				<input type="text" class="form-control" value="{$pembayaran->due_date7}" placeholder="Due Date (DD-MM-YYYY)" id="d_angsur7" name="d_angsur7">
+			</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Angsuran 8</label>
+            <div class="input-group col-md-4">
+                <input type="text" class="biaya form-control" value="{$pembayaran->angsuran8}" id="angsuran8" name="angsuran8">
+            </div>
+			<div class="input-group col-md-4">
+				<input type="text" class="form-control" value="{$pembayaran->due_date8}" placeholder="Due Date (DD-MM-YYYY)" id="d_angsur8" name="d_angsur8">
+			</div>
+        </div>
+        {/if}
+        <div class="form-group">
+            <label class="control-label col-md-3">Total Angsuran</label>
+            <div class="input-group col-md-8">
+                <input type="text" class="biaya form-control" value="{$pembayaran->totalAngsuran}" id="total" name="total">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Status</label>
+            <div class="col-md-6">
+                <select class="form-control" id="status" name="status" class="status">
+                    {if $pembayaran->status eq '1'}
+                    <option value="1">AKTIF</option>
+                    {else}
+                    <option value="0">TIDAK AKTIF</option>
+                    {/if}
+                </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn blue" id="save" value="edit" name="opt">Save <i class="icon-plus"></i>
+                </a>
+        </div>
+</form>
+<script>
+$(document).ready(function() {
+    $('.biaya').formatCurrency();
+    $('.biaya').blur(function() {
+        $('.biaya').formatCurrency();
+    });
+});
+</script>

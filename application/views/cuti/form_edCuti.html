@@ -1,0 +1,104 @@
+<script>
+$(function () {
+        $('#datetimepicker5').datetimepicker({
+            pickTime: false
+        });
+		$('#datetimepicker1').datetimepicker({
+            pickTime: false
+        });
+    });
+	$(function () {
+        $('#datetimepicker51').datetimepicker({
+            pickTime: false
+
+        });
+    });		  
+$(function () {
+	$('#data-table').dataTable({
+		"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>"
+    });
+});
+</script>	
+					<div class="content-widgets light-gray">
+						<div class="widget-head brown">
+							<h3>Form Edit Pengajuan Cuti
+							<a href="{$host}cuti/tabelCuti" id="minus" style="float:right"><i class="icon-minus"></i></a>
+							</h3>
+						</div>
+									<div class="widget-container">
+										<form class="form-horizontal" name="marketer" action="{$host}cuti/editCuti/update" id="marketer" method="post">
+											<div class="control-group">
+											<input type="text" name="id" id="id" style="display:none" value="{$eCuti->id_cuti}">
+												<label class="control-label" >Nama</label>
+												<div class="controls">
+													<input type="text" name="id_peg" id="id_peg" style="display:none" value="{$eCuti->id_pegawai}">
+													<label class="right-label" id="nama" style="width:255px">{$eCuti->nama}</label>
+												</div>
+												<label class="control-label" >Bagian</label>
+												<div class="controls">
+													<label class="right-label" id="depart">{$eCuti->depart}</label>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" >Jabatan</label>
+												<div class="controls">
+													<label class="right-label" id="jabatan">{$eCuti->jabatan}</label>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" >Jenis Cuti</label>
+												<div class="controls">
+													<select data-placeholder="Departemen" class="span" tabindex="2" name="jenis_cuti" id="jenis_cuti">												
+														<option value="{$eCuti->id_jenis_cuti}">{$eCuti->jenis_cuti}</option>
+														{foreach name=loop from=$jcuti item=row}
+														<option value="{$row->id_jenis_cuti}" >{$row->jenis_cuti}</option>
+														{/foreach}
+													</select>
+												</div>
+											</div>
+										<div id="cuti_utama">
+										<div id="cuti_utama">
+											<div class="control-group">
+												<label class="control-label">Periode Cuti</label>
+												<div class="controls">
+													<div id="datetimepicker5" class="input-append date ">
+														<input data-format="yyyy-MM-dd" type="text" name="tgl_mulai" id="tgl_mulai" value="{$eCuti->tgl_cuti}"><span class="add-on "><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+													</div> s.d.
+													<div id="datetimepicker51" class="input-append date ">
+														<input data-format="yyyy-MM-dd" type="text" name="tgl_selesai" id="tgl_selesai" value="{$eCuti->tgl_selesai_cuti}"><span class="add-on "><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+													</div>
+												</div>
+											</div><!-- 
+											<div class="control-group">
+												<label class="control-label" >Jumlah Hari</label>
+												<div class="controls">
+													<input type="text" name="total" id="total" value="5">
+												</div>
+											</div> -->
+											<div class="control-group">
+												<label class="control-label" >Kembali Bekerja</label>
+												<div class="controls">
+													<div id="datetimepicker1" class="input-append date ">
+														<input data-format="yyyy-MM-dd" type="text" name="tgl_kembali" id="tgl_kembali" value="{$eCuti->tgl_kembali}"><span class="add-on "><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+													</div>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" >Alasan</label>
+												<div class="controls">										
+													<textarea rows="4" class="span5" cols="50" name="alasan" id="alasan">{$eCuti->alasan}</textarea>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" >Alamat Sewaktu Cuti</label>
+												<div class="controls">										
+													<textarea rows="2" class="span5" cols="50" name="al_cuti" id="al_cuti">{$eCuti->alamat_cuti}</textarea>
+												</div>
+											</div>
+										</div>
+												<button type="submit" class="btn btn-success" name="save" id="save" value="save">Update</button>
+												<button type="reset" class="btn">Reset</button>
+										
+										</form>
+									</div>
+						</div>

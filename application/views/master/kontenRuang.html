@@ -1,0 +1,33 @@
+		<div class="form-group">
+            <label >Pilih Gedung</label>
+            <select  class="form-control" name="gedung" id="gedung">
+				{foreach name=lope from=$sql item=row}
+				<option value="{$row->kode}">{$row->nama}</option>
+				{/foreach}
+            </select>
+        </div>
+		<div id="tblRuang">				
+		</div>	
+<script>
+      jQuery(document).ready(function() {     
+         TableEditable.init();
+      });
+</script>
+{literal}
+<script>
+$(document).ready(function(){
+	$.post("{/literal}{$host}{literal}master/masterRuang/table",{
+					'gedung':$('#gedung').val()					
+				},function(resp){
+                $('#tblRuang').html(resp);
+            });
+});
+$("#gedung").change(function(){
+		$.post("{/literal}{$host}{literal}master/masterRuang/table",{
+					'gedung':$('#gedung').val()					
+				},function(resp){
+                $('#tblRuang').html(resp);
+            });
+	});
+</script>
+{/literal}

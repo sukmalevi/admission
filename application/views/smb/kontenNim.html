@@ -1,0 +1,44 @@
+				<div class="tab-pane" id="tab_1_4">
+                        <div class="row">
+                           <div class="col-md-12">					  
+							   <div class="col-md-4" style="margin-bottom:10px;margin-left: -13px;">
+									<select  class="form-control" name="periode" id="periode">
+										{foreach name=lope from=$periode item=row}
+										<option value="{$row->kode}">{$row->nama}</option>
+										{/foreach}
+									</select>
+							   </div>
+							<div id="selectJalur"> </div>
+                           </div>						   
+                        </div>
+						<div id="tblJadwal" name="tblJadwal">
+						</div>
+					</div>
+				<div id="tablePeserta">
+					<!-- Isi table Peserta -->
+				</div>
+				
+<script>
+{literal}
+jQuery(document).ready(function() {       
+         // initiate layout and plugins
+		 id = "smbNim";
+		 $.post("{/literal}{$host}{literal}smb/smbJalur",{
+					'periode':$('#periode').val(), 'fungsi':id					
+				},function(resp){
+                $('#selectJalur').html(resp);
+            });
+      });
+
+	$("#periode").change(function(){
+		id = "smbNim";
+		$.post("{/literal}{$host}{literal}smb/smbJalur",{
+					'periode':$('#periode').val(), 'fungsi':id					
+				},function(resp){
+                $('#selectJalur').html(resp);
+            });
+	});
+{/literal}
+
+//$("#data").jExpand(); 
+</script>

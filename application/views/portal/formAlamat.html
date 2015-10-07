@@ -1,0 +1,353 @@
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<form action="{$host}portal/saveAlamat/save" class="form-horizontal" id="form_sample_2" method="post" enctype="multipart/form-data">
+    <div class="portlet box grey">
+        <div class="portlet-body form" style="border-top: 1px double #4682B4;">
+            <div class="form-body" style="font-size:bold">
+                <h3 class="form-section" style="margin-bottom: 15px; margin-left: 50px;margin-top: 12px;">DATA DIRI</h3>
+                <div class="alert alert-error display-hide">
+                    <button class="close" data-dismiss="alert"></button>
+                    You have some form errors. Please check below.
+                </div>
+                <div class="alert alert-success display-hide">
+                    <button class="close" data-dismiss="alert"></button>
+                    Your form validation is successful!
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Nama Lengkap
+                            </label>
+                            <div class="col-md-9">
+                                <input name="kode" value="{$kode}" hidden>
+                                <input type="text" class="form-control" name="nama" value="{$nama}" id="nama" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">No KTP / SIM
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="no_id" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Tempat Lahir
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="tempatLahir" value="{$cmb->tempatLahir}" required>
+                                <span class="help-block">Sesuai dengan ijazah terakhir</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Tanggal Lahir
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="tanggalLahir" value="{$cmb->tanggalLahir}" placeholder='yyyy-mm-dd' required>
+                            </div>
+                            <!-- <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="yyyy-mm-dd">
+														<input type="text" class="form-control" name="tanggalBayar" style="text-align: left;">
+													   </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Agama
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control" name="agama" id="agama" required>
+                                    {foreach name=loop from=$religion item=row}
+                                    <option value="{$row->kode}">{$row->nama}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Upload Foto
+                            </label>
+                            <div class="col-md-9">
+                                <input type="file" name="poto" required>
+                                <p class="help-block">Format : jpg|png|gif, Best Size : 200px*200px</p>
+                                <p class="help-block">Max Width : 1024px, Max Height : 768, Max Size :10 MB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-body">
+                <h3 class="form-section" style="margin-bottom: 15px; margin-left: 50px;margin-top: 12px;">Alamat Rumah & Surat
+                </h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Alamat Rumah
+                            </label>
+                            <div class="col-md-9">
+                                <textarea class="form-control placeholder-no-fix" id="occupation" name="occupation" rows="4" required>{$cmb->rumahAlamat}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Propinsi
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control" name="propinsi" id="propinsi" required>
+                                    {foreach name=loop from=$wil item=row}
+                                    <option value="{$row->kode}">{$row->nama}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Kabupaten/Kota
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control" name="kabkota" id="kabkota" required>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Kode Pos
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control" name="kodepos" id="kodepos" required>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Telepon Rumah
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="telRumah" name="telRumah" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Fax Rumah
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="fax" value="" id="fax">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-body">
+                <h3 class="form-section" style="margin-bottom: 15px; margin-left: 50px;margin-top: 12px;">Alamat Surat
+                    <input type="checkbox" name="sama" id="sama">
+                    <span style="font-size:14px">Centang jika alamat surat Anda sama dengan alamat di atas.</span>
+                </h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Alamat Surat
+                            </label>
+                            <div class="col-md-9">
+                                <textarea class="form-control placeholder-no-fix" name="occupationsur" rows="4" id="occupationsur" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Propinsi
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control" name="propinsi2" id="propinsi2" required>
+                                    <option>-- Pilih Propinsi --</option>
+                                    {foreach name=loop from=$wil item=row}
+                                    <option value="{$row->kode}">{$row->nama}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Kab./Kota
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control" name="kabkota2" id="kabkota2" required>
+                                    <option>-- Pilih Kabupaten --</option>
+                                    {foreach name=loop from=$kab item=row}
+                                    <option value="{$row->kode}">{$row->nama}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Kode Pos
+                            </label>
+                            <div class="col-md-9">
+                                <select class="form-control" name="kodepos2" id="kodepos2" required>
+                                    <option>-- Pilih Kabupaten --</option>
+                                    {foreach name=loop from=$kodepos item=row}
+                                    <option value="{$row->kode}">{$row->kodepos}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Telepon Rumah
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="telRumah2" id="telRumah2" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" style="text-align:left;">Fax Rumah
+                            </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="fax2" value="" id="fax2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn default" data-dismiss="modal">Reset <i class="icon-refresh"></i>
+                    </button>
+                    <button type="submit" class="btn blue" id="save" value="save" name="opt">Simpan <i class="icon-save"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- <button class="btn default"  id="foo">View Demo</button> -->
+						  
+<script>
+{literal}
+$('#foo').click(function() {
+       if (confirm('Lengkapi Data Orang Tua atau Wali')) {
+           id = "formKeluarga";
+			
+			$.post("{/literal}{$host}{literal}portal/formulir/keluarga", {'id':id},function(resp){
+				$('#konten').html(resp);
+			});
+			document.getElementById("profil").style.height="42px" ;
+			document.getElementById("imgP").style.display="none" ;
+			return false;
+       }
+    });
+{/literal}
+jQuery(document).ready(function() {
+toastr.success('Silahkan Lengkapi DATA DIRI Anda');
+    kabkota();
+	
+    //kabkota2();
+	
+});
+
+$("#propinsi").change(function(){
+    kabkota();
+	kodepos();
+});
+
+$("#kabkota").change(function(){
+    kodepos();
+});
+/*
+$("#propinsi2").change(function(){
+    kabkota2();
+	kodepos2();
+});
+
+$("#kabkota2").change(function(){
+    
+	kodepos2();
+});*/
+{literal}
+function kabkota(){
+	$.post("{/literal}{$host}{literal}portal/selectKabKota",{
+					'propinsi':$('#propinsi').val()				
+				},function(resp){
+                $('select#kabkota').html(resp);
+            });
+	
+	kodepos();
+}
+{/literal}
+
+{literal}
+function kodepos(){
+	$.post("{/literal}{$host}{literal}portal/selectKodePos",{
+					'kabkota':$('#kabkota').val()				
+				},function(resp){
+                $('select#kodepos').html(resp);
+            });
+}
+{/literal}
+
+{literal}
+function kabkota2(){
+	$.post("{/literal}{$host}{literal}portal/selectKabKota",{
+					'propinsi':$('#propinsi2').val()				
+				},function(resp){
+                $('select#kabkota2').html(resp);
+            });
+	
+	kodepos2();
+}
+{/literal}
+{literal}
+function kodepos2(){
+	$.post("{/literal}{$host}{literal}portal/selectKodePos",{
+					'kabkota':$('#kabkota2').val()				
+				},function(resp){
+                $('select#kodepos2').html(resp);
+            });
+}
+{/literal}
+
+$('#sama').click(function() {	
+	if ( $(this).is(':checked') ){
+            $('#occupationsur').val($('#occupation').val());
+			$('#telRumah2').val($('#telRumah').val());
+			$('#propinsi2').val($('#propinsi').val());
+			$('#kabkota2').val($('#kabkota').val());
+			$('#kodepos2').val($('#kodepos').val());
+			$('#fax2').val($('#fax').val());
+    }else{
+            $('#occupationsur').val("");
+			$('#telRumah2').val("");
+			$('#propinsi2').val("");
+			$('#kabkota2').val("");
+			$('#kodepos2').val("");
+			$('#fax2').val("");
+			
+	}
+	/*
+	$('#warning').css("display", "block");
+	$('#warning1').css("display", "block");
+	$('#warning2').css("display", "block");*/
+	
+});
+</script>

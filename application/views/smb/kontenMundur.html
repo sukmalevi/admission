@@ -1,0 +1,133 @@
+<script type="text/javascript" src="{$host}assets/js/jquery.formatCurrency-1.4.0.js"></script>
+		<form action="{$host}smb/mundurDiri/{$cmb->no_smb}/mundur/save" enctype="multipart/form-data" class="form-horizontal form-bordered form-row-stripped" id="form_sample_1" method="post">	
+			<div class="portlet box grey">
+			   <div class="portlet-body form" style="border-top: 1px double #4682B4;">
+					 <div class="form-body" style="font-size:bold">
+						<h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">DATA MAHASISWA</h3>
+						<div class="form-group">
+						   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Nama Lengkap
+						   </label>
+						   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+							<label><h4>{$cmb->nama_cm}</h4></label>
+							<input value="{$cmb->kode_smb}" name="kode" hidden>
+						   </div>
+						</div>
+						<div class="form-group">
+						   <label class="control-label col-md-3" style="text-align:left;width: 220px;">No. Registrasi
+						   </label>
+						   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+							  <label><h4>{$cmb->no_smb}</h4></label>
+						   </div>
+						</div>	
+						<div class="form-group">
+						   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Program Studi
+						   </label>
+						   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+							  <label><h4>{$cmb->progdi}</h4></label>
+						   </div>
+						</div>	
+						<div class="form-group">
+						   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Tanggal Pendaftaran
+						   </label>
+						   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+							  <label><h4>{$cmb->hari}, {$cmb->cDay} {$cmb->cMonth} {$cmb->cYear}</h4></label>
+						   </div>
+						</div>	
+						<div class="form-group">
+						   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Periode
+						   </label>
+						   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+							  <label><h4>{$cmb->namaPeriode}</h4></label>
+						   </div>
+						</div>
+					 </div>
+					 <div class="form-body">
+						<h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">
+						Detail Biaya Daftar Ulang</h3>	
+						<div class="form-group">
+						   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Alasan Mengundurkan Diri 
+						   </label>
+						   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+							  <select  class="form-control" name="alasan" id="alasan" required>
+								 <option value="-">-</option>													
+								 <option value="Tidak lulus Ujian Nasional (UN)">Tidak lulus Ujian Nasional (UN)</option>												
+								 <option value="Lulus Seleksi Penerimaan Mahasiswa Baru (SPMB)">Lulus Seleksi Penerimaan Mahasiswa Baru (SPMB)</option>												
+								 <option value="Program Penelusuran Minat dan Kemampuan (PPMK)">Program Penelusuran Minat dan Kemampuan (PPMK)</option>												
+								 <option value="Meninggal Dunia">Meninggal Dunia</option>
+								 <option value="Lainnya">Lainnya</option>													
+							  </select>
+						   </div>
+						</div>
+						<div class="form-group">
+						   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Alasan Lainnya
+						   </label>
+						   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+								<input type="text" class="form-control" name="alasanLain" id="alasanLain" required>
+						   </div>
+						</div>	
+						<div class="form-group">
+						   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Pembayaran Daftar Ulang
+						   </label>
+						   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+							  <select  class="form-control" name="typeTrans" id="typeTrans" required>
+								 <option>Pilih Tipe Pembayaran..</option>
+								 <option value="1">Lunas</option>
+								 <option value="0">Angsuran</option>
+							  </select>
+						   </div>
+						</div>											
+						<div class="form-group">
+						   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Jumlah Yang Dibayarkan
+						   </label>
+						   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+								<input type="text" class="biaya form-control" name="jumlahBayar" required>
+						   </div>
+						</div>
+						<h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">
+						Pengembalian Pembayaran Uang Daftar Ulang</h3>	
+						<div class="form-group">
+						   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Nama Bank
+						   </label>
+						   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+								<input type="text" class="form-control" name="bank" required>
+						   </div>
+						</div>	
+						<div class="form-group">
+						   <label class="control-label col-md-3" style="text-align:left;width: 220px;">KCP/KU
+						   </label>
+						   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+								<input type="text" class="form-control" name="kcp" required>
+						   </div>
+						</div>	
+						<div class="form-group">
+						   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Nomor Rekening
+						   </label>
+						   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+								<input type="text" class="form-control" name="noRek" required>
+						   </div>
+						</div>	
+						<div class="form-group">
+						   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Atas Nama
+						   </label>
+						   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+								<input type="text" class="form-control" name="an" required>
+						   </div>
+						</div>	
+						
+					  <div class="modal-footer">
+						 <button type="reset" class="btn default" data-dismiss="modal">Reset</button>
+						 <button type="submit" class="btn blue" id="save" value="save" name="opt"> Simpan <i class="icon-save"></i></button>
+					  </div>
+					</div>
+				</div>
+			</div>
+		   </form>
+<script>
+$(document).ready(function(){
+	$('.biaya').blur(function()
+			{
+				$('.biaya').formatCurrency();
+			});
+	
+});
+</script>

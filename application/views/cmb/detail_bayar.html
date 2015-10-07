@@ -1,0 +1,76 @@
+{if $jalur neq '03'}
+<h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">Detail Pembayaran</h3>
+{if $jalur eq '02'}
+<div class="form-group">
+	<label class="control-label col-md-2">Jumlah SKS Diterima
+                        <span class="required">*</span>
+        </label>
+	<div class="col-md-10">
+		<input type="number" class="form-control" name="sks_acc" required>
+	</div>
+</div>
+{/if}
+{if $jalur neq 'KP'}
+<div class="form-group radio-list">
+	<label class="control-label col-md-2">Saudara Kandung
+                        <span class="required">*</span>
+        </label>
+	<div class="col-md-1">
+		<label><input type="radio" name="saudara" value="1"> Ya </label>
+	</div>
+	<div class="col-md-1">
+		<label><input type="radio" name="saudara" value="0"> Tidak </label>
+	</div>
+</div>
+{/if}
+
+{if $prodi eq '1208' && $jalur eq 'KP'}
+<div class="form-group radio-list">
+	<label class="control-label col-md-2">Pendidikan Terakhir
+                        <span class="required">*</span>
+        </label>
+	<div class="col-md-1">
+		<label><input type="radio" name="lulusan" value="SMA"> SMA </label>
+	</div>
+	<div class="col-md-1">
+		<label><input type="radio" name="lulusan" value="D3"> D3 </label>
+	</div>
+</div>
+{/if}
+<div class="form-group radio-list">
+	<label class="control-label col-md-2">Metode Pembayaran
+                        <span class="required">*</span>
+        </label>
+	<div class="col-md-1">
+		<label><input type="radio" name="lunas" value="1" > Lunas </label>
+	</div>
+	<div class="col-md-2">
+		<label><input type="radio" name="lunas" value="0" > Angsuran </label>
+	</div>
+</div>
+{if $jalur neq 'KP'}
+<div class="form-group">
+	<label class="control-label col-md-2">Ranking
+                        <span class="required">*</span>
+        </label>
+	<div class="col-md-3">                        
+		<select class="form-control" name="rank" required>
+			<option value="0">-: Pilih Ranking :-</option>
+			<option value="1" >Ranking 1</option>
+			<option value="2" >Ranking 2</option>
+			<option value="3" >Ranking 3</option>
+			<option value="4" >Tidak Ada</option>
+		</select>
+	</div>
+</div>
+{/if}
+{/if}
+{if $jalur eq '03'}
+<div class="form-group">
+	<label class="control-label col-md-2">Nama Donor
+        </label>
+	<div class="col-md-10">
+		<input type="text" class="form-control" name="nama_donor" >
+	</div>
+</div>
+{/if}

@@ -1,0 +1,55 @@
+<div class="col-md-3" style="margin-bottom:10px;margin-left: -13px;">
+    <input type="text" value="{$periode}" name="periode" id="periode" hidden>
+    <select class="form-control" name="jalur" id="jalur">
+		<option value="all">All Jalur</option>
+        {foreach name=lope from=$jalur item=row}
+        <option value="{$row->kode}">{$row->nama}</option>
+        {/foreach}
+    </select>
+</div>
+<div class="col-md-3" style="margin-bottom:10px;margin-left: -13px;">
+    <select class="form-control" name="prodi" id="prodi">
+		<option value="all">All Prodi</option>
+        {foreach name=lope from=$prodi item=row}
+        <option value="{$row->kode}">{$row->nama}</option>
+        {/foreach}
+    </select>
+</div>
+{if $levelID eq '99' or $levelID eq '66' or $levelID eq '55' or $levelID eq '33' or $levelID eq '101' }
+<a href="{$host}cmb/registrasiForm" class="btn blue">Tambah <i class="icon-plus"></i></a>
+{/if}
+<script>
+{literal}
+jQuery(document).ready(function() {
+    $.post("{/literal}{$host}{literal}cmb/{/literal}{$fungsi}{literal}/table", {
+        'periode': $('#periode').val(),
+        'jalur': $('#jalur').val(),
+		'prodi': $('select[name=prodi]').val()
+    }, function(resp) {
+        $('#tblJadwal').html(resp);
+    });
+}); 
+{/literal} 
+{literal}
+    $("#jalur").change(function() {
+        $.post("{/literal}{$host}{literal}cmb/{/literal}{$fungsi}{literal}/table", {
+            'periode': $('#periode').val(),
+            'jalur': $('#jalur').val(),
+			'prodi': $('select[name=prodi]').val()
+        }, function(resp) {
+            $('#tblJadwal').html(resp);
+        });
+    }); 
+{/literal}
+{literal}
+    $("#prodi").change(function() {
+        $.post("{/literal}{$host}{literal}cmb/{/literal}{$fungsi}{literal}/table", {
+            'periode': $('#periode').val(),
+            'jalur': $('select[name=jalur]').val(),
+			'prodi': $('#prodi').val()
+        }, function(resp) {
+            $('#tblJadwal').html(resp);
+        });
+    }); 
+{/literal}
+</script>

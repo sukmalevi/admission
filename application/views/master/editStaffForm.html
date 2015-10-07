@@ -1,0 +1,74 @@
+				<div class="content-widgets light-gray">
+						<div class="widget-head green">
+							<h3>Form Pegawai Paramadina
+							<a href="{$host}master/masterPegawai" id="minus" style="float:right"><i class="icon-minus"></i></a>
+							</h3>
+						</div>
+						<div class="widget-container">
+							<form class="form-horizontal" name="marketer" action="{$host}master/editMaster/update" id="marketer" method="post">
+								<div class="control-group">
+									<label class="control-label" >Nama</label>
+									<div class="controls">
+										<input id="id" name="id" value="{$pegawai->id}" style="display:none">
+										<input type="text" placeholder="Nama Pegawai" class="span4" name="nama" id="nama" class="required" value="{$pegawai->nama}">
+										<input type="text" placeholder="Inisial" class="span1" name="inisial" id="inisial" class="required" value="{$pegawai->inisial}">									
+									</div>										
+								</div>
+								<div class="control-group">
+									<label class="control-label" >Departemen</label>
+									<div class="controls">
+										<select data-placeholder="Departemen" class="span4" tabindex="2" name="depart" id="depart">												
+											<option value="{$pegawai->d_id}">{$pegawai->depart}</option>
+											{foreach name=loop from=$depart item=row}
+											<option value="{$row->acadept_uid}" >{$row->description}</option>
+											{/foreach}
+										</select>
+									</div>
+								</div>
+								<div class="control-group">	
+									<label class="control-label" >Jabatan</label>
+									<div class="controls">
+										<select data-placeholder="Jabatan" class="span4" tabindex="2" name="jabatan" id="jabatan">												
+											<option value="{$pegawai->j_id}">{$pegawai->jabatan}</option>
+											{foreach name=loop from=$jabatan item=row}
+											<option value="{$row->acajbt_uid}" >{$row->description}</option>
+											{/foreach}
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" >Alamat</label>
+									<div class="controls">
+										<input type="text" placeholder="Alamat" class="span7" name="alamat" id="alamat" class="required" value="{$pegawai->alamat_skr}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" >NIP</label>
+									<div class="controls">
+										<input type="text" placeholder="Nomor Induk Pegawai" class="span3" name="nip" id="nip" class="required" value="{$pegawai->personal_NIP}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" >Email</label>
+									<div class="controls">
+										<input type="email" placeholder="Alamat Email" class="span4" name="email" id="email" class="required" value="{$pegawai->email}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" >No Telp</label>
+									<div class="controls">
+										<input type="text" placeholder="No Telp" class="span4" name="telp" id="telp" class="required" value="{$pegawai->phone}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" >No HP</label>
+									<div class="controls">
+										<input type="text" placeholder="No HP" class="span4" name="hp" id="hp" class="required" value="{$pegawai->mobile_phone1}">
+									</div>
+								</div>
+									<button type="submit" class="btn btn-success" name="save" id="save" value="save" href="{$host}master/editMaster/update">Update</button>
+									<button type="reset" class="btn">Reset</button>
+									
+							</form>
+						</div>
+					</div>

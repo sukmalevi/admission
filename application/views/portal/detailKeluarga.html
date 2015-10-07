@@ -1,0 +1,356 @@
+							<form action="#" class="formOrtu form-horizontal" id="form_sample_2" method="post">	
+								<div class="portlet box grey" id="formKel">
+								   <div class="portlet-body form" style="border-top: 1px double #4682B4;">
+										 <div class="form-body" style="font-size:bold">
+											<h3 class="form-section" style="margin-bottom: 15px; margin-left: 50px;margin-top: 12px;">DATA ORANG TUA/ WALI <span style="color:red;font-size: 15px">*pilih salah satu untuk diisi</span>
+												<a class="btn" id="minKel" style="float:right;color: green; "><i class=" icon-minus"></i></a>
+												<a class="btn" id="plusKel" style="float:right;color: black;display:none "><i class=" icon-plus"></i></a> 
+											</h3>
+									<div id="detailKel">	 
+											<div class="row">
+												<div style="background-color:#555555;color:#FFFFFF;margin-bottom:7px;margin-left:7px;width:1110px;-moz-border-start-style: groove;height: 30px;">
+												<span style="font-size:18px;margin-left: 15px;">Ayah : </span>
+												<a class="btn" id="minAyah" style="float:right;color: red; "><i class=" icon-minus"></i></a>
+												<a class="btn" id="plusAyah" style="float:right;color: white;display:none "><i class=" icon-plus"></i></a> 
+												</div>
+											</div>
+										<div id="ayah">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Nama Ayah
+													   </label>
+													   <div class="col-md-9" >
+															<input name="id" value="Ortu" hidden>
+															<input name="kode" value="{$kode}" hidden>
+															<input type="text" class="form-control" name="namaAyah" id="namaAyah" value="{$ortu->ayahNama}" disabled>											   
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">E-mail
+													   </label>
+													   <div class="col-md-9" >
+															<input type="text" class="form-control" name="emailAyah" id="emailAyah" value="{$ortu->ayahEmail}" disabled>	
+													   </div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Telepon Rumah
+													   </label>
+													   <div class="col-md-9">
+															<input type="text" class="form-control" name="telAyah" id="telAyah" value="{$ortu->ayahTel}" disabled>	
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Handphone
+													   </label>
+													   <div class="col-md-9">
+															<input type="text" class="form-control" name="hpAyah" id="hpAyah" value="{$ortu->ayahNama}" disabled>
+													   </div>
+													</div>
+												</div>
+											</div>	
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Alamat
+													   </label>
+													   <div class="col-md-9">
+															<textarea class="form-control placeholder-no-fix" name="alamatAyah" rows="5" id="alamatAyah" disabled >{$ortu->ayahAlamat}</textarea>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Propinsi
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="propAyah" id="propAyah" disabled>
+																<option value="{$ortu->ayahProp}">{$ortu->ayahPropNama}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Kabupaten/Kota
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="kabAyah" id="kabAyah" disabled>
+															<option value="{$ortu->ayahKabKota}">{$ortu->ayahKabNama}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Kode Pos
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="kposAyah" id="kposAyah" disabled>
+															<option value="{$ortu->ayahKodePos}">{$ortu->ayahKodePosNama}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+											<div class="row">
+												<div style="background-color:#555555;color:#FFFFFF;margin-bottom:7px;margin-left:7px;width:1110px;-moz-border-start-style: groove;height: 30px;">
+												<span style="font-size:18px;margin-left: 15px;">Ibu :</span>
+												<a class="btn" id="minIbu" style="float:right;color: red; "><i class=" icon-minus"></i></a> 
+												<a class="btn" id="plusIbu" style="float:right;color: white;display:none "><i class=" icon-plus"></i></a> 
+												</div>
+											</div>
+										
+										<div id="ibu">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Nama Ibu
+													   </label>
+													   <div class="col-md-9" >
+															<input type="text" class="form-control" name="namaIbu" id="namaIbu" value="{$ortu->ibuNama}" disabled>											   
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">E-mail
+													   </label>
+													   <div class="col-md-9" >
+															<input type="text" class="form-control" name="emailIbu" id="emailIbu" value="{$ortu->ibuEmail}" disabled>	
+													   </div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Telepon Rumah
+													   </label>
+													   <div class="col-md-9">
+															<input type="text" class="form-control" name="telIbu" id="telIbu" value="{$ortu->ibuTel}" disabled>	
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Handphone
+													   </label>
+													   <div class="col-md-9">
+															<input type="text" class="form-control" name="hpIbu" id="hpIbu" value="{$ortu->ibuCell}" disabled>
+													   </div>
+													</div>
+												</div>
+											</div>	
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Alamat
+													   </label>
+													   <div class="col-md-9">
+															<textarea class="form-control placeholder-no-fix" name="alamatIbu" rows="5" id = "alamatIbu" disabled>{$ortu->ibuAlamat}</textarea>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Propinsi
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="propIbu" id="propIbu" disabled >
+																<option value="{$ortu->ibuProp}">{$ortu->ibuPropNama}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Kabupaten/Kota
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="kabIbu" id="kabIbu" disabled>
+																<option value="{$ortu->ibuKabKota}">{$ortu->ibuKabNama}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Kode Pos
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="kposIbu" id="kposIbu" disabled>
+																<option value="{$ortu->ibuKodePos}">{$ortu->ibuKodePosNama}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+											<div class="row">
+												<div style="background-color:#555555;color:#FFFFFF;margin-bottom:7px;margin-left:7px;width:1110px;-moz-border-start-style: groove;height: 30px;">
+												<span style="font-size:18px;margin-left: 15px;">Wali :</span>
+												<a class="btn" id="minWali" style="float:right;color: red; "><i class=" icon-minus"></i></a> 
+												<a class="btn" id="plusWali" style="float:right;color: white;display:none "><i class=" icon-plus"></i></a> 
+												</div>
+											</div>
+										
+										<div id="wali">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Nama Wali
+													   </label>
+													   <div class="col-md-9" >
+															<input type="text" class="form-control" name="namaWali" id="namaWali" value="{$ortu->waliNama}" disabled>											   
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">E-mail
+													   </label>
+													   <div class="col-md-9" >
+															<input type="email" class="form-control" name="emailWali" id="emailWali" value="{$ortu->waliEmail}" disabled>	
+													   </div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Telepon Rumah
+													   </label>
+													   <div class="col-md-9">
+															<input type="text" class="form-control" name="telWali" id="telWali" value="{$ortu->waliTel}" disabled >	
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Handphone
+													   </label>
+													   <div class="col-md-9">
+															<input type="text" class="form-control" name="hpWali" id="hpWali" value="{$ortu->waliCell}" disabled>
+													   </div>
+													</div>
+												</div>
+											</div>	
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Alamat
+													   </label>
+													   <div class="col-md-9">
+															<textarea class="form-control placeholder-no-fix" name="alamatWali" rows="5" id = "alamatWali" disabled>{$ortu->waliAlamat}</textarea>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Propinsi
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="propWali" id="propWali"  disabled>
+																<option value="{$ortu->waliProp}">{$ortu->waliPropNama}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Kabupaten/Kota
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="kabWali" id="kabWali" disabled>
+																<option value="{$ortu->waliKabKota}">{$ortu->waliKabNama}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+													   <label class="control-label col-md-3" style="text-align:left;">Kode Pos
+													   </label>
+													   <div class="col-md-9">
+															<select  class="form-control" name="kposWali" id="kposWali" disabled>
+																<option value="{$ortu->waliKodePos}">{$ortu->waliKodePosNama}</option>
+															</select>
+													   </div>
+													</div>
+												</div>
+											</div>
+										</div>
+								      </div>
+									</div>
+								  </div>
+								</div>
+							   </form>
+							   {if $cmb->jalur neq 'KP'}
+								{include file="portal/formSaudara.html"}
+							   {/if}
+						
+							  
+<script>
+jQuery(document).ready(function (){
+	document.getElementById("detailKel").style.display = "none" ;
+	document.getElementById("minKel").style.display = "none" ;
+	document.getElementById("plusKel").style.display = "block" ;
+});
+$('#min').click(function(){
+	document.getElementById("formKel").style.height="130px" ;
+	
+});
+$('#minKel').click(function(){
+	document.getElementById("detailKel").style.display = "none" ;
+	document.getElementById("minKel").style.display = "none" ;
+	document.getElementById("plusKel").style.display = "block" ;
+});
+$('#plusKel').click(function(){
+	document.getElementById("detailKel").style.display = "block" ;
+	document.getElementById("minKel").style.display = "block" ;
+	document.getElementById("plusKel").style.display = "none" ;
+});
+$('#minAyah').click(function(){
+	document.getElementById("ayah").style.display = "none" ;
+	document.getElementById("minAyah").style.display = "none" ;
+	document.getElementById("plusAyah").style.display = "block" ;
+});
+$('#minIbu').click(function(){
+	document.getElementById("ibu").style.display = "none" ;
+	document.getElementById("minIbu").style.display = "none" ;
+	document.getElementById("plusIbu").style.display = "block" ;
+});
+$('#minWali').click(function(){
+	document.getElementById("wali").style.display = "none" ;
+	document.getElementById("minWali").style.display = "none" ;
+	document.getElementById("plusWali").style.display = "block" ;
+});
+$('#plusAyah').click(function(){
+	document.getElementById("ayah").style.display = "block" ;
+	document.getElementById("minAyah").style.display = "block" ;
+	document.getElementById("plusAyah").style.display = "none" ;
+});
+$('#plusIbu').click(function(){
+	document.getElementById("ibu").style.display = "block" ;
+	document.getElementById("minIbu").style.display = "block" ;
+	document.getElementById("plusIbu").style.display = "none" ;
+});
+$('#plusWali').click(function(){
+	document.getElementById("wali").style.display = "block" ;
+	document.getElementById("minWali").style.display = "block" ;
+	document.getElementById("plusWali").style.display = "none" ;
+});
+
+</script>

@@ -1,0 +1,123 @@
+								<form action="{$host}smb/viaPhone/simpan/do" class="form-horizontal" method="post">
+									<div class="form-body">
+										<div class = "row">
+										 <div class="col-md-10">
+											  <div class="form-group">
+												 <label  class="control-label col-md-3">Nama</label>
+												 <div class="input-group col-md-9">
+													<input  name="kode" value="{$calon->kode}" hidden>
+													<input type="text" class="form-control" placeholder="Kode[Automatic]" value="{$calon->nama}" disabled>
+												 </div>
+											  </div>
+										 </div>
+										</div>
+										<div class = "row">
+										 <div class="col-md-6">
+											  <div class="form-group">
+												   <label class="control-label col-md-5">Tanggal</label>
+												   <div class="col-md-7">
+												   <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="yyyy-mm-dd">
+														<input type="text" class="form-control" name="tanggal" value="{$phone->tanggal}" disabled>
+												   </div>
+												   </div>
+											  </div>
+										 </div>
+										</div>
+										<div class = "row">
+										 <div class="col-md-6">
+											  <div class="form-group">
+												   <label class="control-label col-md-5">Jam Mulai</label>
+												   <div class="col-md-7">
+												     <div class="input-group bootstrap-timepicker">                                       
+														<input type="text" class="form-control timepicker-24" name="jamMulai"  value="{$phone->jamMulai}" disabled>
+														
+													 </div>
+												   </div>
+											  </div>
+										 </div>
+										</div>
+										<div class = "row">
+										 <div class="col-md-6">
+											  <div class="form-group">
+												   <label class="control-label col-md-5">Jam Selesai</label>
+												   <div class="col-md-7">
+												     <div class="input-group bootstrap-timepicker">                                       
+														<input type="text" class="form-control timepicker-24" name="jamSelesai"  value="{$phone->jamSelesai}" disabled>
+														
+													 </div>
+												   </div>
+											  </div>
+										 </div>
+										</div>
+										<div class = "row">
+										 <div class="col-md-10">
+											  <div class="form-group">
+												<label  class="control-label col-md-3">Pewawancara 1</label>
+												<div class="col-md-9">
+														<select class="form-control" id="pww1"  name="pww1" class="pww1" disabled>
+																<option>{$phone->pww1}</option>
+														</select>
+												</div>
+											  </div>
+										 </div>
+										</div>
+										<div class = "row">
+										 <div class="col-md-10">										  
+										  <div class="form-group">
+											<label  class="control-label col-md-3">Pewawancara 2</label>
+												<div class="col-md-9">
+													<select class="form-control" id="pww2"  name="pww2" class="pww2" disabled>
+															<option>{$phone->pww2}</option>
+													</select>
+												</div>
+										  </div>
+										 </div>
+										</div>										
+										<div class = "row">
+										 <div class="col-md-10">
+											  <div class="form-group">
+												<label  class="control-label col-md-3">No Telp</label>
+												<div class="col-md-9">
+													<input type="text" class="form-control" placeholder="No Telp" name="noTelp" value="{$phone->no_hp1}" disabled>
+												</div>
+											  </div>
+										 </div>
+										</div>
+										
+										<div class = "row">
+										 <div class="col-md-10">
+											  <div class="form-group">
+												<label  class="control-label col-md-3">No HP</label>
+												<div class="col-md-9">
+													<input type="text" class="form-control" placeholder="No Handphone" name="noHp" value="{$phone->no_hp1}" disabled>
+												</div>
+											  </div>
+										 </div>
+										</div>
+										<div class = "row">
+										 <div class="col-md-6">
+										  <div class="form-group">
+											<label  class="control-label col-md-5">Status</label>
+												<div class="col-md-7">
+													<select class="form-control" id="status"  name="status" class="status" disabled>
+													{if $phone->status eq '1'}
+														<option value="1">AKTIF</option>
+													{else}
+														<option value="0">TIDAK AKTIF</option>
+													{/if}
+													</select>
+												</div>
+										  </div>
+										 </div>	
+										</div>
+									  <div class="modal-footer">
+										 <button type="button" class="btn default" data-dismiss="modal">Close</button>
+										 <button type="submit" class="btn blue" id="save" value="edit" name="opt"> Simpan <i class="icon-plus"></i></a>
+									  </div>
+								</form>
+<script>
+jQuery(document).ready(function() {       
+         // initiate layout and plugins
+         FormComponents.init();
+	});
+</script>

@@ -1,0 +1,99 @@
+   
+					<!-- BEGIN FORM-->
+                              <form action="{$host}registrasi/formRegistrasi" class="form-horizontal form-bordered form-row-stripped" id="form_sample_1" method="post">	
+								<div class="portlet box grey">
+								   <div class="portlet-body form" style="border-top: 1px double #4682B4;">
+										 <div class="form-body">
+											<h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">Pendaftaran</h3>
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Nama Lengkap
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												<label><h4>{$nama}</h4></label>
+												  <!-- <input type="text" placeholder="email" class="form-control placeholder-no-fix" value="{$nama}" disabled> -->
+											   </div>
+											</div>
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">E-mail
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												  <label><h4>{$cmb->kode_smb}</h4></label>
+											   </div>
+											</div>
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Jenjang Studi
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												  <label><h4>{if $cmb->jenjangType eq '1'}S1{else}S2{/if}</h4></label>
+											   </div>
+											</div>	
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Program Studi
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												  <label><h4>{$cmb->progdi}</h4></label>
+											   </div>
+											</div>	
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">No Handphone
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												  <label><h4>{$cmb->rumahCell}</h4></label>
+											   </div>
+											</div>
+										 </div>
+										 <div class="form-body">
+											<h3 class="form-section" style="margin-bottom: 0px; margin-left: 50px;margin-top: 12px;">Data Formulir</h3>	
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Tahun
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												  <label><h4>{$cmb->tahun}</h4></label>
+											   </div>
+											</div>
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Semester
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												  <label><h4>{if $cmb->semester eq '1'}Ganjil{else}Genap{/if}</h4></label>
+											   </div>
+											</div>
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Jalur Seleksi
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												  <label><h4>{$cmb->n_jalur}</h4></label>
+											   </div>
+											</div>
+											<div class="form-group">
+											   <label class="control-label col-md-3" style="text-align:left;width: 220px;">Biaya Pendaftaran
+											   </label>
+											   <div class="col-md-9" style="width: 862px; height: 46px; padding-left: 35px; padding-top: 5px;">
+												  <label><h4>Rp. 300.000 </h4></label>
+											   </div>
+											</div>
+											<div class="col-md-12" style="padding-bottom: 15px; padding-top: 5px; padding-right: 0px;">
+											<ul class="timeline" style="left:0">
+											  <li class="timeline-parmad">
+												 <div class="timeline-body" style="margin-left:0">
+													<h2>Pembayaran Pendaftaran</h2>
+													<div class="timeline-content">
+													<p>Untuk melanjutkan proses pendaftaran,
+													lakukan pembayaran sebesar <b>Rp. 300.000 ( Tiga Ratus Ribu Rupiah )</b></p>
+													<p>ke <b>BANK MANDIRI</b> nomor rekening <b>070-0000043526</b></p>
+													atas nama <b>Universitas Paramadina</b>
+													</div>
+													<div class="timeline-footer">
+													   <a href="{$host}portal/pembayaran" class="btn red">
+													   Masuk ke Form Pembayaran <i class="m-icon-swapright m-icon-white"></i>                              
+													   </a>                         
+													</div>
+												 </div>
+											  </li>
+											</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							   </form>
+							  

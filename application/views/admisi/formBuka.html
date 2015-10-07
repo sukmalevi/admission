@@ -1,0 +1,83 @@
+								<form action="{$host}admisi/admisiOptBuka/edit/do" class="form-horizontal" method="post">
+									<div class="form-body">
+										  <div class="form-group">
+                                             <label  class="control-label col-md-3">Kode</label>
+                                             <div class="input-group col-md-6">
+												<input id="kode" name="kode" value="{$buka->id_buka}" hidden>
+                                                <input type="text" class="form-control" placeholder="Kode[Automatic]" value="{$buka->id_buka}" disabled>
+                                             </div>
+                                          </div>
+                                          <div class="form-group">
+											<label  class="control-label col-md-3">Periode</label>
+												<div class="col-md-9">
+													<select class="form-control" id="jenjang"  name="periode" class="periode">
+														<option value="{$buka->periode_buka}">{$buka->nama_periode}</option>
+														{foreach name=lope from=$periode item=row}
+															<option value="{$row->kode}">{$row->nama}</option>
+														{/foreach}
+													</select>
+												</div>
+										  </div>
+										  <div class="form-group">
+											<label  class="control-label col-md-3">Program Studi</label>
+												<div class="col-md-9">
+													<select class="form-control" id="jenjang"  name="prodi" class="prodi">
+															<option value="{$buka->kode_prodi}">{$buka->nama_prodi}</option>
+														{foreach name=lope from=$prodi item=row}
+															<option value="{$row->kode}">{$row->nama}</option>
+														{/foreach}
+													</select>
+												</div>
+										  </div>
+										  <div class="form-group">
+											<label  class="control-label col-md-3">Jalur</label>
+												<div class="col-md-9">
+													<select class="form-control" id="jalur"  name="jalur" class="jalur">
+															<option value="{$buka->kode_jalur}">{$buka->nama_jalur}</option>
+														{foreach name=lope from=$jalur item=row}
+															<option value="{$row->kode}">{$row->nama}</option>
+														{/foreach}
+													</select>
+												</div>
+										  </div>
+										   <div class="form-group">
+											  <label class="control-label col-md-3">Date Range</label>
+											  <div class="col-md-4">
+												 <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="yyyy-mm-dd">
+													<input type="text" class="form-control" name="from" value="{$buka->tanggalBuka}">
+													<span class="input-group-addon">to</span>
+													<input type="text" class="form-control" name="to" value="{$buka->tanggalTutup}" >
+												 </div>
+												 <!-- /input-group -->
+												 <span class="help-block">Select date range</span>
+											  </div>
+										   </div>
+										  <div class="form-group">
+                                             <label  class="control-label col-md-3">Nama</label>
+                                             <div class="input-group col-md-9">
+                                                <input type="text" class="form-control" placeholder="Nama [Automatic]" id="nama" name="nama" disabled value="{$buka->nama_buka}">
+                                             </div>
+                                          </div>
+										  <div class="form-group">
+											<label  class="control-label col-md-3">Status</label>
+												<div class="col-md-9">
+													<select class="form-control" id="status"  name="status" class="status">
+													{if $buka->stsBuka eq '1'}<option value="1">AKTIF</option>{else}
+														<option value="0">TIDAK AKTIF</option>
+													{/if}
+														<option value="1">AKTIF</option>
+														<option value="0">TIDAK AKTIF</option>
+													</select>
+												</div>
+										  </div>
+									  <div class="modal-footer">
+										 <button type="button" class="btn default" data-dismiss="modal">Close</button>
+										 <button type="submit" class="btn blue" id="edit" value="edit" name="opt"> Tambah <i class="icon-plus"></i></a>
+									  </div>
+								</form>
+<script>
+jQuery(document).ready(function() {       
+         // initiate layout and plugins
+         FormComponents.init();
+		 });
+</script>
